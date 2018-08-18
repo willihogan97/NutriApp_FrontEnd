@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">NutriApp</string>
+    <string name="karbohidrat">Karbohidrat</string>
+    <string name="nama_parenteral">Nama Parenteral</string>
+    <string name="volume">Volume</string>
+    <string name="protein">Protein</string>
+    <string name="lemak">Lemak</string>
+    <string name="elektrolit">Elektrolit</string>
+    <string name="kalori">Kalori</string>
+    <string name="sisa_kalori">Sisa Kalori</string>
+    <string name="nama_parenteral">Nama Parenteral</string>
+    <string name="semicolon">:</string>
+    <string name="tambah_parenteral">Tambah Parenteral</string>
+    <string name="jenis_makanan">Jenis Makanan</string>
+    <string name="per_1_satuan_penukar">per 1 satuan penukar</string>
+    <string name="urt">URT</string>
+    <string name="tambah_makanan">Tambah Makanan</string>
+    <string name="parenteral">Parenteral</string>
+    <string name="ngt_oral">NGT / oral</string>
+    <string name="buat_baru">Buat Baru</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 </resources>

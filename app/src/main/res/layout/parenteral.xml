@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/parenteralSelection"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="@string/nama_parenteral"
+            android:layout_margin="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/parenteralColon"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:text="@string/semicolon"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:layout_toEndOf="@id/parenteralSelection"/>
+
+        <Spinner
+            android:id="@+id/parenteralDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/parenteralColon"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/volumeInput"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="@string/volume"
+            android:layout_margin="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/volumeColon"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:text="@string/semicolon"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:layout_toEndOf="@id/volumeInput"/>
+
+        <EditText
+            android:id="@+id/editVolume"
+            android:layout_width="80dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/volumeColon"
+            android:ems="16"
+            android:inputType="number"
+            android:text=""
+            tools:ignore="LabelFor" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailSelection"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/carbohydrateDetail"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/karbohidrat"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/carbohydrateColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/carbohydrateDetail"/>
+
+            <TextView
+                android:id="@+id/carbohydrateDetailValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/karbohidrat"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/carbohydrateColon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/proteinDetail"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/protein"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/proteinColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/proteinDetail"/>
+
+            <TextView
+                android:id="@+id/proteinDetailValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/protein"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/proteinColon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/fatDetail"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/lemak"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/fatColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/fatDetail"/>
+
+            <TextView
+                android:id="@+id/fatDetailVslut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lemak"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/fatColon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/electroliteDetail"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/elektrolit"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/electroliteColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/electroliteDetail"/>
+
+            <TextView
+                android:id="@+id/electroliteDetailVslue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/elektrolit"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/electroliteColon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/caloriesSelection"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/kalori"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/caloriesColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/caloriesSelection"/>
+
+            <TextView
+                android:id="@+id/caloriesDetailVslue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kalori"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/caloriesColon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/caloriesRemainders"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sisa_kalori"
+                android:layout_margin="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/remainderColon"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/caloriesRemainders"/>
+
+            <TextView
+                android:id="@+id/caloriesRemaindersValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sisa_kalori"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/remainderColon"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentStart="true"
+                android:text="@string/back" />
+
+            <Button
+                android:id="@+id/buttonNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/next" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
