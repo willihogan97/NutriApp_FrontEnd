@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/selection">
 
         <TextView
             android:id="@+id/parenteralSelection"
@@ -46,7 +47,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/volume">
 
         <TextView
             android:fontFamily="@font/raleway"
@@ -85,7 +87,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/detailSelection"
+        android:id="@+id/detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
