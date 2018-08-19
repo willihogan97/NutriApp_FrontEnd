@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--MARGINS-->
+    <dimen name="paddingMargin10">10dp</dimen>
+
+    <!--FONTS-->
+    <dimen name="normalText">16sp</dimen>
+
+</resources>

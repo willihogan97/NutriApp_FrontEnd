@@ -19,43 +19,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginTop="@dimen/paddingMargin10"
+                android:layout_marginBottom="@dimen/paddingMargin10">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_marginTop="@dimen/paddingMargin10"
+                    android:layout_marginBottom="@dimen/paddingMargin10"
                     android:layout_weight="0.25"
                     android:text="Jam" />
                 <!--<Spinner-->
                     <!--android:id="@+id/spinner"-->
                     <!--android:layout_width="0dp"-->
                     <!--android:layout_height="match_parent"-->
-                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_marginLeft="@dimen/paddingMargin10"-->
                     <!--android:layout_weight="0.25"/>-->
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/pickTime"
-                    android:enabled="false"
+
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
-                    android:layout_marginLeft="8dp"/>
+                    android:layout_marginLeft="@dimen/paddingMargin10"/>
                 <!--<Button-->
                     <!--android:layout_width="0dp"-->
                     <!--android:layout_height="match_parent"-->
                     <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_marginLeft="@dimen/paddingMargin10"-->
                     <!--android:layout_weight="0.5"-->
                     <!--android:text="Pilih Jam" />-->
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.5" />
             </LinearLayout>
 
@@ -63,29 +66,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="@dimen/paddingMargin10">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.25"
                     android:text="Jam" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.5"
                     android:text="Jam" />
             </LinearLayout>
@@ -94,29 +100,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="@dimen/paddingMargin10">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.25"
                     android:text="Jam" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.5"
                     android:text="Jam" />
             </LinearLayout>
@@ -125,65 +134,94 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="@dimen/paddingMargin10">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.25"
                     android:text="Jam" />
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.5"
                     android:text="Jam" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/paddingMargin10">
+
+                <Button
+                    android:id="@+id/btnPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah Makanan"/>
+
             </LinearLayout>
 
             <View
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#c0c0c0"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginRight="@dimen/paddingMargin10"
+                android:layout_marginLeft="@dimen/paddingMargin10"
+                android:layout_marginTop="@dimen/paddingMargin10"
+                android:layout_marginBottom="@dimen/paddingMargin10"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="@dimen/paddingMargin10">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Total Kalori" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/totalKal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.25" />
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6" />
             </LinearLayout>
 
             <LinearLayout
@@ -192,15 +230,10 @@
                 android:layout_gravity="center">
 
                 <Button
-                    android:id="@+id/btnPlus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tambah Makanan"/>
-                <Button
                     android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OK"/>
+                    android:text="Tambah"/>
             </LinearLayout>
 
         </LinearLayout>

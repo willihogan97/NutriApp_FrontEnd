@@ -19,17 +19,18 @@
         <activity
             android:name=".MakananExternalActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:label="@string/makanan_external_header" />
         <activity
             android:name=".TambahJadwalExternal"
             android:screenOrientation="portrait"
             android:parentActivityName=".MakananExternalActivity"
-            />
+            android:label="@string/tambah_jadwal_header" />
         <activity
             android:name=".TambahMakananExternal"
             android:screenOrientation="portrait"
             android:parentActivityName=".TambahJadwalExternal"
-            />
+            android:label="@string/tambah_makanan_header" />
     </application>
 
 </manifest>

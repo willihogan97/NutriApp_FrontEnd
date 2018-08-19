@@ -21,18 +21,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Berat Badan" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/beratBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:inputType="number"
                     android:maxLines="1" />
             </LinearLayout>
@@ -43,18 +59,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Tinggi Badan" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/tinggiBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:inputType="number" />
             </LinearLayout>
 
@@ -64,18 +96,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Skin Fold" />
-
+                
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+                
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/SkinFold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -85,19 +133,35 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="LLA" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:id="@+id/FoodURTColon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/lla"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -107,20 +171,35 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="BMI" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/bmi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:enabled="false"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -130,19 +209,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Kalori" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/kalori"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -152,19 +246,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Sheer Factor" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/sheerFac"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -174,19 +283,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Kkal/" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/kkal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -196,19 +320,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Total Kalori" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/totalKal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -218,19 +357,34 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Totala Kalori" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/d"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -240,41 +394,60 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Totala Kalori" />
 
+                <TextView
+                    android:fontFamily="@font/raleway_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semicolon"
+                    android:layout_margin="@dimen/paddingMargin10"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/c"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content">
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:textSize="@dimen/normalText"
                     android:layout_weight="0.25"
+                    android:baselineAligned="false"
                     android:text="Karbohidrat" />
 
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/karbohidrat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/paddingMargin10"
                     android:layout_weight="0.75"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
@@ -284,14 +457,17 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
                     android:layout_weight="0.25"
+                    android:textSize="@dimen/normalText"
                     android:text="Protein" />
 
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/protein"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -300,6 +476,7 @@
                     android:ems="10" />
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -307,6 +484,7 @@
                     android:text="%" />
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -320,19 +498,24 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:fontFamily="@font/raleway_medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginLeft="@dimen/paddingMargin10"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/normalText"
                     android:text="Lemak" />
 
                 <EditText
+                    android:fontFamily="@font/raleway_medium"
                     android:id="@+id/lemak"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_marginRight="@dimen/paddingMargin10"
+                    android:layout_weight="6"
+                    android:textSize="@dimen/normalText"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 

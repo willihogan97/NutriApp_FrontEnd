@@ -8,7 +8,6 @@
     <string name="elektrolit">Elektrolit</string>
     <string name="kalori">Kalori</string>
     <string name="sisa_kalori">Sisa Kalori</string>
-    <string name="nama_parenteral">Nama Parenteral</string>
     <string name="semicolon">:</string>
     <string name="tambah_parenteral">Tambah Parenteral</string>
     <string name="jenis_makanan">Jenis Makanan</string>
@@ -20,4 +19,15 @@
     <string name="buat_baru">Buat Baru</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    
+    <!--BUAT NAMA HEADER-->
+    <string name="makanan_external_header">Makanan External</string>
+    <string name="tambah_jadwal_header">Tambah Jadwal</string>
+    <string name="tambah_makanan_header">Tambah Makanan</string>
+    
+    <string-array name="spinnerTipeMakananExternal">
+        <item>Biasa</item>
+        <item>Tube</item>
+    </string-array>
+
 </resources>

@@ -7,51 +7,62 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="@dimen/paddingMargin10">
 
         <TextView
+            android:fontFamily="@font/raleway_medium"
             android:id="@+id/jam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/paddingMargin10"
             android:layout_weight="0.25"
+            android:textSize="@dimen/normalText"
             android:text="Jam" />
 
         <TextView
+            android:fontFamily="@font/raleway_medium"
             android:id="@+id/karbo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/paddingMargin10"
             android:layout_weight="0.25"
+            android:textSize="@dimen/normalText"
             android:text="Karbo" />
 
         <TextView
+            android:fontFamily="@font/raleway_medium"
             android:id="@+id/protein"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/paddingMargin10"
             android:layout_weight="0.25"
+            android:textSize="@dimen/normalText"
             android:text="Protein" />
 
         <TextView
+            android:fontFamily="@font/raleway_medium"
             android:id="@+id/lemak"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/paddingMargin10"
             android:layout_weight="0.25"
+            android:textSize="@dimen/normalText"
             android:text="Lemak" />
 
         <TextView
+            android:fontFamily="@font/raleway_medium"
             android:id="@+id/kalori"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/paddingMargin10"
+            android:layout_marginRight="@dimen/paddingMargin10"
             android:layout_weight="0.25"
+            android:textSize="@dimen/normalText"
             android:text="Kalori" />
 
     </LinearLayout>

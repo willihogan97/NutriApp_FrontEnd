@@ -13,22 +13,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginTop="@dimen/paddingMargin10"
+            android:layout_marginBottom="@dimen/paddingMargin10">
 
             <TextView
+                android:fontFamily="@font/raleway_medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/paddingMargin10"
                 android:layout_weight="0.25"
+                android:textSize="@dimen/normalText"
                 android:text="Jenis" />
 
             <Spinner
                 android:id="@+id/jenis_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/paddingMargin10"
                 android:layout_weight="0.75" />
         </LinearLayout>
 
@@ -36,23 +38,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/paddingMargin10">
 
             <TextView
+                android:fontFamily="@font/raleway_medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_marginLeft="@dimen/paddingMargin10"
+                android:layout_weight="4"
+                android:textSize="@dimen/normalText"
                 android:text="Kalori" />
 
+            <TextView
+                android:fontFamily="@font/raleway_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="@dimen/paddingMargin10"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                android:fontFamily="@font/raleway_medium"
                 android:id="@+id/kalori_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75"
+                android:layout_marginRight="@dimen/paddingMargin10"
+                android:layout_weight="6"
                 android:inputType="text" />
         </LinearLayout>
 
@@ -60,69 +75,108 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/paddingMargin10">
 
             <TextView
+                android:fontFamily="@font/raleway_medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_marginLeft="@dimen/paddingMargin10"
+                android:layout_weight="4"
+                android:textSize="@dimen/normalText"
                 android:text="Protein" />
 
+            <TextView
+                android:fontFamily="@font/raleway_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="@dimen/paddingMargin10"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                android:fontFamily="@font/raleway_medium"
                 android:id="@+id/protein_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_marginRight="@dimen/paddingMargin10"
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/paddingMargin10">
 
             <TextView
+                android:fontFamily="@font/raleway_medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_marginLeft="@dimen/paddingMargin10"
+                android:layout_weight="4"
+                android:textSize="@dimen/normalText"
                 android:text="Karbohidrat" />
 
+            <TextView
+                android:fontFamily="@font/raleway_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="@dimen/paddingMargin10"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                android:fontFamily="@font/raleway_medium"
                 android:id="@+id/karbohidrat_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_marginRight="@dimen/paddingMargin10"
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/paddingMargin10">
 
             <TextView
+                android:fontFamily="@font/raleway_medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_marginLeft="@dimen/paddingMargin10"
+                android:layout_weight="4"
+                android:textSize="@dimen/normalText"
                 android:text="URT" />
 
+            <TextView
+                android:fontFamily="@font/raleway_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:layout_margin="@dimen/paddingMargin10"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                android:fontFamily="@font/raleway_medium"
                 android:id="@+id/urt_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_marginRight="@dimen/paddingMargin10"
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout

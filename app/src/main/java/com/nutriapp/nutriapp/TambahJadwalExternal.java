@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -27,45 +28,37 @@ public class TambahJadwalExternal extends AppCompatActivity {
     JadwalMakananExternal jadwalMakanan;
     public static EditText totalKalori;
     public static EditText buttonPickTime;
+    EditText pickTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_jadwal_external);
 
+        //inisiasi jadwal makanan baru
+        jadwalMakanan = new JadwalMakananExternal();
+
         totalKalori = (EditText) findViewById(R.id.totalKal);
 
-
+        pickTime = (EditText) findViewById(R.id.pickTime);
 
         final View buttonPlus = findViewById(R.id.btnPlus);
         final View buttonOk = findViewById(R.id.btnOk);
         buttonPickTime = (EditText) findViewById(R.id.pickTime);
         listJadwalMakanan = new ArrayList<MakananExternal>();
-        // When this button is clicked we want to return a result
+
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new Intent as container for the result
                 Intent intent = new Intent(getApplicationContext(), TambahMakananExternal.class);
-
-                // Start AnotherActivity with the request code
                 startActivityForResult(intent, 200);
-
-                // Set the resultCode to Activity.RESULT_OK to
-                // indicate a success and attach the Intent
-                // which contains our result data
-
-                // With finish() we close the AnotherActivity to
-                // return to MainActivity
-//                finish();
             }
         });
 
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new TimePickerFragment();
-                newFragment.show(getFragmentManager(), "timePicker");
+                jadwalMakanan.setJam(pickTime.getText().toString());
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, jadwalMakanan);
                 setResult(Activity.RESULT_OK, data);
@@ -84,6 +77,13 @@ public class TambahJadwalExternal extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.d("asdasdasdasd", "onBackPressed: asdasdasdasd");
+        finish();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -92,9 +92,11 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 final String result = data.getStringExtra(TambahJadwalExternal.EXTRA_DATA);
                 Gson gson = new Gson();
                 MakananExternal makanan =  gson.fromJson(result, MakananExternal.class);
-
-                jadwalMakanan = new JadwalMakananExternal(makanan.getKarbohidrat(), makanan.getProtein(), makanan.getKalori(), 10);
                 listJadwalMakanan.add(makanan);
+                jadwalMakanan.setKarbo(makanan.getKarbohidrat());
+                jadwalMakanan.setLemak(makanan.getUrt());
+                jadwalMakanan.setProtein(makanan.getProtein());
+                jadwalMakanan.setTotalKalori(10);
 
                 Toast.makeText(this, "Result: " + makanan.getKalori(), Toast.LENGTH_LONG).show();
 //                parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount());

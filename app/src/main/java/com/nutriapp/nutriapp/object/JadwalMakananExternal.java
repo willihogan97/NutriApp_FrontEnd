@@ -20,6 +20,9 @@ public class JadwalMakananExternal implements Parcelable {
     String lemak;
     int totalKalori;
 
+    public JadwalMakananExternal() {
+    }
+
     public JadwalMakananExternal(String jam, String karbo, String protein, String lemak, int totalKalori) {
         this.jam = jam;
         this.karbo = karbo;
