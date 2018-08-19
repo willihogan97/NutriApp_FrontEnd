@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".AddFood">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             android:text="@string/jenis_makanan"
             android:layout_margin="10dp"
             android:textSize="16sp"
-            android:fontFamily="@font/Raleway-Medium"/>
+            android:fontFamily="@font/raleway" />
 
         <TextView
             android:id="@+id/foodTypeColon"
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/semicolon"
             android:layout_margin="10dp"
+            android:fontFamily="@font/raleway"
             android:textSize="16sp"
             android:layout_toEndOf="@id/addFoodTypeLabel"/>
 
@@ -34,6 +36,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/foodTypeColon"
@@ -50,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/per_1_satuan_penukar"
+            android:fontFamily="@font/raleway"
             android:gravity="center_horizontal|center_vertical"
             android:layout_margin="10dp"
             android:textSize="16sp" />
@@ -62,6 +66,7 @@
         <TextView
             android:id="@+id/addFoodURTLabel"
             android:layout_width="140dp"
+            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/urt"
             android:layout_margin="10dp"
@@ -73,6 +78,7 @@
             android:layout_height="wrap_content"
             android:text="@string/semicolon"
             android:layout_margin="10dp"
+            android:fontFamily="@font/raleway"
             android:textSize="16sp"
             android:layout_toEndOf="@id/addFoodURTLabel"/>
 
@@ -80,6 +86,7 @@
             android:id="@+id/addFoodURT"
             android:layout_width="80dp"
             android:layout_height="28dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginEnd="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -98,6 +105,7 @@
 
         <TextView
             android:id="@+id/addFoodCarbohydrateLabel"
+            android:fontFamily="@font/raleway"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:text="@string/karbohidrat"
@@ -108,6 +116,7 @@
             android:id="@+id/carbohydrateColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
             android:text="@string/semicolon"
             android:layout_margin="10dp"
             android:textSize="16sp"
@@ -118,6 +127,7 @@
             android:layout_width="80dp"
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginStart="10dp"
@@ -139,6 +149,7 @@
             android:layout_height="wrap_content"
             android:text="@string/protein"
             android:layout_margin="10dp"
+            android:fontFamily="@font/raleway"
             android:textSize="16sp" />
 
         <TextView
@@ -146,6 +157,7 @@
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:text="@string/semicolon"
+            android:fontFamily="@font/raleway"
             android:layout_margin="10dp"
             android:textSize="16sp"
             android:layout_toEndOf="@id/addFoodProteinLabel"/>
@@ -155,6 +167,7 @@
             android:layout_width="80dp"
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginStart="10dp"
@@ -175,6 +188,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:text="@string/lemak"
+            android:fontFamily="@font/raleway"
             android:layout_margin="10dp"
             android:textSize="16sp" />
 
@@ -183,6 +197,7 @@
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:text="@string/semicolon"
+            android:fontFamily="@font/raleway"
             android:layout_margin="10dp"
             android:textSize="16sp"
             android:layout_toEndOf="@id/addFoodFatLabel"/>
@@ -192,6 +207,7 @@
             android:layout_width="80dp"
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginStart="10dp"
@@ -212,11 +228,13 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:text="@string/kalori"
+            android:fontFamily="@font/raleway"
             android:layout_margin="10dp"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/caloriesColon"
+            android:fontFamily="@font/raleway"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:text="@string/semicolon"
@@ -229,6 +247,7 @@
             android:layout_width="80dp"
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="@font/raleway"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginStart="10dp"
@@ -247,6 +266,7 @@
         <Button
             android:id="@+id/buttonAddFood"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:layout_marginTop="15dp"

@@ -8,7 +8,6 @@
     <string name="elektrolit">Elektrolit</string>
     <string name="kalori">Kalori</string>
     <string name="sisa_kalori">Sisa Kalori</string>
-    <string name="nama_parenteral">Nama Parenteral</string>
     <string name="semicolon">:</string>
     <string name="tambah_parenteral">Tambah Parenteral</string>
     <string name="jenis_makanan">Jenis Makanan</string>
@@ -20,4 +19,5 @@
     <string name="buat_baru">Buat Baru</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="total">Total Kaloti</string>
 </resources>
