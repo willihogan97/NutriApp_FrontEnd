@@ -73,7 +73,7 @@
                     android:layout_weight="0.25"
                     android:text="Karbo" />
 
-                <TextView
+                <Spinner
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -81,12 +81,17 @@
                     android:layout_weight="0.25"
                     android:text="Jam" />
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25" />
+
                 <TextView
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:text="Jam" />
             </LinearLayout>
 
@@ -104,7 +109,7 @@
                     android:layout_weight="0.25"
                     android:text="Karbo" />
 
-                <TextView
+                <Spinner
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -112,12 +117,17 @@
                     android:layout_weight="0.25"
                     android:text="Jam" />
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25" />
+
                 <TextView
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:text="Jam" />
             </LinearLayout>
 

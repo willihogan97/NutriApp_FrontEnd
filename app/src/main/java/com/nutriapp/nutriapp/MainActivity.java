@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), bmi, Toast.LENGTH_SHORT).show();
 //                bmiView.setText(bmi);
 
-                Intent intent = new Intent(getApplicationContext(), MakananExternalActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Parenteral.class);
                 intent.putExtra("asd", "asdasd");
                 startActivityForResult(intent, 200);
 //                startActivity(intent);

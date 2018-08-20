@@ -44,4 +44,9 @@
         <item>Tube</item>
     </string-array>
 
+    <string-array name="spinnerParenteral">
+        <item>Biasa</item>
+        <item>Tube</item>
+    </string-array>
+
 </resources>

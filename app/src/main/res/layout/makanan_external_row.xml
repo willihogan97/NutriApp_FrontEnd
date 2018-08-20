@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/vertical_margin"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
 
             android:text="Jam" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/vertical_margin"
-            android:layout_weight="0.25"
+            android:layout_weight="0.35"
 
             android:text="Karbo" />
 
@@ -61,7 +61,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_marginRight="@dimen/vertical_margin"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
 
             android:text="Kalori" />
 

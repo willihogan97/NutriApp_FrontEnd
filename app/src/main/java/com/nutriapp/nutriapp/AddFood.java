@@ -44,7 +44,7 @@ public class AddFood extends AppCompatActivity {
         fatView = (EditText) findViewById(R.id.addFoodFat);
         caloriesView = (EditText) findViewById(R.id.addFoodCalories);
 
-        submit = findViewById(R.id.buttonAddParenteral);
+        submit = findViewById(R.id.buttonAddFood);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

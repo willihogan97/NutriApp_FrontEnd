@@ -64,7 +64,7 @@ public class MakananExternalActivity extends AppCompatActivity{
         Button button = findViewById(R.id.btnPlus);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Log.d("asd", "onClick: " );
                 Intent intent = new Intent(getApplicationContext(), TambahJadwalExternal.class);
 
                 startActivityForResult(intent, 200);

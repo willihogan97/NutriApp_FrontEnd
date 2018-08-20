@@ -50,7 +50,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TambahMakananExternal.class);
+                Intent intent = new Intent(getApplicationContext(), AddFood.class);
                 startActivityForResult(intent, 200);
             }
         });

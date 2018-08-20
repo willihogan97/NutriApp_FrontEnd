@@ -1,6 +1,7 @@
 package com.nutriapp.nutriapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+
+import com.nutriapp.nutriapp.object.MakananExternal;
 
 @SuppressLint("Registered")
 public class Parenteral extends AppCompatActivity {
@@ -31,11 +34,13 @@ public class Parenteral extends AppCompatActivity {
         volume = (RelativeLayout) findViewById(R.id.volume);
         detail = (LinearLayout) findViewById(R.id.detail);
 
-        String[] arraySpinner = new String[] {
-                "1", "2", "3", "4", "5"
-        };
+        volume.setVisibility(View.INVISIBLE);
+        selection.setVisibility(View.VISIBLE);
+        detail.setVisibility(View.INVISIBLE);
 
-        Spinner s = (Spinner) findViewById(R.id.parenteralDropdown);
+        String[] arraySpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
+
+        final Spinner s = (Spinner) findViewById(R.id.parenteralDropdown);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -44,7 +49,9 @@ public class Parenteral extends AppCompatActivity {
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                volume.setVisibility(View.VISIBLE);
+                if(s.getSelectedItem().toString() != "Biasa") {
+                    volume.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -55,7 +62,7 @@ public class Parenteral extends AppCompatActivity {
             }
         });
 
-        volumeView = (EditText) findViewById(R.id.volumeInput);
+        volumeView = (EditText) findViewById(R.id.editVolume);
         volumeView.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -74,7 +81,9 @@ public class Parenteral extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.makanan_external);
+//                setContentView(R.layout.makanan_external);
+                Intent intent = new Intent(getApplicationContext(), MakananExternalActivity.class);
+                startActivityForResult(intent, 200);
             }
         });
     }
