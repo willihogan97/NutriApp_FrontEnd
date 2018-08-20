@@ -9,78 +9,63 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/selection">
+        android:id="@+id/selection"
+        android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
+    <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralSelection"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
             android:text="@string/nama_parenteral"
-            android:textSize="16sp" />
+             />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralColon"
             android:layout_width="10dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_toEndOf="@id/parenteralSelection"
-            android:text="@string/semicolon"
-            android:textSize="16sp" />
+            android:text="@string/colon" />
 
         <Spinner
+            style="@style/normalFont"
             android:id="@+id/parenteralDropdown"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/parenteralColon"
             android:background="@android:drawable/btn_dropdown"
-            android:fontFamily="@font/raleway"
             android:spinnerMode="dropdown" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/volume">
+        android:id="@+id/volume"
+        android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            android:fontFamily="@font/raleway"
+    <TextView
+            style="@style/normalFont"
             android:id="@+id/volumeInput"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/volume"
-            android:textSize="16sp" />
+            android:text="@string/volume" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/volumeColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/raleway"
             android:layout_toEndOf="@id/volumeInput"
-            android:text="@string/semicolon"
-            android:textSize="16sp" />
+            android:text="@string/colon" />
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/editVolume"
             android:layout_width="80dp"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/volumeColon"
             android:ems="16"
-            android:fontFamily="@font/raleway"
             android:inputType="number"
             android:text=""
             tools:ignore="LabelFor" />
@@ -92,231 +77,200 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/carbohydrateDetail"
                 android:layout_width="140dp"
-                android:fontFamily="@font/raleway"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/karbohidrat"
-                android:textSize="16sp" />
+                android:text="@string/karbohidrat" />
 
             <TextView
-                android:fontFamily="@font/raleway"
+                style="@style/normalFont"
                 android:id="@+id/carbohydrateColon"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/carbohydrateDetail"
-                android:text="@string/semicolon"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/carbohydrateDetailValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/raleway"
                 android:layout_toEndOf="@id/carbohydrateColon"
-                android:text="@string/karbohidrat"
-                android:textSize="16sp" />
+                android:text="@string/karbohidrat" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/proteinDetail"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:layout_margin="10dp"
-                android:text="@string/protein"
-                android:textSize="16sp" />
+                android:text="@string/protein" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/proteinColon"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/raleway"
                 android:layout_toEndOf="@id/proteinDetail"
-                android:text="@string/semicolon"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/proteinDetailValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/proteinColon"
-                android:fontFamily="@font/raleway"
-                android:text="@string/protein"
-                android:textSize="16sp" />
+                android:text="@string/protein" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/fatDetail"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:layout_margin="10dp"
-                android:text="@string/lemak"
-                android:textSize="16sp" />
+                android:text="@string/lemak" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/fatColon"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/fatDetail"
-                android:text="@string/semicolon"
-                android:fontFamily="@font/raleway"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/fatDetailVslut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/fatColon"
-                android:fontFamily="@font/raleway"
-                android:text="@string/lemak"
-                android:textSize="16sp" />
+                android:text="@string/lemak" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
-                android:fontFamily="@font/raleway"
+                style="@style/normalFont"
                 android:id="@+id/electroliteDetail"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/elektrolit"
-                android:textSize="16sp" />
+                android:text="@string/elektrolit" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/electroliteColon"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/electroliteDetail"
-                android:text="@string/semicolon"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/electroliteDetailVslue"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/raleway"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/electroliteColon"
-                android:text="@string/elektrolit"
-                android:textSize="16sp" />
+                android:text="@string/elektrolit" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/caloriesSelection"
-                android:fontFamily="@font/raleway"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/kalori"
-                android:textSize="16sp" />
+                android:text="@string/kalori" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/caloriesColon"
-                android:fontFamily="@font/raleway"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/caloriesSelection"
-                android:text="@string/semicolon"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/caloriesDetailVslue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/caloriesColon"
-                android:text="@string/kalori"
-                android:textSize="16sp" />
+                android:text="@string/kalori" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/caloriesRemainders"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/raleway"
-                android:text="@string/sisa_kalori"
-                android:textSize="16sp" />
+                android:text="@string/sisa_kalori" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/remainderColon"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/caloriesRemainders"
-                android:text="@string/semicolon"
-                android:textSize="16sp" />
+                android:text="@string/colon" />
 
             <TextView
+                style="@style/normalFont"
                 android:id="@+id/caloriesRemaindersValue"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/raleway"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/remainderColon"
-                android:text="@string/sisa_kalori"
-                android:textSize="16sp" />
+                android:text="@string/sisa_kalori" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/vertical_margin">
 
             <Button
+                style="@style/normalFont"
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_margin="15dp"
-                android:fontFamily="@font/raleway"
                 android:text="@string/back"
                 android:textAlignment="center" />
 
             <Button
+                style="@style/normalFont"
                 android:id="@+id/buttonNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="15dp"
-                android:fontFamily="@font/raleway"
                 android:text="@string/next"
                 android:textAlignment="center" />
         </RelativeLayout>

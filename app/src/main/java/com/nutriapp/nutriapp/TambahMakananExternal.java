@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,6 +13,9 @@ import com.nutriapp.nutriapp.object.MakananExternal;
 
 import java.util.ArrayList;
 
+/**
+ * Delete aja ini kedobel sama AddFood
+ */
 public class TambahMakananExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
@@ -37,15 +41,17 @@ public class TambahMakananExternal extends AppCompatActivity {
                 kalori = kaloriView.getText().toString();
                 protein = proteinView.getText().toString();
                 urt = urtView.getText().toString();
-                MakananExternal makananBaru = new MakananExternal(kalori, karbohidrat, protein, urt);
-                String makanan = (new Gson().toJson(makananBaru));
+//                MakananExternal makananBaru = new MakananExternal(kalori, karbohidrat, protein, urt);
+//                String makanan = (new Gson().toJson(makananBaru));
                 final Intent data = new Intent();
-                data.putExtra(EXTRA_DATA, makanan);
+//                data.putExtra(EXTRA_DATA, makanan);
 
                 setResult(Activity.RESULT_OK, data);
                 finish();
             }
         });
     }
+
+
 
 }

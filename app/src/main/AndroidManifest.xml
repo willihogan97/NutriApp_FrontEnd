@@ -19,17 +19,33 @@
         <activity
             android:name=".MakananExternalActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".Parenteral"
+            android:label="@string/makanan_external_header" />
         <activity
             android:name=".TambahJadwalExternal"
             android:screenOrientation="portrait"
             android:parentActivityName=".MakananExternalActivity"
-            />
+            android:label="@string/tambah_jadwal_header" />
         <activity
-            android:name=".TambahMakananExternal"
+            android:name=".AddFood"
             android:screenOrientation="portrait"
             android:parentActivityName=".TambahJadwalExternal"
-            />
+            android:label="@string/tambah_makanan_header" />
+        <activity
+            android:name=".Parenteral"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/makanan_parenteral_header" />
+        <activity
+            android:name=".AddParenteral"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Parenteral"
+            android:label="@string/tambah_parenteral_header" />
+        <activity
+            android:name=".Result"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".TambahJadwalExternal"
+            android:label="@string/result_header" />
     </application>
 
 </manifest>

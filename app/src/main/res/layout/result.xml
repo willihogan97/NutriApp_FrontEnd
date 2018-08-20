@@ -8,302 +8,262 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/voidLabel"
             android:layout_width="90dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:text=""
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralLabel"
             android:layout_width="120dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/voidLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralLabel"
             android:layout_width="120dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralLabel"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/volumeLabel"
             android:layout_width="90dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:text="@string/volume"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/volume" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralVolume"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/volumeLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralVolume"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/raleway"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralVolume"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/carbohydrateLabel"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
-            android:text="@string/karbohidrat"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/karbohidrat" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralCarbohydrate"
             android:layout_width="120dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/carbohydrateLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralCarbohydrate"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralCarbohydrate"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/proteinLabel"
             android:layout_width="90dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:text="@string/protein"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/protein" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralProtein"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/proteinLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralProtein"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralProtein"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/fatLabel"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
-            android:text="@string/lemak"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/lemak" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralFat"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
-            android:fontFamily="@font/raleway"
             android:layout_toEndOf="@id/fatLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralFat"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/ngt_oral"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralFat"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/electroliteLabel"
             android:layout_width="90dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:text="@string/elektrolit"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/elektrolit" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralElectrolite"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/electroliteLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralElectrolite"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralElectrolite"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/caloriesLabel"
-            android:fontFamily="@font/raleway"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="@string/kalori"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/kalori" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralCalories"
             android:layout_width="120dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/parenteral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/caloriesLabel"/>
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/oralCalories"
             android:layout_width="120dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:text="@string/ngt_oral"
-            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_toEndOf="@id/parenteralCalories"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
     <TextView
+        style="@style/normalFont"
         android:id="@+id/totalLabel"
         android:layout_width="90dp"
-        android:fontFamily="@font/raleway"
         android:layout_height="wrap_content"
-        android:text="@string/total"
-        android:layout_margin="10dp"
-        android:textSize="16sp" />
+        android:text="@string/total" />
 
     <TextView
+        style="@style/normalFont"
         android:id="@+id/parenteralTotal"
         android:layout_width="120dp"
-        android:fontFamily="@font/raleway"
         android:layout_height="wrap_content"
         android:text="@string/parenteral"
-        android:layout_margin="10dp"
         android:textAlignment="center"
-        android:textSize="16sp"
         android:layout_toEndOf="@id/totalLabel"/>
 
     <TextView
+        style="@style/normalFont"
         android:id="@+id/oralTotal"
         android:layout_width="120dp"
-        android:fontFamily="@font/raleway"
         android:layout_height="wrap_content"
         android:text="@string/ngt_oral"
-        android:layout_margin="10dp"
         android:textAlignment="center"
-        android:textSize="16sp"
         android:layout_toEndOf="@id/parenteralTotal"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <Button
+            style="@style/normalFont"
             android:id="@+id/buttonCreateNew"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:text="@string/buat_baru" />
     </RelativeLayout>

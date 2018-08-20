@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base application font. -->
+    <style name="normalFont">
+        <item name="android:textSize">@dimen/normalText</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+    </style>
+
 </resources>

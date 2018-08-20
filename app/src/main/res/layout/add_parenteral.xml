@@ -8,38 +8,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addParenteralLabel"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/nama_parenteral"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/raleway"/>
+            android:text="@string/nama_parenteral" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/parenteralColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/raleway"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addParenteralLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralName"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/parenteralColon"
-            android:fontFamily="@font/raleway"
             android:ems="16"
             android:inputType="text"
             android:text=""
@@ -48,37 +40,28 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addVolumeLabel"
             android:layout_width="140dp"
-            android:fontFamily="@font/raleway"
             android:layout_height="wrap_content"
-            android:text="@string/volume"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/volume" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/volumeColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addVolumeLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralVolume"
-            android:layout_width="80dp"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/raleway"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/volumeColon"
             android:ems="16"
             android:inputType="number"
@@ -88,37 +71,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addCarbohydrateLabel"
-            android:fontFamily="@font/raleway"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/karbohidrat"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/karbohidrat" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/carbohydrateColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/raleway"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addCarbohydrateLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralCarbohydrate"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/raleway"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/carbohydrateColon"
             android:ems="16"
             android:inputType="number"
@@ -128,37 +103,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addProteinLabel"
-            android:fontFamily="@font/raleway"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/protein"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/protein" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/proteinColon"
-            android:fontFamily="@font/raleway"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addProteinLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralProtein"
-            android:fontFamily="@font/raleway"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/proteinColon"
             android:ems="16"
             android:inputType="number"
@@ -168,37 +135,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addFatLabel"
-            android:fontFamily="@font/raleway"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/lemak"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/lemak" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/fatColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addFatLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralFat"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/raleway"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/fatColon"
             android:ems="16"
             android:inputType="number"
@@ -208,37 +167,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
-            android:fontFamily="@font/raleway"
+            style="@style/normalFont"
             android:id="@+id/addElectroliteLabel"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/elektrolit"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/elektrolit" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/electroliteColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/semicolon"
-            android:fontFamily="@font/raleway"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addElectroliteLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralElectrolite"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/raleway"
             android:layout_toEndOf="@id/electroliteColon"
             android:ems="16"
             android:inputType="number"
@@ -248,37 +199,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/addCaloriesLabel"
-            android:fontFamily="@font/raleway"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/kalori"
-            android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:text="@string/kalori" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/caloriesColon"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
-            android:text="@string/semicolon"
-            android:layout_margin="10dp"
-            android:textSize="16sp"
+            android:text="@string/colon"
             android:layout_toEndOf="@id/addCaloriesLabel"/>
 
         <EditText
+            style="@style/normalFont"
             android:id="@+id/addParenteralCalories"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/raleway"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/caloriesColon"
             android:ems="16"
             android:inputType="number"
@@ -288,15 +231,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/vertical_margin">
 
         <Button
+            style="@style/normalFont"
             android:id="@+id/buttonAddParenteral"
-            android:fontFamily="@font/raleway"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:text="@string/tambah_parenteral" />
     </RelativeLayout>

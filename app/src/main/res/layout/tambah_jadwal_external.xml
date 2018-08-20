@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,43 +18,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_margin="@dimen/vertical_margin">
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Jam" />
+
                 <!--<Spinner-->
                     <!--android:id="@+id/spinner"-->
                     <!--android:layout_width="0dp"-->
                     <!--android:layout_height="match_parent"-->
-                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_marginLeft="@dimen/vertical_margin"-->
                     <!--android:layout_weight="0.25"/>-->
+
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/pickTime"
-                    android:enabled="false"
+
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:layout_marginLeft="8dp"/>
+                    android:layout_weight="0.25"/>
+
                 <!--<Button-->
                     <!--android:layout_width="0dp"-->
                     <!--android:layout_height="match_parent"-->
                     <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_marginLeft="@dimen/vertical_margin"-->
                     <!--android:layout_weight="0.5"-->
                     <!--android:text="Pilih Jam" />-->
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.5" />
             </LinearLayout>
 
@@ -63,29 +63,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_margin="@dimen/vertical_margin">
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.25"
                     android:text="Jam" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.5"
                     android:text="Jam" />
             </LinearLayout>
@@ -94,29 +94,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_margin="@dimen/vertical_margin">
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.25"
                     android:text="Jam" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.5"
                     android:text="Jam" />
             </LinearLayout>
@@ -125,65 +125,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_margin="@dimen/vertical_margin">
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_weight="0.25"
                     android:text="Karbo" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.25"
                     android:text="Jam" />
+
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0.5"
                     android:text="Jam" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Total Kalori" />
-
-                <EditText
-                    android:id="@+id/totalKal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.25" />
             </LinearLayout>
 
             <LinearLayout
@@ -196,15 +162,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah Makanan"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"
+                android:layout_margin="@dimen/vertical_margin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    android:text="Total Kalori" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/totalKal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
                 <Button
                     android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OK"/>
+                    android:text="Tambah"/>
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-
 </android.support.constraint.ConstraintLayout>

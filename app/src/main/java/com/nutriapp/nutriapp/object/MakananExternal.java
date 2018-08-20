@@ -6,20 +6,34 @@ public class MakananExternal {
     String karbohidrat;
     String protein;
     String urt;
+    String lemak;
+    String nama;
 
-    public MakananExternal(String jenis, String kalori, String karbohidrat, String protein, String urt) {
+    public MakananExternal(String jenis, String kalori, String karbohidrat, String protein, String urt, String lemak, String nama) {
         this.jenis = jenis;
         this.kalori = kalori;
         this.karbohidrat = karbohidrat;
         this.protein = protein;
         this.urt = urt;
+        this.lemak = lemak;
+        this.nama = nama;
     }
 
-    public MakananExternal(String kalori, String karbohidrat, String protein, String urt) {
+    public MakananExternal(String kalori, String karbohidrat, String protein, String urt, String lemak, String nama) {
         this.kalori = kalori;
         this.karbohidrat = karbohidrat;
         this.protein = protein;
         this.urt = urt;
+        this.lemak = lemak;
+        this.nama = nama;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getJenis() {
@@ -61,4 +75,8 @@ public class MakananExternal {
     public void setUrt(String urt) {
         this.urt = urt;
     }
+
+    public String getLemak() { return lemak; }
+
+    public void setLemak(String lemak) { this.lemak = lemak; }
 }

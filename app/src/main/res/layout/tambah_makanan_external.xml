@@ -13,22 +13,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
                 android:layout_weight="0.25"
-                android:text="Jenis" />
+
+                android:text="@string/jenis" />
 
             <Spinner
                 android:id="@+id/jenis_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/vertical_margin"
                 android:layout_weight="0.75" />
         </LinearLayout>
 
@@ -36,23 +36,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_weight="4"
+
                 android:text="Kalori" />
 
+            <TextView
+                style="@style/normalFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                android:layout_margin="@dimen/vertical_margin"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                style="@style/normalFont"
                 android:id="@+id/kalori_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75"
+                android:layout_weight="6"
                 android:inputType="text" />
         </LinearLayout>
 
@@ -60,69 +71,102 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_weight="4"
+
                 android:text="Protein" />
 
+            <TextView
+                style="@style/normalFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                android:layout_margin="@dimen/vertical_margin"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                style="@style/normalFont"
                 android:id="@+id/protein_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_weight="4"
+
                 android:text="Karbohidrat" />
 
+            <TextView
+                style="@style/normalFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                android:layout_margin="@dimen/vertical_margin"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                style="@style/normalFont"
                 android:id="@+id/karbohidrat_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_margin="@dimen/vertical_margin">
 
             <TextView
+                style="@style/normalFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.25"
+                android:layout_weight="4"
+
                 android:text="URT" />
 
+            <TextView
+                style="@style/normalFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                android:layout_margin="@dimen/vertical_margin"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
             <EditText
+                style="@style/normalFont"
                 android:id="@+id/urt_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="0.75" />
+                android:layout_weight="6" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,7 +178,7 @@
                 android:id="@+id/btnPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tambah Makanan"/>
+                android:text="@string/tambah_makanan"/>
         </LinearLayout>
     </LinearLayout>
 

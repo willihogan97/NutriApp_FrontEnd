@@ -7,51 +7,62 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="@dimen/vertical_margin">
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/jam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
+
             android:text="Jam" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/karbo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
+
             android:text="Karbo" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/protein"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
+
             android:text="Protein" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/lemak"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
+
             android:text="Lemak" />
 
         <TextView
+            style="@style/normalFont"
             android:id="@+id/kalori"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/vertical_margin"
+            android:layout_marginRight="@dimen/vertical_margin"
             android:layout_weight="0.25"
+
             android:text="Kalori" />
 
     </LinearLayout>

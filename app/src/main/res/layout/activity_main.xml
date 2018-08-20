@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -18,21 +19,32 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Berat Badan" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
+                    android:text="@string/berat_badan" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/beratBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:inputType="number"
                     android:maxLines="1" />
             </LinearLayout>
@@ -40,300 +52,444 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
                     android:text="Tinggi Badan" />
 
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/tinggiBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="4"
                     android:text="Skin Fold" />
-
+                
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+                
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/SkinFold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="4"
                     android:text="LLA" />
 
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/FoodURTColon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/lla"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="4"
                     android:text="BMI" />
 
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/bmi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:enabled="false"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Kalori" />
+                    android:layout_weight="4"
+                    android:text="Kkal/BB" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/kalori"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Sheer Factor" />
+                    android:layout_weight="4"
+                    android:text="Stress Factor" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/sheerFac"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Kkal/" />
+                    android:layout_weight="4"
+                    android:text="Kalori" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/kkal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="4"
                     android:text="Total Kalori" />
 
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/totalKal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Totala Kalori" />
+                    android:layout_weight="4"
+                    android:text="ml/Kkal/hari" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/d"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Totala Kalori" />
+                    android:layout_weight="4"
+                    android:text="Total Kalori Cair" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
                 <EditText
+                    style="@style/normalFont"
                     android:id="@+id/c"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
+                    android:layout_weight="6"
+                    android:layout_gravity="center_vertical"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Karbohidrat" />
+                    android:orientation="horizontal" >
 
-                <EditText
-                    android:id="@+id/karbohidrat"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
-                    android:ems="10" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                        <TextView
+                            style="@style/normalFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:baselineAligned="false"
+                            android:text="Karbohidrat" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Protein" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/protein"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.25"
-                    android:ems="10" />
+                            <EditText
+                                style="@style/normalFont"
+                                android:id="@+id/karbohidrat"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:ems="10" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.25"
-                    android:text="%" />
+                            <TextView
+                                style="@style/normalFont"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="0.25"
+                                android:text="%" />
+                        </LinearLayout>
+                    </LinearLayout>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.25"
-                    android:text="" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/vertical_margin"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                        <TextView
+                            style="@style/normalFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:text="Protein" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.25"
-                    android:text="Lemak" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/lemak"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.75"
-                    android:ems="10" />
+                            <EditText
+                                style="@style/normalFont"
+                                android:id="@+id/protein"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.25"
+                                android:ems="10" />
+
+                            <TextView
+                                style="@style/normalFont"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="0.25"
+                                android:text="%" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/vertical_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/normalFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="4"
+                            android:text="Lemak" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                style="@style/normalFont"
+                                android:id="@+id/lemak"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.25"
+                                android:ems="10" />
+
+                            <TextView
+                                style="@style/normalFont"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="0.25"
+                                android:text="%" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -348,18 +504,16 @@
                     android:orientation="horizontal" >
 
                     <Button
+                        style="@style/normalFont"
                         android:id="@+id/btnNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="8dp"
                         android:ems="5"
                         android:text="Next" />
                 </RelativeLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </android.support.constraint.ConstraintLayout>

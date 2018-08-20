@@ -1,5 +1,14 @@
 <resources>
+    <!--BUAT NAMA HEADER-->
+    <string name="makanan_external_header">Makanan External</string>
+    <string name="tambah_jadwal_header">Tambah Jadwal</string>
+    <string name="tambah_makanan_header">Tambah Makanan</string>
+    <string name="makanan_parenteral_header">Makanan Parenteral</string>
+    <string name="tambah_parenteral_header">Tambah Makanan Parenteral</string>
+    <string name="result_header">Ringkasan</string>
     <string name="app_name">NutriApp</string>
+
+    <!--BUAT NAMA LABEL-->
     <string name="karbohidrat">Karbohidrat</string>
     <string name="nama_parenteral">Nama Parenteral</string>
     <string name="volume">Volume</string>
@@ -8,17 +17,31 @@
     <string name="elektrolit">Elektrolit</string>
     <string name="kalori">Kalori</string>
     <string name="sisa_kalori">Sisa Kalori</string>
-    <string name="semicolon">:</string>
-    <string name="tambah_parenteral">Tambah Parenteral</string>
+    <string name="colon">:</string>
     <string name="jenis_makanan">Jenis Makanan</string>
     <string name="per_1_satuan_penukar">per 1 satuan penukar</string>
     <string name="urt">URT</string>
-    <string name="tambah_makanan">Tambah Makanan</string>
     <string name="parenteral">Parenteral</string>
     <string name="ngt_oral">NGT / oral</string>
     <string name="buat_baru">Buat Baru</string>
+    <string name="total">Total Kalori</string>
+    <string name="nama_makanan">Nama Makanan</string>
+    <string name="berat_badan">Berat Badan</string>
+    <string name="jam">Jam</string>
+    <string name="total_kalori">Total Kalori</string>
+    <string name="tambah_jadwal">Tambah Jadwal</string>
+    <string name="jenis">Jenis</string>
+
+    <!--BUAT NAMA BUTTON-->
     <string name="next">Next</string>
     <string name="back">Back</string>
-    <string name="total">Total Kaloti</string>
-    <string name="nama_makanan">Nama Makanan</string>
+    <string name="tambah_makanan">Tambah Makanan</string>
+    <string name="tambah_parenteral">Tambah Parenteral</string>
+
+    <!--BUAT ITEM SPINNER-->
+    <string-array name="spinnerTipeMakananExternal">
+        <item>Biasa</item>
+        <item>Tube</item>
+    </string-array>
+
 </resources>
