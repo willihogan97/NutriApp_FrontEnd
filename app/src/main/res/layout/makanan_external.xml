@@ -31,6 +31,19 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <AutoCompleteTextView
+                    style="@style/normalFont"
+                    android:id="@+id/coba"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:text="@string/jam" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/listMakanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,6 +99,12 @@
                         android:text="@string/kalori" />
 
                 </LinearLayout>
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </ListView>
             </LinearLayout>
 
             <LinearLayout

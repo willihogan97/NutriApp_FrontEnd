@@ -7,6 +7,8 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -98,7 +100,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 jadwalMakanan.setProtein(makanan.getProtein());
                 jadwalMakanan.setTotalKalori(10);
 
-                Toast.makeText(this, "Result: " + makanan.getKalori(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Result: " + makanan.getKalori(), Toast.LENGTH_LONG).show();
 //                parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount());
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
@@ -123,6 +125,23 @@ public class TambahJadwalExternal extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             // Do something with the time chosen by the user
             buttonPickTime.setText(hourOfDay + ":" + minute);
+        }
+    }
+
+    private class CustomTextWatcher implements TextWatcher {
+        private EditText mEditText;
+
+        public CustomTextWatcher(EditText e) {
+            mEditText = e;
+        }
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        public void afterTextChanged(Editable s) {
         }
     }
 }
