@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
 
                 <!--<Spinner-->
                     <!--android:id="@+id/spinner"-->
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Karbo" />
+                    android:text="@string/karbohidrat" />
 
                 <Spinner
                     style="@style/normalFont"
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
 
                 <EditText
 
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
             </LinearLayout>
 
             <LinearLayout
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Karbo" />
+                    android:text="@string/karbohidrat" />
 
                 <Spinner
                     style="@style/normalFont"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Karbo" />
+                    android:text="@string/karbohidrat" />
 
                 <TextView
                     style="@style/normalFont"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.25"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
 
                 <TextView
                     style="@style/normalFont"
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.5"
-                    android:text="Jam" />
+                    android:text="@string/jam" />
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +172,7 @@
                     android:id="@+id/btnPlus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambah Makanan"/>
+                    android:text="@string/tambah_makanan"/>
             </LinearLayout>
 
             <View
@@ -193,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="4"
-                    android:text="Total Kalori" />
+                    android:text="@string/total_kalori" />
 
                 <TextView
                     style="@style/normalFont"
@@ -221,7 +221,7 @@
                     android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambah"/>
+                    android:text="@string/simpan"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

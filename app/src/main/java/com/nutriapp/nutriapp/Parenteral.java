@@ -22,16 +22,15 @@ public class Parenteral extends AppCompatActivity {
 
     Button next;
     EditText volumeView;
-    RelativeLayout selection, volume;
-    LinearLayout detail;
+    LinearLayout selection, volume, detail;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parenteral);
-        selection = (RelativeLayout) findViewById(R.id.selection);
-        volume = (RelativeLayout) findViewById(R.id.volume);
+        selection = (LinearLayout) findViewById(R.id.selection);
+        volume = (LinearLayout) findViewById(R.id.volume);
         detail = (LinearLayout) findViewById(R.id.detail);
 
         volume.setVisibility(View.INVISIBLE);
@@ -40,7 +39,7 @@ public class Parenteral extends AppCompatActivity {
 
         String[] arraySpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
 
-        final Spinner s = (Spinner) findViewById(R.id.parenteralDropdown);
+        final Spinner s = (Spinner) findViewById(R.id.parenteralSelection);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

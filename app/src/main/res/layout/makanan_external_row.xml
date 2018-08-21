@@ -15,10 +15,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.2"
-
-            android:text="Jam" />
+            android:textAlignment="center"
+            android:text="@string/jam" />
 
         <TextView
             style="@style/normalFont"
@@ -26,10 +25,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.35"
-
-            android:text="Karbo" />
+            android:textAlignment="center"
+            android:text="@string/karbohidrat" />
 
         <TextView
             style="@style/normalFont"
@@ -37,10 +35,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
-
-            android:text="Protein" />
+            android:textAlignment="center"
+            android:text="@string/protein" />
 
         <TextView
             style="@style/normalFont"
@@ -48,10 +45,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_weight="0.25"
-
-            android:text="Lemak" />
+            android:textAlignment="center"
+            android:text="@string/lemak" />
 
         <TextView
             style="@style/normalFont"
@@ -59,17 +55,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textAlignment="center"
             android:layout_marginLeft="@dimen/vertical_margin"
             android:layout_marginRight="@dimen/vertical_margin"
-            android:layout_weight="0.1"
-
-            android:text="Kalori" />
-
-        <Button
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.2"
+            android:text="@string/kalori" />
 
     </LinearLayout>
 </LinearLayout>

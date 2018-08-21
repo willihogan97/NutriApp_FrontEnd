@@ -1,270 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Result">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/voidLabel"
-            android:layout_width="90dp"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:orientation="vertical"
+            tools:context=".Result">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralLabel"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/voidLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralLabel"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralLabel"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/volumeLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/volume" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralVolume"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/volumeLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralVolume"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralVolume"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/volume" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralVolume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/carbohydrateLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/karbohidrat" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralVolume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralCarbohydrate"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/carbohydrateLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralCarbohydrate"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralCarbohydrate"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/karbohidrat" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralCarbohydrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/proteinLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/protein" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralCarbohydrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralProtein"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/proteinLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralProtein"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralProtein"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/protein" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralProtein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/fatLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/lemak" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralProtein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralFat"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/fatLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralFat"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralFat"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/lemak" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralFat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/electroliteLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/elektrolit" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralFat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralElectrolite"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/electroliteLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralElectrolite"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralElectrolite"/>
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/elektrolit" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralElectrolite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/caloriesLabel"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="@string/kalori" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralElectrolite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralCalories"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/parenteral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/caloriesLabel"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/oralCalories"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ngt_oral"
-            android:textAlignment="center"
-            android:layout_toEndOf="@id/parenteralCalories"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/kalori" />
 
-    <TextView
-        style="@style/normalFont"
-        android:id="@+id/totalLabel"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:text="@string/total" />
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
 
-    <TextView
-        style="@style/normalFont"
-        android:id="@+id/parenteralTotal"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="@string/parenteral"
-        android:textAlignment="center"
-        android:layout_toEndOf="@id/totalLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-    <TextView
-        style="@style/normalFont"
-        android:id="@+id/oralTotal"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="@string/ngt_oral"
-        android:textAlignment="center"
-        android:layout_toEndOf="@id/parenteralTotal"/>
-    </RelativeLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:text="@string/total" />
 
-        <Button
-            style="@style/normalFont"
-            android:id="@+id/buttonCreateNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"
-            android:text="@string/buat_baru" />
-    </RelativeLayout>
-</LinearLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/parenteralTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/oralTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ngt_oral"
+                    android:layout_weight="2.5"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/buttonCreateNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buat_baru" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

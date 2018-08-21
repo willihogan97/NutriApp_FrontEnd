@@ -1,246 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AddParenteral">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addParenteralLabel"
-            android:layout_width="140dp"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nama_parenteral" />
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/parenteralColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addParenteralLabel"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralName"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/parenteralColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/nama_parenteral" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addVolumeLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/volume" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/volumeColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addVolumeLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/volume" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralVolume"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/volumeColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralVolume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addCarbohydrateLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/karbohidrat" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/carbohydrateColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addCarbohydrateLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/karbohidrat" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralCarbohydrate"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/carbohydrateColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralCarbohydrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addProteinLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/protein" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/proteinColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addProteinLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/protein" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralProtein"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/proteinColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralProtein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFatLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/lemak" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/fatColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFatLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/lemak" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralFat"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/fatColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralFat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addElectroliteLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/elektrolit" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/electroliteColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addElectroliteLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/elektrolit" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralElectrolite"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/electroliteColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralElectrolite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addCaloriesLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/kalori" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/caloriesColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addCaloriesLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/kalori" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addParenteralCalories"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/caloriesColon"
-            android:ems="16"
-            android:inputType="number"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addParenteralCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="2"
+                    android:text=""/>
+            </LinearLayout>
 
-        <Button
-            style="@style/normalFont"
-            android:id="@+id/buttonAddParenteral"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"
-            android:text="@string/tambah_parenteral" />
-    </RelativeLayout>
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/buttonAddParenteral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="@string/tambah_parenteral" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

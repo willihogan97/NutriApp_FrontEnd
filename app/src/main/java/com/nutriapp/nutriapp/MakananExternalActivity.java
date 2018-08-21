@@ -160,7 +160,6 @@ public class MakananExternalActivity extends AppCompatActivity{
 //            NumericViewHolder holder = new NumericViewHolder();
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.makanan_external_row, null);
-                Button textView = (Button) convertView.findViewById(R.id.edit);
                 JadwalMakananExternal jadwal = getItem(position);
                 TextView kalori = (TextView) convertView.findViewById(R.id.kalori);
                 TextView karbo = (TextView) convertView.findViewById(R.id.karbo);
@@ -172,20 +171,20 @@ public class MakananExternalActivity extends AppCompatActivity{
                 jam.setText(jadwal.getJam());
                 protein.setText(jadwal.getProtein());
                 lemak.setText(jadwal.getLemak());
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        final LinearLayout rlLayout = (LinearLayout) v.getParent();
-
-                        TextView tv = (TextView) rlLayout.findViewById(R.id.lemak);
-
-
-//                        TextView tv = (TextView) v.findViewById(R.id.kalori);
-                        String value = tv.getText().toString();
-                        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                textView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                        final LinearLayout rlLayout = (LinearLayout) v.getParent();
+//
+//                        TextView tv = (TextView) rlLayout.findViewById(R.id.lemak);
+//
+//
+////                        TextView tv = (TextView) v.findViewById(R.id.kalori);
+//                        String value = tv.getText().toString();
+//                        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
 
 //            holder.textView.setText(mData.get(position));

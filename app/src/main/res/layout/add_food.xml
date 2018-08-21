@@ -1,261 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AddFood">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
-
-    <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodNameLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/nama_makanan" />
-
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodNameColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodNameLabel"/>
-
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodName"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/addFoodNameColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
-
-    <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodTypeLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/jenis_makanan" />
-
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/foodTypeColon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodTypeLabel"/>
-
-        <Spinner
-            style="@style/normalFont"
-            android:id="@+id/addFoodDropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:layout_toEndOf="@id/foodTypeColon"
-            android:layout_marginStart="@dimen/vertical_margin"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
-
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addElectroliteLabel"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/per_1_satuan_penukar"
-            android:gravity="center_horizontal|center_vertical" />
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin"
-        >
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/nama_makanan" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodURTLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/urt" />
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/FoodURTColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodURTLabel"/>
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodURT"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/FoodURTColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/jenis_makanan" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodCarbohydrateLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/karbohidrat" />
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/carbohydrateColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodCarbohydrateLabel"/>
+                <Spinner
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodDropdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"/>
+            </LinearLayout>
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodCarbohydrate"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/carbohydrateColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-    <RelativeLayout
-        style="@style/normalFont"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/additionalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_1_satuan_penukar"/>
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodProteinLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/protein" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/proteinColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodProteinLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/urt" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodProtein"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/proteinColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodURT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodFatLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/lemak" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/fatColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodFatLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/karbohidrat" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodFat"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/fatColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/vertical_margin">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodCarbohydrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/addFoodCaloriesLabel"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="@string/kalori" />
+            <LinearLayout
+                style="@style/normalFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
 
-        <TextView
-            style="@style/normalFont"
-            android:id="@+id/caloriesColon"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/colon"
-            android:layout_toEndOf="@id/addFoodCaloriesLabel"/>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/protein" />
 
-        <EditText
-            style="@style/normalFont"
-            android:id="@+id/addFoodCalories"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@id/caloriesColon"
-            android:ems="16"
-            android:inputType="text"
-            android:text=""
-            tools:ignore="LabelFor" />
-    </RelativeLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodProtein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
 
-        <Button
-            style="@style/normalFont"
-            android:id="@+id/buttonAddFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"
-            android:text="@string/tambah_makanan" />
-    </RelativeLayout>
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/lemak" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodFat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/kalori" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/addFoodCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_weight="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/buttonAddFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="@string/tambah_makanan" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
