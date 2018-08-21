@@ -31,12 +31,22 @@
     <string name="total_kalori">Total Kalori</string>
     <string name="tambah_jadwal">Tambah Jadwal</string>
     <string name="jenis">Jenis</string>
+    <string name="kkal_bb">Kkal/BB</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="skin_fold">Skin Fold</string>
+    <string name="lla">LLA</string>
+    <string name="bmi">BMI</string>
+    <string name="stress_factor">Stress Factor</string>
+    <string name="ml_kkal_hari">ml/Kkal/hari</string>
+    <string name="total_kalori_cair">Total Kalori Cair</string>
+    <string name="percent">%</string>
 
     <!--BUAT NAMA BUTTON-->
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="tambah_makanan">Tambah Makanan</string>
     <string name="tambah_parenteral">Tambah Parenteral</string>
+    <string name="simpan">Simpan</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerTipeMakananExternal">
