@@ -40,6 +40,12 @@
     <string name="ml_kkal_hari">ml/Kkal/hari</string>
     <string name="total_kalori_cair">Total Kalori Cair</string>
     <string name="percent">%</string>
+    <string name="gram">g</string>
+    <string name="sayuran">Sayuran</string>
+    <string name="buah_dan_gula">Buah/Gula</string>
+    <string name="susu">Susu</string>
+    <string name="minyak">Minyak</string>
+    <string name="tambahan">Tambahan</string>
 
     <!--BUAT NAMA BUTTON-->
     <string name="next">Next</string>

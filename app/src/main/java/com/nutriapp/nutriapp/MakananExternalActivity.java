@@ -63,10 +63,10 @@ public class MakananExternalActivity extends AppCompatActivity{
         });
 
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.coba);
-        textView.setAdapter(adapter2);
+//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+//        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.coba);
+//        textView.setAdapter(adapter2);
 
 
 //        getSupportActionBar().setHomeButtonEnabled(true);
