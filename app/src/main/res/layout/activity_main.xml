@@ -94,7 +94,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.5"
                     android:text="@string/skin_fold" />
-                
+
                 <TextView
                     style="@style/normalFont"
                     android:layout_width="0dp"
@@ -102,7 +102,7 @@
                     android:text="@string/colon"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
-                
+
                 <EditText
                     style="@style/normalFont"
                     android:id="@+id/SkinFold"

@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.nutriapp.nutriapp.object.InfoPribadi;
+
 public class MainActivity extends AppCompatActivity {
 
 
     Button btnSubmit;
     EditText beratBadanView, tinggiBadanView, bmiView;
+    public static final String INFO = "INFO_PRIBADI";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 //                bmiView.setText(bmi);
 
                 Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-                intent.putExtra("asd", "asdasd");
+                InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","a","a","a","a","a");
+                intent.putExtra(INFO, infoPribadi);
                 startActivityForResult(intent, 200);
 //                startActivity(intent);
 //                startActivity(new Intent(getApplicationContext(), MakananExternalActivity.class));
