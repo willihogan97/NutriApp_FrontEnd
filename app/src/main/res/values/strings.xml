@@ -57,6 +57,7 @@
     <string name="hitungan_kalori">Hitungan Kalori</string>
     <string name="ml">ml</string>
     <string name="kkal">Kkal</string>
+    <string name="_total">Total</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerBMI">

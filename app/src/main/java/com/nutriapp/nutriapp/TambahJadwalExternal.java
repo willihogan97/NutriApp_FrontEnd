@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +12,20 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.view.View.MeasureSpec;
 
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
@@ -32,11 +43,21 @@ public class TambahJadwalExternal extends AppCompatActivity {
     public static EditText buttonPickTime;
     EditText pickTime;
 
+    private ListView list_item;
+    MyCustomAdapter mAdapter;
+
+//    ArrayAdapter<String> adapter;
+
+    private static String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany", "Spain"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_jadwal_external);
-
+        mAdapter = new MyCustomAdapter();
+        list_item = (ListView) findViewById(R.id.list_item);
         //inisiasi jadwal makanan baru
         jadwalMakanan = new JadwalMakananExternal();
 
@@ -49,6 +70,9 @@ public class TambahJadwalExternal extends AppCompatActivity {
         buttonPickTime = (EditText) findViewById(R.id.pickTime);
         listJadwalMakanan = new ArrayList<MakananExternal>();
 
+        addAllMandatoryFood();
+
+        ListUtils.setDynamicHeight(list_item);
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +84,16 @@ public class TambahJadwalExternal extends AppCompatActivity {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
+                    View a = getViewByPosition(i, list_item);
+                    TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
+                    TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
+                    Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
+                    Log.d("namamakanan", "onClick: " + namaMakanan.getText().toString());
+                    Log.d("jumlah", "onClick: " + jumlah.getText().toString());
+                    Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
+                }
+
                 jadwalMakanan.setJam(pickTime.getText().toString());
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, jadwalMakanan);
@@ -75,7 +109,18 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
+    }
 
+    private void addAllMandatoryFood() {
+        mAdapter.addItem("Karbohidrat");
+        mAdapter.addItem("Protein");
+        mAdapter.addItem("Lemak");
+        mAdapter.addItem("Sayuran");
+        mAdapter.addItem("Buah/Gula");
+        mAdapter.addItem("Susu");
+        mAdapter.addItem("Minyak");
+        list_item.setAdapter(mAdapter);
+        ListUtils.setDynamicHeight(list_item);
     }
 
     @Override
@@ -100,11 +145,21 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 jadwalMakanan.setProtein(makanan.getProtein());
                 jadwalMakanan.setTotalKalori(10);
 
-//                Toast.makeText(this, "Result: " + makanan.getKalori(), Toast.LENGTH_LONG).show();
-//                parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount());
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
             }
+        }
+    }
+
+    public View getViewByPosition(int position, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition =firstListItemPosition + listView.getChildCount() - 1;
+
+        if (position < firstListItemPosition || position > lastListItemPosition ) {
+            return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
+        } else {
+            final int childIndex = position - firstListItemPosition;
+            return listView.getChildAt(childIndex);
         }
     }
 
@@ -128,20 +183,108 @@ public class TambahJadwalExternal extends AppCompatActivity {
         }
     }
 
-    private class CustomTextWatcher implements TextWatcher {
-        private EditText mEditText;
+    private class MyCustomAdapter extends BaseAdapter {
 
-        public CustomTextWatcher(EditText e) {
-            mEditText = e;
+        private ArrayList<String> mData = new ArrayList<String>();
+        private LayoutInflater mInflater;
+        private ArrayList<Boolean> isType = new ArrayList<>();
+
+        public MyCustomAdapter() {
+            mInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        public void addItem(final String item) {
+            mData.add(item);
+            isType.add(false);
+            notifyDataSetChanged();
+            ListUtils.setDynamicHeight(list_item);
         }
 
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        @Override
+        public int getCount() {
+            return mData.size();
         }
 
-        public void afterTextChanged(Editable s) {
+        @Override
+        public String getItem(int position) {
+            return mData.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+//            NumericViewHolder holder = new NumericViewHolder();
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.tambah_jadwal_external_row, null);
+                TextView namaMakanan = (TextView) convertView.findViewById(R.id.namaMakanan);
+                namaMakanan.setText(mData.get(position));
+                Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
+                String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, countries);
+//                adapter.setDropDownViewResource(R.layout.spinner_layout);
+                spinner.setAdapter(adapter);
+//                MakananExternal makanan = getItem(position);
+
+
+                final EditText jumlahView = (EditText) convertView.findViewById(R.id.jumlah);
+                jumlahView.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                        if(!jumlahView.getText().toString().equals("")) {
+                            isType.set(position, true);
+                            Boolean isAllTyped = true;
+                            for (Boolean typed : isType) {
+                                if(!typed) {
+                                    isAllTyped = false;
+                                }
+                            }
+                            if(isAllTyped) {
+                                String newMakanan = "Tambahan";
+                                mAdapter.addItem(newMakanan);
+
+                            }
+                        }
+                    }
+                });
+            }
+
+//            holder.textView.setText(mData.get(position));
+            return convertView;
+        }
+    }
+
+    public static class ListUtils {
+        public static void setDynamicHeight(ListView mListView) {
+            ListAdapter mListAdapter = mListView.getAdapter();
+            if (mListAdapter == null) {
+                // when adapter is null
+                return;
+            }
+            int height = 0;
+            int desiredWidth = MeasureSpec.makeMeasureSpec(mListView.getWidth(), MeasureSpec.UNSPECIFIED);
+            for (int i = 0; i < mListAdapter.getCount(); i++) {
+                View listItem = mListAdapter.getView(i, null, mListView);
+                listItem.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
+                height += listItem.getMeasuredHeight();
+            }
+            ViewGroup.LayoutParams params = mListView.getLayoutParams();
+            params.height = height + (mListView.getDividerHeight() * (mListAdapter.getCount() - 1));
+            mListView.setLayoutParams(params);
+            mListView.requestLayout();
         }
     }
 }

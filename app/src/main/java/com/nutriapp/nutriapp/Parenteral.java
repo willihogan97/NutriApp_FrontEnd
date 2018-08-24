@@ -1,6 +1,7 @@
 package com.nutriapp.nutriapp;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import com.nutriapp.nutriapp.object.InfoPribadi;
+import com.nutriapp.nutriapp.object.JadwalMakananExternal;
 import com.nutriapp.nutriapp.object.MakananExternal;
 
 @SuppressLint("Registered")
@@ -23,12 +26,20 @@ public class Parenteral extends AppCompatActivity {
     Button next;
     EditText volumeView;
     LinearLayout selection, volume, detail;
+    InfoPribadi infoPribadi;
+
+    public static final String INFO = "INFO_PRIBADI";
+    public static final String PARENTERAL = "PARENTERAL";
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parenteral);
+
+        Intent intent = getIntent();
+        infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
+
         selection = (LinearLayout) findViewById(R.id.selection);
         volume = (LinearLayout) findViewById(R.id.volume);
         detail = (LinearLayout) findViewById(R.id.detail);
@@ -80,8 +91,26 @@ public class Parenteral extends AppCompatActivity {
             public void onClick(View v) {
 //                setContentView(R.layout.makanan_external);
                 Intent intent = new Intent(getApplicationContext(), MakananExternalActivity.class);
+                intent.putExtra(INFO, infoPribadi);
+                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(s.getSelectedItem().toString(),volumeView.getText().toString());
+                intent.putExtra(PARENTERAL, parenteral);
                 startActivityForResult(intent, 200);
             }
         });
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 200) {
+
+            if(resultCode == Activity.RESULT_OK) {
+
+            } else {
+                // AnotherActivity was not successful. No data to retrieve.
+            }
+        }
     }
 }

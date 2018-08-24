@@ -152,10 +152,9 @@
                         android:id="@+id/SkinFold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/vertical_margin"
                         android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:inputType="number"
-                        android:ems="10" />
+                        android:orientation="horizontal" />
                 </LinearLayout>
 
                 <LinearLayout
