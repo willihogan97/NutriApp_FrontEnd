@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.5"
-                    android:text="@string/berat_badan" />
+                    android:text="@string/tipe_bmi" />
 
                 <TextView
                     style="@style/normalFont"
@@ -38,119 +38,175 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
 
-                <EditText
+                <Spinner
                     style="@style/normalFont"
-                    android:id="@+id/beratBadan"
+                    android:id="@+id/bmidropdown"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
                     android:layout_gravity="center_vertical"
-                    android:inputType="number"
-                    android:maxLines="1" />
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/normalBMI"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/berat_badan" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/beratBadan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:maxLines="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/tinggi_badan" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/tinggiBadan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/otherBMI"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/skin_fold" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/SkinFold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:ems="10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/lla" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/FoodURTColon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/lla"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:ems="10" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="@string/bmi" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/tinggi_badan" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/tinggiBadan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:inputType="number" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/skin_fold" />
-                
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-                
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/SkinFold"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:ems="10" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/lla" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/FoodURTColon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/lla"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:ems="10" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:id="@+id/bmiLayout">
 
                 <TextView
                     style="@style/normalFont"
@@ -168,22 +224,62 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
 
-                <EditText
+                <TextView
                     style="@style/normalFont"
                     android:id="@+id/bmi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:layout_weight="2"
                     android:layout_gravity="center_vertical"
-                    android:ems="10" />
+                    android:layout_weight="1"
+                    android:text="@string/bmi" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/bmi" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:id="@+id/hitunganKalori">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/hitungan_kalori" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1" />
+
+                <Spinner
+                    style="@style/normalFont"
+                    android:id="@+id/hitunganKaloriDropdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal"
+                android:id="@+id/normalKal">
 
                 <TextView
                     style="@style/normalFont"
@@ -208,6 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:layout_gravity="center_vertical"
+                    android:inputType="number"
                     android:ems="10" />
             </LinearLayout>
 
@@ -215,7 +312,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:id="@+id/stressFactor">
 
                 <TextView
                     style="@style/normalFont"
@@ -238,40 +336,27 @@
                     android:id="@+id/sheerFac"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:inputType="number"
                     android:ems="10" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
 
                 <TextView
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/kalori" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
+                    android:text="x"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
 
                 <EditText
                     style="@style/normalFont"
-                    android:id="@+id/kkal"
+                    android:id="@+id/multiply"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="0.9"
                     android:layout_gravity="center_vertical"
+                    android:inputType="number"
                     android:ems="10" />
             </LinearLayout>
 
@@ -279,7 +364,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:id="@+id/totKal">
 
                 <TextView
                     style="@style/normalFont"
@@ -297,85 +383,107 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
 
-                <EditText
+                <TextView
                     style="@style/normalFont"
                     android:id="@+id/totalKal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:ems="10" />
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/kkal"
+                    android:layout_gravity="center_vertical" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="vertical"
+                android:id="@+id/c">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/ml_kkal_hari" />
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/ml_kkal_hari" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:ems="10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal">
 
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/d"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:ems="10" />
-            </LinearLayout>
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/total_kalori_cair" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/total_kalori_cair" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/cairan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/c"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
-                    android:ems="10" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ml"
+                        android:layout_gravity="center_vertical" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:id="@+id/percentage">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -490,26 +598,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.75"
-                    android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/vertical_margin">
 
                     <Button
                         style="@style/normalFont"
                         android:id="@+id/btnNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:ems="5"
-                        android:text="Next" />
-                </RelativeLayout>
+                        android:text="@string/next"
+                        android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

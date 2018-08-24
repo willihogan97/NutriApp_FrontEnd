@@ -37,8 +37,8 @@
     <string name="lla">LLA</string>
     <string name="bmi">BMI</string>
     <string name="stress_factor">Stress Factor</string>
-    <string name="ml_kkal_hari">ml/Kkal/hari</string>
-    <string name="total_kalori_cair">Total Kalori Cair</string>
+    <string name="ml_kkal_hari">ml/hari</string>
+    <string name="total_kalori_cair">Kebutuhan Cairan</string>
     <string name="percent">%</string>
     <string name="gram">g</string>
     <string name="sayuran">Sayuran</string>
@@ -53,16 +53,25 @@
     <string name="tambah_makanan">Tambah Makanan</string>
     <string name="tambah_parenteral">Tambah Parenteral</string>
     <string name="simpan">Simpan</string>
+    <string name="tipe_bmi">Tipe BMI</string>
+    <string name="hitungan_kalori">Hitungan Kalori</string>
+    <string name="ml">ml</string>
+    <string name="kkal">Kkal</string>
 
     <!--BUAT ITEM SPINNER-->
+    <string-array name="spinnerBMI">
+        <item>Berat - Tinggi Badan</item>
+        <item>Skin Fold - LLA</item>
+    </string-array>
+
     <string-array name="spinnerTipeMakananExternal">
         <item>Biasa</item>
         <item>Tube</item>
     </string-array>
 
-    <string-array name="spinnerParenteral">
-        <item>Biasa</item>
-        <item>Tube</item>
+    <string-array name="spinnerHitunganKalori">
+        <item>Normal</item>
+        <item>Harris Benedict</item>
     </string-array>
 
 </resources>
