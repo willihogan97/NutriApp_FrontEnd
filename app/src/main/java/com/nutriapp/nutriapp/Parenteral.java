@@ -65,9 +65,7 @@ public class Parenteral extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                volume.setVisibility(View.INVISIBLE);
-                selection.setVisibility(View.VISIBLE);
-                detail.setVisibility(View.INVISIBLE);
+
             }
         });
 
