@@ -37,9 +37,6 @@ public class Parenteral extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parenteral);
 
-        Intent intent = getIntent();
-        infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
-
         selection = (LinearLayout) findViewById(R.id.selection);
         volume = (LinearLayout) findViewById(R.id.volume);
         detail = (LinearLayout) findViewById(R.id.detail);
@@ -48,8 +45,10 @@ public class Parenteral extends AppCompatActivity {
         selection.setVisibility(View.VISIBLE);
         detail.setVisibility(View.INVISIBLE);
 
-        String[] arraySpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
+        Intent intent = getIntent();
+        infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
 
+        String[] arraySpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
         final Spinner s = (Spinner) findViewById(R.id.parenteralSelection);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
@@ -91,10 +90,9 @@ public class Parenteral extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                setContentView(R.layout.makanan_external);
                 Intent intent = new Intent(getApplicationContext(), MakananExternalActivity.class);
                 intent.putExtra(INFO, infoPribadi);
-                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(s.getSelectedItem().toString(),volumeView.getText().toString());
+                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(s.getSelectedItem().toString(), volumeView.getText().toString());
                 intent.putExtra(PARENTERAL, parenteral);
                 startActivityForResult(intent, 200);
             }

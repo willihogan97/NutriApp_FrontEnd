@@ -57,8 +57,11 @@ public class MakananExternalActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.makanan_external);
 
+        //Untuk ListView
         mAdapter = new MyCustomAdapter();
-        //For Spinner
+        parentLinearLayout = (ListView) findViewById(R.id.list_view);
+
+        //Untuk Spinner
         spinner = (Spinner)findViewById(R.id.spinnerTipeMakananExternal);
         String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, countries);
@@ -77,12 +80,12 @@ public class MakananExternalActivity extends AppCompatActivity{
 //
 //        });
 
-        parentLinearLayout = (ListView) findViewById(R.id.list_view);
+        //Ambil data intent
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
-//        Log.d("tesajajaja", "onCreate: " + infoPribadi.toString());
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
 
+        //Button menuju tambah jadwal external
         Button button = findViewById(R.id.btnPlus);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -92,12 +95,37 @@ public class MakananExternalActivity extends AppCompatActivity{
             }
         });
 
-        final View btnSimpan = findViewById(R.id.btnSimpan);
+        //Button untuk mengimpan makanan external yang baru
+        Button btnSimpan = findViewById(R.id.btnSimpan);
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Result.class);
-                TotalMakananExternal makananExternal = new TotalMakananExternal("a","a","a","a",0);
+                int totalKarbo = 0;
+                int totalProtein = 0;
+                int totalLemak = 0;
+                int totalKalori = 0;
+                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
+                    View a = getViewByPosition(i, parentLinearLayout);
+                    TextView karbo = (TextView) a.findViewById(R.id.karbo);
+                    TextView lemak = (TextView) a.findViewById(R.id.lemak);
+                    TextView kalori = (TextView) a.findViewById(R.id.kalori);
+                    TextView protein = (TextView) a.findViewById(R.id.protein);
+                    if (!karbo.getText().toString().equals("")) {
+                        totalKarbo += Integer.parseInt(karbo.getText().toString());
+                    }
+                    if (!protein.getText().toString().equals("")) {
+                        totalProtein += Integer.parseInt(protein.getText().toString());
+                    }
+                    if (!lemak.getText().toString().equals("")) {
+                        totalLemak += Integer.parseInt(lemak.getText().toString());
+                    }
+                    if (!kalori.getText().toString().equals("")) {
+                        totalKalori += Integer.parseInt(kalori.getText().toString());
+                    }
+                }
+                String jenis = spinner.getSelectedItem().toString();
+                TotalMakananExternal makananExternal = new TotalMakananExternal(jenis,totalKarbo + "",totalProtein + "",totalLemak + "",totalKalori);
                 intent.putExtra(MAKANANEXTERNAL, makananExternal);
                 intent.putExtra(INFO, infoPribadi);
                 intent.putExtra(PARENTERAL, parenteral);
@@ -108,6 +136,8 @@ public class MakananExternalActivity extends AppCompatActivity{
 
     }
 
+    //Untuk mendapatkan balasan data dari tambah jadwal exter
+    //Nanti apus karena ga diperlukan
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -118,16 +148,30 @@ public class MakananExternalActivity extends AppCompatActivity{
                 JadwalMakananExternal result = data.getParcelableExtra(TambahJadwalExternal.EXTRA_DATA);
 
                 mAdapter.addItem(result);
+                parentLinearLayout.setAdapter(mAdapter);
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
             }
         }
     }
 
+    //Untuk ambil view dari ListView
+    public View getViewByPosition(int position, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition =firstListItemPosition + listView.getChildCount() - 1;
+
+        if (position < firstListItemPosition || position > lastListItemPosition ) {
+            return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
+        } else {
+            final int childIndex = position - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
+    }
+
+    //Adapter untuk kebutuhan ListView
     private class MyCustomAdapter extends BaseAdapter {
 
         private ArrayList<JadwalMakananExternal> mData = new ArrayList<JadwalMakananExternal>();
-//        private ArrayList<Boolean> isAdded = new ArrayList<>();
         private LayoutInflater mInflater;
 
         public MyCustomAdapter() {
@@ -136,7 +180,6 @@ public class MakananExternalActivity extends AppCompatActivity{
 
         public void addItem(final JadwalMakananExternal item) {
             mData.add(item);
-//            isAdded.add(false);
             notifyDataSetChanged();
             ListUtils.setDynamicHeight(parentLinearLayout);
         }
@@ -173,12 +216,8 @@ public class MakananExternalActivity extends AppCompatActivity{
                 jam.setText(jadwal.getJam());
                 protein.setText(jadwal.getProtein());
                 lemak.setText(jadwal.getLemak());
-//                if(!this.isAdded.get(position)) {
-//                    mAdapter.addItem(jadwal);
-//                    this.isAdded.set(position, true);
-//                }
 
-
+                //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View v) {
@@ -188,7 +227,7 @@ public class MakananExternalActivity extends AppCompatActivity{
 //                        TextView tv = (TextView) rlLayout.findViewById(R.id.lemak);
 //
 //
-////                        TextView tv = (TextView) v.findViewById(R.id.kalori);
+//                        TextView tv = (TextView) v.findViewById(R.id.kalori);
 //                        String value = tv.getText().toString();
 //                        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
 //                    }
@@ -200,6 +239,7 @@ public class MakananExternalActivity extends AppCompatActivity{
         }
     }
 
+    //Untuk auto height dari listview
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();

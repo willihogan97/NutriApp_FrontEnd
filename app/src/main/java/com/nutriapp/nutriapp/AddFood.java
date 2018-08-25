@@ -33,8 +33,7 @@ public class AddFood extends AppCompatActivity {
         };
 
         Spinner s = (Spinner) findViewById(R.id.addFoodDropdown);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
@@ -58,6 +57,8 @@ public class AddFood extends AppCompatActivity {
 
                 MakananExternal makananBaru = new MakananExternal(calories, carbohydrate, protein, urt, fat, name);
                 String makanan = (new Gson().toJson(makananBaru));
+                //Tinggal kasi ke backend
+
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, makanan);
 

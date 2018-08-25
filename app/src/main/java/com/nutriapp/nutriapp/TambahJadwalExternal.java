@@ -37,17 +37,17 @@ import java.util.Calendar;
 public class TambahJadwalExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
-    ArrayList<MakananExternal> listJadwalMakanan;
-    JadwalMakananExternal jadwalMakanan;
-    public static EditText totalKalori;
-    public static EditText buttonPickTime;
-    EditText pickTime;
 
+    ArrayList<MakananExternal> listMakanan;
+    JadwalMakananExternal jadwalMakanan;
+
+    public static EditText totalKalori, pickTime, buttonPickTime;
+
+    //ListView
     private ListView list_item;
     MyCustomAdapter mAdapter;
 
-//    ArrayAdapter<String> adapter;
-
+    //Test doang nanti diganti
     private static String[] COUNTRIES = new String[] {
             "Belgium", "France", "Italy", "Germany", "Spain"
     };
@@ -56,23 +56,25 @@ public class TambahJadwalExternal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_jadwal_external);
+
+        //Inisiasi ListView
         mAdapter = new MyCustomAdapter();
         list_item = (ListView) findViewById(R.id.list_item);
+
+
         //inisiasi jadwal makanan baru
         jadwalMakanan = new JadwalMakananExternal();
+        listMakanan = new ArrayList<MakananExternal>();
 
         totalKalori = (EditText) findViewById(R.id.totalKal);
-
         pickTime = (EditText) findViewById(R.id.pickTime);
 
         final View buttonPlus = findViewById(R.id.btnPlus);
         final View buttonOk = findViewById(R.id.btnOk);
-        buttonPickTime = (EditText) findViewById(R.id.pickTime);
-        listJadwalMakanan = new ArrayList<MakananExternal>();
 
         addAllMandatoryFood();
 
-        ListUtils.setDynamicHeight(list_item);
+        //Melakukan penambahan makanan
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,20 +83,38 @@ public class TambahJadwalExternal extends AppCompatActivity {
             }
         });
 
+        //Melakukan Penyimpanan jadwal baru
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int karbo = 0;
+                int protein = 0;
+                int lemak = 0;
+                int kalori = 0;
+
+                //Menghitung total semua makanan yang ada pada satu jadwal
                 for (int i = 0 ; i < mAdapter.getCount() ; i++) {
                     View a = getViewByPosition(i, list_item);
                     TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
                     TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
                     Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
+
+                    //Itung buat dapetin itu semua
+                    //karbo +=
+                    //protein +=
+                    //lemak +=
+                    //kalori +=
+
                     Log.d("namamakanan", "onClick: " + namaMakanan.getText().toString());
                     Log.d("jumlah", "onClick: " + jumlah.getText().toString());
                     Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
                 }
 
                 jadwalMakanan.setJam(pickTime.getText().toString());
+                jadwalMakanan.setKarbo(karbo + "");
+                jadwalMakanan.setProtein(protein + "");
+                jadwalMakanan.setLemak(lemak + "");
+                jadwalMakanan.setTotalKalori(kalori);
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, jadwalMakanan);
                 setResult(Activity.RESULT_OK, data);
@@ -102,6 +122,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
             }
         });
 
+        //Untuk menampilkan time picker
         buttonPickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,6 +144,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         ListUtils.setDynamicHeight(list_item);
     }
 
+    //Masi belom jalan nanti cari lagi
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -130,20 +152,22 @@ public class TambahJadwalExternal extends AppCompatActivity {
         finish();
     }
 
+    //Ini nanti ga melakukan apa"
+    //Nanti terakhir apus aja
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 200) {
             if(resultCode == Activity.RESULT_OK) {
-                final String result = data.getStringExtra(TambahJadwalExternal.EXTRA_DATA);
-                Gson gson = new Gson();
-                MakananExternal makanan =  gson.fromJson(result, MakananExternal.class);
-                listJadwalMakanan.add(makanan);
-                jadwalMakanan.setKarbo(makanan.getKarbohidrat());
-                jadwalMakanan.setLemak(makanan.getUrt());
-                jadwalMakanan.setProtein(makanan.getProtein());
-                jadwalMakanan.setTotalKalori(10);
+//                final String result = data.getStringExtra(TambahJadwalExternal.EXTRA_DATA);
+//                Gson gson = new Gson();
+//                MakananExternal makanan =  gson.fromJson(result, MakananExternal.class);
+//                listMakanan.add(makanan);
+//                jadwalMakanan.setKarbo(makanan.getKarbohidrat());
+//                jadwalMakanan.setLemak(makanan.getUrt());
+//                jadwalMakanan.setProtein(makanan.getProtein());
+//                jadwalMakanan.setTotalKalori(10);
 
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
@@ -151,6 +175,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         }
     }
 
+    //Untuk ambil view dari ListView
     public View getViewByPosition(int position, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition =firstListItemPosition + listView.getChildCount() - 1;
@@ -221,16 +246,15 @@ public class TambahJadwalExternal extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
 //            NumericViewHolder holder = new NumericViewHolder();
             if (convertView == null) {
+
                 convertView = mInflater.inflate(R.layout.tambah_jadwal_external_row, null);
                 TextView namaMakanan = (TextView) convertView.findViewById(R.id.namaMakanan);
                 namaMakanan.setText(mData.get(position));
                 Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
                 String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, countries);
-//                adapter.setDropDownViewResource(R.layout.spinner_layout);
+                adapter.setDropDownViewResource(R.layout.spinner_layout);
                 spinner.setAdapter(adapter);
-//                MakananExternal makanan = getItem(position);
-
 
                 final EditText jumlahView = (EditText) convertView.findViewById(R.id.jumlah);
                 jumlahView.addTextChangedListener(new TextWatcher() {
@@ -255,7 +279,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             if(isAllTyped) {
                                 String newMakanan = "Tambahan";
                                 mAdapter.addItem(newMakanan);
-
                             }
                         }
                     }
@@ -267,6 +290,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         }
     }
 
+    //Untuk auto height dari listview
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();

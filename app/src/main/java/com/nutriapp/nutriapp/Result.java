@@ -24,6 +24,7 @@ public class Result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result);
+
         Intent intent = getIntent();
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
