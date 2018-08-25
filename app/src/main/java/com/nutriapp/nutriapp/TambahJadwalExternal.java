@@ -41,7 +41,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
     ArrayList<MakananExternal> listMakanan;
     JadwalMakananExternal jadwalMakanan;
 
-    public static EditText totalKalori, pickTime, buttonPickTime;
+    public static EditText totalKalori, buttonPickTime;
 
     //ListView
     private ListView list_item;
@@ -67,7 +67,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         listMakanan = new ArrayList<MakananExternal>();
 
         totalKalori = (EditText) findViewById(R.id.totalKal);
-        pickTime = (EditText) findViewById(R.id.pickTime);
+        buttonPickTime = (EditText) findViewById(R.id.pickTime);
 
         final View buttonPlus = findViewById(R.id.btnPlus);
         final View buttonOk = findViewById(R.id.btnOk);
@@ -110,7 +110,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
                 }
 
-                jadwalMakanan.setJam(pickTime.getText().toString());
+                jadwalMakanan.setJam(buttonPickTime.getText().toString());
                 jadwalMakanan.setKarbo(karbo + "");
                 jadwalMakanan.setProtein(protein + "");
                 jadwalMakanan.setLemak(lemak + "");

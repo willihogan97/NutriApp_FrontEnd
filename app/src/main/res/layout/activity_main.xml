@@ -234,6 +234,7 @@
 
                 <TextView
                     style="@style/normalFont"
+                    android:id="@+id/bmiStatus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -428,13 +429,14 @@
                         android:layout_weight="0.1" />
 
                     <EditText
+                        android:id="@+id/mlkal"
                         style="@style/normalFont"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
                         android:layout_gravity="center_vertical"
-                        android:inputType="number"
-                        android:ems="10" />
+                        android:layout_weight="2"
+                        android:ems="10"
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -601,7 +603,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="right"
-                android:layout_margin="@dimen/vertical_margin">
+                android:layout_margin="@dimen/vertical_margin"
+                android:id="@+id/btn">
 
                     <Button
                         style="@style/normalFont"
