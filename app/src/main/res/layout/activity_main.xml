@@ -614,6 +614,21 @@
                         android:text="@string/next"
                         android:textAlignment="center" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/btncobaapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:textAlignment="center" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

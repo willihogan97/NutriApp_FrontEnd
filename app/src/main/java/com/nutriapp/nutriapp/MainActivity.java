@@ -1,6 +1,7 @@
 package com.nutriapp.nutriapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,15 +17,34 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.nutriapp.nutriapp.object.InfoPribadi;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnnext;
+    Button btnnext, btncobaapi;
     EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, mlView;
     LinearLayout percentage, cairan, totKal, stressFactor, normalKal, bmiLayout, otherBMI, normalBMI, hitunganKalori, btn, tipeHitungan;
     TextView bmi, bmiStatus, llastatus, totKalori, totCair;
@@ -154,6 +174,35 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(getApplicationContext(), MakananExternalActivity.class));
             }
         });
+
+        btncobaapi = findViewById(R.id.btncobaapi);
+        btncobaapi.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //Contoh pake volley
+                //Belom bisa masuk data asyncnya
+                String test = sendGet1("/api/protein/all");
+                Log.d("test1", "onClick: " +test);
+
+                //Contoh yang uda bener
+                String myUrl = "http://10.0.2.2:8080/api/protein/all";
+                //String to place our result in
+                String result;
+                HttpGetRequest getRequest = new HttpGetRequest();
+                //Perform the doInBackground method, passing in our url
+                try {
+                    result = getRequest.execute(myUrl).get();
+                    Log.d("test2", "onClick: " + result);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                //Contoh nambahin data
+                addDatabase("/api/protein/add");
+            }
+        });
     }
 
     private class GenericTextWatcher implements TextWatcher{
@@ -208,6 +257,166 @@ public class MainActivity extends AppCompatActivity {
             bmiStatus.setText("Obese");
         }
 
+    }
+
+    public static String sendGet(final String url) {
+        StringBuilder result = new StringBuilder();
+        HttpURLConnection urlConnection = null;
+        try {
+            String apiUrl = "http://10.0.2.2:8080" + url; // concatenate uri with base url eg: localhost:8080/ + uri
+            URL requestUrl = new URL(apiUrl);
+            urlConnection = (HttpURLConnection) requestUrl.openConnection();
+            urlConnection.connect(); // no connection is made
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            urlConnection.disconnect();
+        }
+        return result.toString();
+    }
+
+    public String sendGet1(final String url) {
+        StringBuilder result = new StringBuilder();
+        String response1 = "";
+
+        //ini kalo pake virtual machine android
+        String apiUrl = "http://10.0.2.2:8080" + url;
+
+        //ini kalo pake hape, liat ip laptop lu berapa
+        //connect pake wifi yang sama
+        //String apiUrl = "http://192.168.1.12" + url;
+
+        RequestQueue req = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, apiUrl, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                            Log.e("isinya", "sendGet: " + response.getJSONArray("result").toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+//                        response1 = response.toString();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        Log.d("asd", "onErrorResponse: asd");
+
+                    }
+                });
+
+        req.add(jsonObjectRequest);
+
+
+        return result.toString();
+    }
+
+    public String addDatabase(final String url) {
+        StringBuilder result = new StringBuilder();
+        String response1 = "";
+
+        //ini kalo pake virtual machine android
+        String apiUrl = "http://10.0.2.2:8080" + url;
+
+        //ini kalo pake hape, liat ip laptop lu berapa
+        //connect pake wifi yang sama
+        //String apiUrl = "http://192.168.1.12" + url;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("id", 10);
+            json.put("nama", "student");
+            json.put("tipe", 2);
+            json.put("urt", "student");
+            json.put("karbohidrat", 2);
+            json.put("protein", 4);
+            json.put("lemak", 5);
+            json.put("kalori", 1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestQueue req = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.e("isinya", "sendGet: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        Log.d("asd", "onErrorResponse: asd");
+
+                    }
+                });
+
+        req.add(jsonObjectRequest);
+
+
+        return result.toString();
+    }
+
+    public class HttpGetRequest extends AsyncTask<String, Void, String> {
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+        String result;
+        @Override
+        protected String doInBackground(String... params){
+            String stringUrl = params[0];
+            String inputLine;
+            try {
+                //Create a URL object holding our url
+                URL myUrl = new URL(stringUrl);
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();
+                //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+                //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
     }
 }
 
