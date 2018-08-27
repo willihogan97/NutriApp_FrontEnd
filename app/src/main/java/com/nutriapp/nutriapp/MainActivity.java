@@ -64,16 +64,15 @@ public class MainActivity extends AppCompatActivity {
         otherBMI = (LinearLayout) findViewById(R.id.otherBMI);
         normalBMI = (LinearLayout) findViewById(R.id.normalBMI);
         hitunganKalori = (LinearLayout) findViewById(R.id.hitunganKalori);
+        btn = (LinearLayout) findViewById(R.id.btn);
         beratBadanView = (EditText) findViewById(R.id.beratBadan);
         tinggiBadanView = (EditText) findViewById(R.id.tinggiBadan);
         kkalView = (EditText) findViewById(R.id.kalori);
-        btn = (LinearLayout) findViewById(R.id.btn);
         mlView = (EditText) findViewById(R.id.mlkal);
         bmi = (TextView) findViewById(R.id.bmi);
         totKalori = (TextView) findViewById(R.id.totalKal);
         totCair = (TextView) findViewById(R.id.cairan);
         bmiStatus = (TextView) findViewById(R.id.bmiStatus);
-
 
         percentage.setVisibility(View.GONE);
         cairan.setVisibility(View.GONE);

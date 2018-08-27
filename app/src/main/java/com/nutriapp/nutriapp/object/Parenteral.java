@@ -15,14 +15,14 @@ public class Parenteral implements Parcelable {
     };
         
     String name;
-    String volume;
-    String carbohydrate;
-    String protein;
-    String fat;
-    String electrolite;
-    String calories;
+    double volume;
+    double carbohydrate;
+    double protein;
+    double fat;
+    double electrolite;
+    double calories;
 
-    public Parenteral (String name, String volume, String carbohydrate, String protein, String fat, String electrolite, String calories){
+    public Parenteral (String name, double volume, double carbohydrate, double protein, double fat, double electrolite, double calories){
         this.name = name;
         this.volume = volume;
         this.carbohydrate = carbohydrate;
@@ -32,19 +32,14 @@ public class Parenteral implements Parcelable {
         this.calories = calories;
     }
 
-    public Parenteral (String name, String volume){
-        this.name = name;
-        this.volume = volume;
-    }
-
     public Parenteral(Parcel in) {
-        this.calories = in.readString();
-        this.carbohydrate = in.readString();
-        this.electrolite = in.readString();
-        this.fat = in.readString();
+        this.calories = Double.parseDouble(in.readString());
+        this.carbohydrate = Double.parseDouble(in.readString());
+        this.electrolite = Double.parseDouble(in.readString());
+        this.fat = Double.parseDouble(in.readString());
         this.name = in.readString();
-        this.protein = in.readString();
-        this.volume = in.readString();
+        this.protein = Double.parseDouble(in.readString());
+        this.volume = Double.parseDouble(in.readString());
     }
 
         @Override
@@ -55,12 +50,12 @@ public class Parenteral implements Parcelable {
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeString(this.name);
-            dest.writeString(this.calories);
-            dest.writeString(this.protein);
-            dest.writeString(this.carbohydrate);
-            dest.writeString(this.electrolite);
-            dest.writeString(this.fat);
-            dest.writeString(this.volume);
+            dest.writeString(String.valueOf(this.calories));
+            dest.writeString(String.valueOf(this.protein));
+            dest.writeString(String.valueOf(this.carbohydrate));
+            dest.writeString(String.valueOf(this.electrolite));
+            dest.writeString(String.valueOf(this.fat));
+            dest.writeString(String.valueOf(this.volume));
         }
 
         @Override
@@ -84,51 +79,51 @@ public class Parenteral implements Parcelable {
         this.name = name;
     }
 
-    public String getVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public String getCarbohydrate() {
+    public double getCarbohydrate() {
         return carbohydrate;
     }
 
-    public void setCarbohydrate(String carbohydrate) {
+    public void setCarbohydrate(double carbohydrate) {
         this.carbohydrate = carbohydrate;
     }
 
-    public String getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(String protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 
-    public String getFat() {
+    public double getFat() {
         return fat;
     }
 
-    public void setFat(String fat) {
+    public void setFat(double fat) {
         this.fat = fat;
     }
 
-    public String getElectrolite() {
+    public double getElectrolite() {
         return electrolite;
     }
 
-    public void setElectrolite(String electrolite) {
+    public void setElectrolite(double electrolite) {
         this.electrolite = electrolite;
     }
 
-    public String getCalories() {
+    public double getCalories() {
         return calories;
     }
 
-    public void setCalories(String calories) {
+    public void setCalories(double calories) {
         this.calories = calories;
     }
 }

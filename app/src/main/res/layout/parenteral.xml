@@ -164,7 +164,7 @@
 
                     <TextView
                         style="@style/normalFont"
-                        android:id="@+id/fatDetailVslut"
+                        android:id="@+id/fatDetailVslue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
