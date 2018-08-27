@@ -28,6 +28,10 @@ public class InfoPribadi implements Parcelable{
     String persentaseProtein;
     String persentaseLemak;
 
+    public InfoPribadi() {
+
+    }
+
     public InfoPribadi(int berat, int tinggi, String skinFold, String lla, String bmi,
                        String kalori, String sheerFactor, String kkalper, String totalKalori,
                        String totalKaloriCair, String persentaseKarbo, String persentaseProtein, String persentaseLemak) {
@@ -100,5 +104,109 @@ public class InfoPribadi implements Parcelable{
                 ", persentaseProtein='" + persentaseProtein + '\'' +
                 ", persentaseLemak='" + persentaseLemak + '\'' +
                 '}';
+    }
+
+    public int getBerat() {
+        return berat;
+    }
+
+    public void setBerat(int berat) {
+        this.berat = berat;
+    }
+
+    public int getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(int tinggi) {
+        this.tinggi = tinggi;
+    }
+
+    public String getSkinFold() {
+        return skinFold;
+    }
+
+    public void setSkinFold(String skinFold) {
+        this.skinFold = skinFold;
+    }
+
+    public String getLla() {
+        return lla;
+    }
+
+    public void setLla(String lla) {
+        this.lla = lla;
+    }
+
+    public String getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(String bmi) {
+        this.bmi = bmi;
+    }
+
+    public String getKalori() {
+        return kalori;
+    }
+
+    public void setKalori(String kalori) {
+        this.kalori = kalori;
+    }
+
+    public String getSheerFactor() {
+        return sheerFactor;
+    }
+
+    public void setSheerFactor(String sheerFactor) {
+        this.sheerFactor = sheerFactor;
+    }
+
+    public String getKkalper() {
+        return kkalper;
+    }
+
+    public void setKkalper(String kkalper) {
+        this.kkalper = kkalper;
+    }
+
+    public String getTotalKalori() {
+        return totalKalori;
+    }
+
+    public void setTotalKalori(String totalKalori) {
+        this.totalKalori = totalKalori;
+    }
+
+    public String getTotalKaloriCair() {
+        return totalKaloriCair;
+    }
+
+    public void setTotalKaloriCair(String totalKaloriCair) {
+        this.totalKaloriCair = totalKaloriCair;
+    }
+
+    public String getPersentaseKarbo() {
+        return persentaseKarbo;
+    }
+
+    public void setPersentaseKarbo(String persentaseKarbo) {
+        this.persentaseKarbo = persentaseKarbo;
+    }
+
+    public String getPersentaseProtein() {
+        return persentaseProtein;
+    }
+
+    public void setPersentaseProtein(String persentaseProtein) {
+        this.persentaseProtein = persentaseProtein;
+    }
+
+    public String getPersentaseLemak() {
+        return persentaseLemak;
+    }
+
+    public void setPersentaseLemak(String persentaseLemak) {
+        this.persentaseLemak = persentaseLemak;
     }
 }

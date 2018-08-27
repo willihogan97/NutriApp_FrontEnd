@@ -626,7 +626,7 @@
                     android:id="@+id/btncobaapi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/next"
+                    android:text="API"
                     android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>

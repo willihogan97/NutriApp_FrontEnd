@@ -58,18 +58,23 @@ public class Parenteral implements Parcelable {
             dest.writeString(String.valueOf(this.volume));
         }
 
+//        @Override
+//        public String toString() {
+//            return "MakananParenteral{" +
+//                    "nama='" + name + '\'' +
+//                    ", karbohidrat='" + carbohydrate + '\'' +
+//                    ", protein='" + protein + '\'' +
+//                    ", lemak='" + fat + '\'' +
+//                    ", elektrolit='" + electrolite + '\'' +
+//                    ", volume='" + volume + '\'' +
+//                    ", kalori='" + calories + '\'' +
+//                    '}';
+//        }
         @Override
         public String toString() {
-            return "MakananParenteral{" +
-                    "nama='" + name + '\'' +
-                    ", karbohidrat='" + carbohydrate + '\'' +
-                    ", protein='" + protein + '\'' +
-                    ", lemak='" + fat + '\'' +
-                    ", elektrolit='" + electrolite + '\'' +
-                    ", volume='" + volume + '\'' +
-                    ", kalori='" + calories + '\'' +
-                    '}';
+            return this.name;
         }
+
 
     public String getName() {
         return name;

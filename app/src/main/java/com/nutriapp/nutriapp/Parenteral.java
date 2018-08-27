@@ -77,8 +77,6 @@ public class Parenteral extends AppCompatActivity {
 
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
-        final String kal = intent.getStringExtra("totalKalori");
-        final String cair = intent.getStringExtra("totalKaloriCair");
 
         String api = sendGet1("/api/parenteral/all");
         String myUrl = "http://10.0.2.2:8080/api/parenteral/all";
@@ -93,24 +91,20 @@ public class Parenteral extends AppCompatActivity {
             result = getRequest.execute(myUrl).get();
             JSONObject jsnobject = new JSONObject(result);
 
-            JSONArray jsonArrayId = jsnobject.getJSONArray("id");
-            JSONArray jsonArrayName = jsnobject.getJSONArray("nama");
-            JSONArray jsonArrayVolume = jsnobject.getJSONArray("volume");
-            JSONArray jsonArrayKarbohidrat = jsnobject.getJSONArray("karbohidrat");
-            JSONArray jsonArrayProtein = jsnobject.getJSONArray("protein");
-            JSONArray jsonArrayFat = jsnobject.getJSONArray("lemak");
-            JSONArray jsonArrayElectrolite = jsnobject.getJSONArray("elektrolit");
-            JSONArray jsonArrayCalories = jsnobject.getJSONArray("kalori");
+            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
 
-            for (int i = 0; i < jsonArrayId.length(); i++) {
-                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(jsonArrayName.getString(i),
-                        Double.parseDouble(jsonArrayVolume.getString(i)), Double.parseDouble(jsonArrayKarbohidrat.getString(i)),
-                        Double.parseDouble(jsonArrayProtein.getString(i)), Double.parseDouble(jsonArrayFat.getString(i)),
-                        Double.parseDouble(jsonArrayElectrolite.getString(i)), Double.parseDouble(jsonArrayCalories.getString(i)));
+            for (int i = 0; i < jsonArrayResult.length(); i++) {
+                int id = jsonArrayResult.getJSONObject(i).getInt("id");
+                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
                 listAll.add(parenteral);
             }
 
-            Log.d("getAll", "onClick: " + result);
         } catch (InterruptedException | ExecutionException | JSONException e) {
             e.printStackTrace();
         }
@@ -122,7 +116,7 @@ public class Parenteral extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, listAll);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-        final com.nutriapp.nutriapp.object.Parenteral[] parenteralItem = new com.nutriapp.nutriapp.object.Parenteral[0];
+        final com.nutriapp.nutriapp.object.Parenteral[] parenteralItem = new com.nutriapp.nutriapp.object.Parenteral[1];
 
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -157,16 +151,16 @@ public class Parenteral extends AppCompatActivity {
                 detail.setVisibility(View.VISIBLE);
 
                 DecimalFormat dec = new DecimalFormat("#.0");
-                double ratio = Double.parseDouble(volumeView.toString()) / parenteralItem[0].getVolume();
-                karbohidrat.setText(dec.format(Double.toString(parenteralItem[0].getCarbohydrate() * ratio)));
-                protein.setText(dec.format(Double.toString(parenteralItem[0].getProtein() * ratio)));
-                lemak.setText(dec.format(Double.toString(parenteralItem[0].getFat() * ratio)));
-                elektrolit.setText(dec.format(Double.toString(parenteralItem[0].getElectrolite() * ratio)));
-                kalori.setText(dec.format(Double.toString(parenteralItem[0].getCalories() * ratio)));
+                double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
+                karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)).toString());
+                protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)).toString());
+                lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)).toString());
+                elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)).toString());
+                kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)).toString());
 
-                double remain = Double.parseDouble(kal) - (parenteralItem[0].getCalories() * ratio);
-                double cairRemain = Double.parseDouble(cair) - Double.parseDouble(volumeView.getText().toString());
-                String sisaText = dec.format(Double.toString(remain)) + "Kkal - " + dec.format(Double.toString(cairRemain)) + "ml";
+                double remain = Double.parseDouble(infoPribadi.getTotalKalori()) - (parenteralItem[0].getCalories() * ratio);
+                double cairRemain = Double.parseDouble(infoPribadi.getTotalKaloriCair()) - Double.parseDouble(volumeView.getText().toString());
+                String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
                 sisa.setText(sisaText);
             }
         });

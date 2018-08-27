@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 //                bmiView.setText(bmi);
 
                 Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-                InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","a","a","a","a","a");
+                InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","100","12","a","a","a");
                 intent.putExtra(INFO, infoPribadi);
                 startActivityForResult(intent, 200);
 //                startActivity(intent);
