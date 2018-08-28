@@ -1,25 +1,16 @@
 package com.nutriapp.nutriapp.object;
 
 public class MakananExternal {
-    String jenis;
-    String kalori;
-    String karbohidrat;
-    String protein;
+    double jenis;
+    double kalori;
+    double karbohidrat;
+    double protein;
     String urt;
-    String lemak;
+    double lemak;
     String nama;
 
-    public MakananExternal(String jenis, String kalori, String karbohidrat, String protein, String urt, String lemak, String nama) {
+    public MakananExternal(double jenis, double kalori, double karbohidrat, double protein, String urt, double lemak, String nama) {
         this.jenis = jenis;
-        this.kalori = kalori;
-        this.karbohidrat = karbohidrat;
-        this.protein = protein;
-        this.urt = urt;
-        this.lemak = lemak;
-        this.nama = nama;
-    }
-
-    public MakananExternal(String kalori, String karbohidrat, String protein, String urt, String lemak, String nama) {
         this.kalori = kalori;
         this.karbohidrat = karbohidrat;
         this.protein = protein;
@@ -36,35 +27,35 @@ public class MakananExternal {
         this.nama = nama;
     }
 
-    public String getJenis() {
+    public double getJenis() {
         return jenis;
     }
 
-    public void setJenis(String jenis) {
+    public void setJenis(double jenis) {
         this.jenis = jenis;
     }
 
-    public String getKalori() {
+    public double getKalori() {
         return kalori;
     }
 
-    public void setKalori(String kalori) {
+    public void setKalori(double kalori) {
         this.kalori = kalori;
     }
 
-    public String getKarbohidrat() {
+    public double getKarbohidrat() {
         return karbohidrat;
     }
 
-    public void setKarbohidrat(String karbohidrat) {
+    public void setKarbohidrat(double karbohidrat) {
         this.karbohidrat = karbohidrat;
     }
 
-    public String getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(String protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 
@@ -76,7 +67,7 @@ public class MakananExternal {
         this.urt = urt;
     }
 
-    public String getLemak() { return lemak; }
+    public double getLemak() { return lemak; }
 
-    public void setLemak(String lemak) { this.lemak = lemak; }
+    public void setLemak(double lemak) { this.lemak = lemak; }
 }

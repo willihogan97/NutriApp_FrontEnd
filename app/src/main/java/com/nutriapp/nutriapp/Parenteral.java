@@ -78,23 +78,20 @@ public class Parenteral extends AppCompatActivity {
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
 
-        String api = sendGet1("/api/parenteral/all");
-        String myUrl = "http://10.0.2.2:8080/api/parenteral/all";
+        String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
         //String to place our result in
         final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
         String result;
-        Parenteral.HttpGetRequest getRequest = new Parenteral.HttpGetRequest();
+        HttpGetRequest getRequest = new HttpGetRequest();
 
         //Perform the doInBackground method, passing in our url
         try {
             result = getRequest.execute(myUrl).get();
             JSONObject jsnobject = new JSONObject(result);
-
             JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
 
             for (int i = 0; i < jsonArrayResult.length(); i++) {
-                int id = jsonArrayResult.getJSONObject(i).getInt("id");
                 String nama = jsonArrayResult.getJSONObject(i).getString("nama");
                 double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
                 double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
@@ -109,8 +106,6 @@ public class Parenteral extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-//        String[] arraySpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
         final Spinner s = findViewById(R.id.parenteralSelection);
         ArrayAdapter<com.nutriapp.nutriapp.object.Parenteral> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, listAll);
@@ -149,15 +144,13 @@ public class Parenteral extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 detail.setVisibility(View.VISIBLE);
-
                 DecimalFormat dec = new DecimalFormat("#.0");
                 double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
-                karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)).toString());
-                protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)).toString());
-                lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)).toString());
-                elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)).toString());
-                kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)).toString());
-
+                karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)));
+                protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)));
+                lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)));
+                elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)));
+                kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
                 double remain = Double.parseDouble(infoPribadi.getTotalKalori()) - (parenteralItem[0].getCalories() * ratio);
                 double cairRemain = Double.parseDouble(infoPribadi.getTotalKaloriCair()) - Double.parseDouble(volumeView.getText().toString());
                 String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
@@ -193,92 +186,6 @@ public class Parenteral extends AppCompatActivity {
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
             }
-        }
-    }
-
-    public String sendGet1(final String url) {
-        StringBuilder result = new StringBuilder();
-        String response1 = "";
-
-        //ini kalo pake virtual machine android
-        String apiUrl = "http://10.0.2.2:8080" + url;
-
-        //ini kalo pake hape, liat ip laptop lu berapa
-        //connect pake wifi yang sama
-        //String apiUrl = "http://192.168.1.12" + url;
-
-        RequestQueue req = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, apiUrl, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            Log.e("isinya", "sendGet: " + response.getJSONArray("result").toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.d("error", "onErrorResponse: error");
-                    }
-                });
-
-        req.add(jsonObjectRequest);
-
-
-        return result.toString();
-    }
-
-    public class HttpGetRequest extends AsyncTask<String, Void, String> {
-        public static final String REQUEST_METHOD = "GET";
-        public static final int READ_TIMEOUT = 15000;
-        public static final int CONNECTION_TIMEOUT = 15000;
-        String result;
-        @Override
-        protected String doInBackground(String... params){
-            String stringUrl = params[0];
-            String inputLine;
-            try {
-                //Create a URL object holding our url
-                URL myUrl = new URL(stringUrl);
-                //Create a connection
-                HttpURLConnection connection =(HttpURLConnection)
-                        myUrl.openConnection();
-                //Set methods and timeouts
-                connection.setRequestMethod(REQUEST_METHOD);
-                connection.setReadTimeout(READ_TIMEOUT);
-                connection.setConnectTimeout(CONNECTION_TIMEOUT);
-
-                //Connect to our url
-                connection.connect();
-                //Create a new InputStreamReader
-                InputStreamReader streamReader = new
-                        InputStreamReader(connection.getInputStream());
-                //Create a new buffered reader and String Builder
-                BufferedReader reader = new BufferedReader(streamReader);
-                StringBuilder stringBuilder = new StringBuilder();
-                //Check if the line we are reading is not null
-                while((inputLine = reader.readLine()) != null){
-                    stringBuilder.append(inputLine);
-                }
-                //Close our InputStream and Buffered reader
-                reader.close();
-                streamReader.close();
-                //Set our result equal to our stringBuilder
-                result = stringBuilder.toString();
-            } catch (ProtocolException | MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return result;
         }
     }
 }

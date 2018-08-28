@@ -12,8 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.MakananExternal;
+import com.nutriapp.nutriapp.object.Parenteral;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @SuppressLint("Registered")
 public class AddFood extends AppCompatActivity {
@@ -43,6 +53,7 @@ public class AddFood extends AppCompatActivity {
         proteinView = (EditText) findViewById(R.id.addFoodProtein);
         fatView = (EditText) findViewById(R.id.addFoodFat);
         caloriesView = (EditText) findViewById(R.id.addFoodCalories);
+        final String tipe = s.getSelectedItem().toString();
 
         submit = findViewById(R.id.buttonAddFood);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +66,8 @@ public class AddFood extends AppCompatActivity {
                 fat = fatView.getText().toString();
                 urt = urtView.getText().toString();
 
-                MakananExternal makananBaru = new MakananExternal(calories, carbohydrate, protein, urt, fat, name);
+                MakananExternal makananBaru = new MakananExternal(convertTipe(tipe), Double.parseDouble(calories), Double.parseDouble(carbohydrate)
+                        , Double.parseDouble(protein), urt, Double.parseDouble(fat), name);
                 String makanan = (new Gson().toJson(makananBaru));
                 //Tinggal kasi ke backend
 
@@ -65,8 +77,69 @@ public class AddFood extends AppCompatActivity {
                 setResult(Activity.RESULT_OK, data);
                 finish();
 
-                setContentView(R.layout.parenteral);
+                addDatabase("/api/external/add", makananBaru);
+                setContentView(R.layout.tambah_jadwal_external);
             }
         });
+    }
+
+    public String addDatabase(final String url, MakananExternal makananExternal) {
+        StringBuilder result = new StringBuilder();
+
+        //url backend
+        String apiUrl = "http://nutriapp-backend.herokuapp.com" + url;
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("nama", makananExternal.getNama());
+            json.put("karbohidrat", makananExternal.getKarbohidrat());
+            json.put("protein", makananExternal.getProtein());
+            json.put("lemak", makananExternal.getLemak());
+            json.put("kalori", makananExternal.getKalori());
+            json.put("urt", makananExternal.getUrt());
+            json.put("jenis", makananExternal.getJenis());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestQueue req = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("isinya", "sendGet: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        Log.d("asd", "onErrorResponse: asd");
+                    }
+                });
+
+        req.add(jsonObjectRequest);
+
+        return result.toString();
+    }
+
+    public double convertTipe(String tipe){
+        switch (tipe) {
+            case "karbohidrat":
+                return 1;
+            case "protein":
+                return 2;
+            case "lemak":
+                return 3;
+            case "sayuran":
+                return 4;
+            case "buah/gula":
+                return 5;
+            case "susu":
+                return 6;
+            default:
+                return 7;
+        }
     }
 }

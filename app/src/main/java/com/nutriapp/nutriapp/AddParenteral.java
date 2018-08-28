@@ -65,7 +65,7 @@ public class AddParenteral extends AppCompatActivity {
                 setResult(Activity.RESULT_OK, data);
                 finish();
 
-                addDatabase("/api/protein/add", makananBaru);
+                addDatabase("/api/parenteral/add", makananBaru);
                 setContentView(R.layout.parenteral);
             }
         });
@@ -74,15 +74,11 @@ public class AddParenteral extends AppCompatActivity {
     public String addDatabase(final String url, Parenteral parenteralModel) {
         StringBuilder result = new StringBuilder();
 
-        //ini kalo pake virtual machine android
-        String apiUrl = "http://10.0.2.2:8080" + url;
+        //url backend
+        String apiUrl = "http://nutriapp-backend.herokuapp.com" + url;
 
-        //ini kalo pake hape, liat ip laptop lu berapa
-        //connect pake wifi yang sama
-        //String apiUrl = "http://192.168.1.12" + url;
         JSONObject json = new JSONObject();
         try {
-            json.put("id", 10);
             json.put("nama", parenteralModel.getName());
             json.put("karbohidrat", parenteralModel.getCarbohydrate());
             json.put("protein", parenteralModel.getProtein());
@@ -100,7 +96,6 @@ public class AddParenteral extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-
                         Log.e("isinya", "sendGet: " + response.toString());
                     }
                 }, new Response.ErrorListener() {
