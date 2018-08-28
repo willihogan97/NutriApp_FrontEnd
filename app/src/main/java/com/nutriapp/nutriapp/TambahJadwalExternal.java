@@ -31,14 +31,20 @@ import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
 import com.nutriapp.nutriapp.object.MakananExternal;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TambahJadwalExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
 
-    ArrayList<MakananExternal> listMakanan;
+    ArrayList<MakananExternal> listMakanan, listKarbo, listProtein;
     JadwalMakananExternal jadwalMakanan;
 
     public static EditText totalKalori, buttonPickTime;
@@ -130,6 +136,36 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
+
+        //Ambil data dari database
+        String myUrl = "http://10.0.2.2:8080/api/makananexternal/all";
+
+        //String to place our result in
+        final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
+        String result;
+        HttpGetRequest newGetReq = new HttpGetRequest();
+        try {
+            result = newGetReq.execute(myUrl).get();
+            JSONObject jsonObject = new JSONObject(result);
+            JSONArray jsonArray = jsonObject.getJSONArray("result");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String nama = jsonArray.getJSONObject(i).getString("nama");
+                Double karbohidrat = jsonArray.getJSONObject(i).getDouble("karbohidrat");
+                Double protein = jsonArray.getJSONObject(i).getDouble("protein");
+                Double lemak = jsonArray.getJSONObject(i).getDouble("lemak");
+                String urt = jsonArray.getJSONObject(i).getString("urt");
+                int tipe = jsonArray.getJSONObject(i).getInt("tipe");
+                Double kalori = jsonArray.getJSONObject(i).getDouble("kalori");
+                MakananExternal makanan = new MakananExternal()
+
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addAllMandatoryFood() {
@@ -251,6 +287,11 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 TextView namaMakanan = (TextView) convertView.findViewById(R.id.namaMakanan);
                 namaMakanan.setText(mData.get(position));
                 Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
+                if(mData.get(position).equalsIgnoreCase("karbohidrat")) {
+
+                }
+
+
                 String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, countries);
                 adapter.setDropDownViewResource(R.layout.spinner_layout);
