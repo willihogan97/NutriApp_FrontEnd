@@ -44,10 +44,12 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnnext, btncobaapi;
+    private static double standarLLA;
+    Button btnnext;
     EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, mlView;
-    LinearLayout percentage, cairan, totKal, stressFactor, normalKal, bmiLayout, otherBMI, normalBMI, hitunganKalori, btn, tipeHitungan;
-    TextView bmi, bmiStatus, llastatus, totKalori, totCair;
+    LinearLayout percentage, cairan, totKal, stressFactor, normalKal, bmiLayout, otherBMI, normalBMI,
+            hitunganKalori, btn, llaResult, tipeHitungan;
+    TextView bmi, bmiStatus, llaStatus, totKalori, totCair, llaCount;
     public static final String INFO = "INFO_PRIBADI";
 
     @Override
@@ -65,14 +67,18 @@ public class MainActivity extends AppCompatActivity {
         normalBMI = (LinearLayout) findViewById(R.id.normalBMI);
         hitunganKalori = (LinearLayout) findViewById(R.id.hitunganKalori);
         btn = (LinearLayout) findViewById(R.id.btn);
+        llaResult = (LinearLayout) findViewById(R.id.llaResult);
         beratBadanView = (EditText) findViewById(R.id.beratBadan);
         tinggiBadanView = (EditText) findViewById(R.id.tinggiBadan);
         kkalView = (EditText) findViewById(R.id.kalori);
         mlView = (EditText) findViewById(R.id.mlkal);
+        llaView = (EditText) findViewById(R.id.lla);
         bmi = (TextView) findViewById(R.id.bmi);
         totKalori = (TextView) findViewById(R.id.totalKal);
         totCair = (TextView) findViewById(R.id.cairan);
         bmiStatus = (TextView) findViewById(R.id.bmiStatus);
+        llaCount = (TextView) findViewById(R.id.llaCount);
+        llaStatus = (TextView) findViewById(R.id.llaStatus);
 
         percentage.setVisibility(View.GONE);
         cairan.setVisibility(View.GONE);
@@ -84,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
         normalBMI.setVisibility(View.GONE);
         btn.setVisibility(View.GONE);
         hitunganKalori.setVisibility(View.GONE);
+        llaResult.setVisibility(View.GONE);
 
         String[] tipeBMI = getResources().getStringArray(R.array.spinnerBMI);
         String[] tipeHitunganKalori = getResources().getStringArray(R.array.spinnerHitunganKalori);
+        String[] jenisKelamin = getResources().getStringArray(R.array.spinnerJK);
 
         final Spinner s = (Spinner) findViewById(R.id.bmidropdown);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -113,23 +121,29 @@ public class MainActivity extends AppCompatActivity {
         beratBadanView.addTextChangedListener(new GenericTextWatcher(beratBadanView));
         tinggiBadanView.addTextChangedListener(new GenericTextWatcher(tinggiBadanView));
 
-//        if(!(llaView.getText().toString().equals("") && skinFoldView.getText().toString().equals(""))){
-//            bmiLayout.setVisibility(View.VISIBLE);
-//            double countBMI = Double.parseDouble(beratBadanView.getText().toString()) / Math.pow(Double.parseDouble(tinggiBadanView.getText().toString()), 2);
-//            bmi.setText(Double.toString(countBMI));
-//
-//            if(countBMI < 18.5){
-//                bmiStatus.setText("Underweight");
-//            } else if(18.5 <= countBMI && countBMI <= 24.9){
-//                bmiStatus.setText("Healthy");
-//            } else if(25.0 <= countBMI && countBMI <= 29.9){
-//                bmiStatus.setText("Overweight");
-//            } else {
-//                bmiStatus.setText("Obese");
-//            }
-//
-//            hitunganKalori.setVisibility(View.VISIBLE);
-//        }
+        final Spinner t = (Spinner) findViewById(R.id.jkdropdown);
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, jenisKelamin);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        t.setAdapter(adapter);
+
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(t.getSelectedItem().toString().equals("Laki-Laki")) {
+                    llaResult.setVisibility(View.VISIBLE);
+                    standarLLA = 29.3;
+                } else {
+                    llaResult.setVisibility(View.VISIBLE);
+                    standarLLA = 28.5;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) { }
+        });
+
+        llaView.addTextChangedListener(new GenericTextWatcher(llaView));
 
         final Spinner r = (Spinner) findViewById(R.id.hitunganKaloriDropdown);
         adapter = new ArrayAdapter<String>(this,
@@ -159,47 +173,10 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.btnNext);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                int beratBadan = Integer.parseInt(beratBadanView.getText().toString());
-//                int tinggiBadan = Integer.parseInt(tinggiBadanView.getText().toString());
-//                String bmi = (beratBadan * tinggiBadan) + "";
-//                Toast.makeText(getApplicationContext(), bmi, Toast.LENGTH_SHORT).show();
-//                bmiView.setText(bmi);
-
-                Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-                InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","100","12","a","a","a");
-                intent.putExtra(INFO, infoPribadi);
-                startActivityForResult(intent, 200);
-//                startActivity(intent);
-//                startActivity(new Intent(getApplicationContext(), MakananExternalActivity.class));
-            }
-        });
-
-        btncobaapi = findViewById(R.id.btncobaapi);
-        btncobaapi.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                //Contoh pake volley
-                //Belom bisa masuk data asyncnya
-                String test = sendGet1("/api/protein/all");
-                Log.d("test1", "onClick: " +test);
-
-                //Contoh yang uda bener
-                String myUrl = "http://10.0.2.2:8080/api/protein/all";
-                //String to place our result in
-                String result;
-                HttpGetRequest getRequest = new HttpGetRequest();
-                //Perform the doInBackground method, passing in our url
-                try {
-                    result = getRequest.execute(myUrl).get();
-                    Log.d("test2", "onClick: " + result);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-
-                //Contoh nambahin data
-                addDatabase("/api/protein/add");
+            Intent intent = new Intent(getApplicationContext(), Parenteral.class);
+            InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","100","12","a","a","a");
+            intent.putExtra(INFO, infoPribadi);
+            startActivityForResult(intent, 200);
             }
         });
     }
@@ -224,6 +201,13 @@ public class MainActivity extends AppCompatActivity {
                 double countBMI = Double.parseDouble(beratBadanView.getText().toString()) / Math.pow(Double.parseDouble(tinggiBadanView.getText().toString())/100, 2);
                 bmi.setText(dec.format(countBMI));
                 setRightLabelBMI(countBMI);
+                hitunganKalori.setVisibility(View.VISIBLE);
+            }
+
+            if(!llaView.getText().toString().equals("")){
+                Double lla = (Double.parseDouble(llaView.getText().toString()) / MainActivity.standarLLA) * 100;
+                llaCount.setText(Double.toString(lla));
+                setRightLabelLLA(lla);
                 hitunganKalori.setVisibility(View.VISIBLE);
             }
 
@@ -255,166 +239,17 @@ public class MainActivity extends AppCompatActivity {
         } else {
             bmiStatus.setText("Obese");
         }
-
     }
 
-    public static String sendGet(final String url) {
-        StringBuilder result = new StringBuilder();
-        HttpURLConnection urlConnection = null;
-        try {
-            String apiUrl = "http://10.0.2.2:8080" + url; // concatenate uri with base url eg: localhost:8080/ + uri
-            URL requestUrl = new URL(apiUrl);
-            urlConnection = (HttpURLConnection) requestUrl.openConnection();
-            urlConnection.connect(); // no connection is made
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            urlConnection.disconnect();
-        }
-        return result.toString();
-    }
-
-    public String sendGet1(final String url) {
-        StringBuilder result = new StringBuilder();
-        String response1 = "";
-
-        //ini kalo pake virtual machine android
-        String apiUrl = "http://10.0.2.2:8080" + url;
-
-        //ini kalo pake hape, liat ip laptop lu berapa
-        //connect pake wifi yang sama
-        //String apiUrl = "http://192.168.1.12" + url;
-
-        RequestQueue req = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, apiUrl, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            Log.e("isinya", "sendGet: " + response.getJSONArray("result").toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-//                        response1 = response.toString();
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.d("asd", "onErrorResponse: asd");
-
-                    }
-                });
-
-        req.add(jsonObjectRequest);
-
-
-        return result.toString();
-    }
-
-    public String addDatabase(final String url) {
-        StringBuilder result = new StringBuilder();
-        String response1 = "";
-
-        //ini kalo pake virtual machine android
-        String apiUrl = "http://10.0.2.2:8080" + url;
-
-        //ini kalo pake hape, liat ip laptop lu berapa
-        //connect pake wifi yang sama
-        //String apiUrl = "http://192.168.1.12" + url;
-        JSONObject json = new JSONObject();
-        try {
-            json.put("id", 10);
-            json.put("nama", "student");
-            json.put("tipe", 2);
-            json.put("urt", "student");
-            json.put("karbohidrat", 2);
-            json.put("protein", 4);
-            json.put("lemak", 5);
-            json.put("kalori", 1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RequestQueue req = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        Log.e("isinya", "sendGet: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.d("asd", "onErrorResponse: asd");
-
-                    }
-                });
-
-        req.add(jsonObjectRequest);
-
-
-        return result.toString();
-    }
-
-    public class HttpGetRequest extends AsyncTask<String, Void, String> {
-        public static final String REQUEST_METHOD = "GET";
-        public static final int READ_TIMEOUT = 15000;
-        public static final int CONNECTION_TIMEOUT = 15000;
-        String result;
-        @Override
-        protected String doInBackground(String... params){
-            String stringUrl = params[0];
-            String inputLine;
-            try {
-                //Create a URL object holding our url
-                URL myUrl = new URL(stringUrl);
-                //Create a connection
-                HttpURLConnection connection =(HttpURLConnection)
-                        myUrl.openConnection();
-                //Set methods and timeouts
-                connection.setRequestMethod(REQUEST_METHOD);
-                connection.setReadTimeout(READ_TIMEOUT);
-                connection.setConnectTimeout(CONNECTION_TIMEOUT);
-
-                //Connect to our url
-                connection.connect();
-                //Create a new InputStreamReader
-                InputStreamReader streamReader = new
-                        InputStreamReader(connection.getInputStream());
-                //Create a new buffered reader and String Builder
-                BufferedReader reader = new BufferedReader(streamReader);
-                StringBuilder stringBuilder = new StringBuilder();
-                //Check if the line we are reading is not null
-                while((inputLine = reader.readLine()) != null){
-                    stringBuilder.append(inputLine);
-                }
-                //Close our InputStream and Buffered reader
-                reader.close();
-                streamReader.close();
-                //Set our result equal to our stringBuilder
-                result = stringBuilder.toString();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return result;
+    public void setRightLabelLLA (double llaResult){
+        if(llaResult < 90){
+            bmiStatus.setText("Underweight");
+        } else if(90 <= llaResult && llaResult <= 110){
+            bmiStatus.setText("Healthy");
+        } else if(110 <= llaResult && llaResult <= 120){
+            bmiStatus.setText("Overweight");
+        } else {
+            bmiStatus.setText("Obese");
         }
     }
 }

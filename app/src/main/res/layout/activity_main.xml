@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1.5"
-                        android:text="@string/skin_fold" />
+                        android:text="@string/jenis_kelamin" />
 
                     <TextView
                         style="@style/normalFont"
@@ -147,14 +147,13 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="0.1" />
 
-                    <EditText
+                    <Spinner
                         style="@style/normalFont"
-                        android:id="@+id/SkinFold"
+                        android:id="@+id/jkdropdown"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/vertical_margin"
-                        android:layout_weight="2"
-                        android:orientation="horizontal" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -185,18 +184,83 @@
                         android:id="@+id/lla"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_gravity="center_vertical"
                         android:inputType="number"
                         android:ems="10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:id="@+id/llaResult"
+                    android:orientation="horizontal" >
 
                     <TextView
                         style="@style/normalFont"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"/>
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/llaCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.9"
+                        android:text="@string/bmi" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/vertical_margin"
+                        android:layout_weight="0.1"
+                        android:text="@string/percent" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/llaStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:text="@string/bmi" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/skin_fold" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/SkinFold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" />
                 </LinearLayout>
             </LinearLayout>
 

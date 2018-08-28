@@ -58,11 +58,17 @@
     <string name="ml">ml</string>
     <string name="kkal">Kkal</string>
     <string name="_total">Total</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerBMI">
         <item>Berat - Tinggi Badan</item>
         <item>Skin Fold - LLA</item>
+    </string-array>
+
+    <string-array name="spinnerJK">
+        <item>Laki - Laki</item>
+        <item>Perempuan</item>
     </string-array>
 
     <string-array name="spinnerTipeMakananExternal">
