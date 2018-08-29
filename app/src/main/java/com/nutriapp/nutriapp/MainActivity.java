@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static double standarLLA;
     Button btnnext;
-    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, mlView;
+    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, mlView, karbo, protein, lemak;
     LinearLayout percentage, cairan, totKal, stressFactor, normalKal, bmiLayout, otherBMI, normalBMI,
-            hitunganKalori, btn, llaResult, tipeHitungan;
+            hitunganKalori, btn, llaResult, skinFold;
     TextView bmi, bmiStatus, llaStatus, totKalori, totCair, llaCount;
     public static final String INFO = "INFO_PRIBADI";
 
@@ -68,11 +68,15 @@ public class MainActivity extends AppCompatActivity {
         hitunganKalori = (LinearLayout) findViewById(R.id.hitunganKalori);
         btn = (LinearLayout) findViewById(R.id.btn);
         llaResult = (LinearLayout) findViewById(R.id.llaResult);
+        skinFold = (LinearLayout) findViewById(R.id.skinFoldLayout);
         beratBadanView = (EditText) findViewById(R.id.beratBadan);
         tinggiBadanView = (EditText) findViewById(R.id.tinggiBadan);
         kkalView = (EditText) findViewById(R.id.kalori);
         mlView = (EditText) findViewById(R.id.mlkal);
         llaView = (EditText) findViewById(R.id.lla);
+        karbo = (EditText) findViewById(R.id.karbohidrat);
+        protein = (EditText) findViewById(R.id.protein);
+        lemak = (EditText) findViewById(R.id.lemak);
         bmi = (TextView) findViewById(R.id.bmi);
         totKalori = (TextView) findViewById(R.id.totalKal);
         totCair = (TextView) findViewById(R.id.cairan);
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setVisibility(View.GONE);
         hitunganKalori.setVisibility(View.GONE);
         llaResult.setVisibility(View.GONE);
+        skinFold.setVisibility(View.GONE);
 
         String[] tipeBMI = getResources().getStringArray(R.array.spinnerBMI);
         String[] tipeHitunganKalori = getResources().getStringArray(R.array.spinnerHitunganKalori);
@@ -127,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         t.setAdapter(adapter);
 
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        t.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if(t.getSelectedItem().toString().equals("Laki-Laki")) {
@@ -169,12 +174,20 @@ public class MainActivity extends AppCompatActivity {
 
         kkalView.addTextChangedListener(new GenericTextWatcher(kkalView));
         mlView.addTextChangedListener(new GenericTextWatcher(mlView));
+        karbo.addTextChangedListener(new GenericTextWatcher(karbo));
+        protein.addTextChangedListener(new GenericTextWatcher(protein));
+        lemak.addTextChangedListener(new GenericTextWatcher(lemak));
 
         Button button = findViewById(R.id.btnNext);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-            InfoPribadi infoPribadi = new InfoPribadi(1,1,"a","a","a","a","a","a","100","12","a","a","a");
+            InfoPribadi infoPribadi = new InfoPribadi(Double.parseDouble(beratBadanView.getText().toString()),
+                    Double.parseDouble(tinggiBadanView.getText().toString()), Double.parseDouble(skinFoldView.getText().toString()),
+                    Double.parseDouble(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
+                    Double.parseDouble(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
+                    Double.parseDouble(totCair.getText().toString()), Double.parseDouble(karbo.getText().toString()),
+                    Double.parseDouble(protein.getText().toString()), Double.parseDouble(protein.getText().toString()));
             intent.putExtra(INFO, infoPribadi);
             startActivityForResult(intent, 200);
             }
@@ -193,21 +206,22 @@ public class MainActivity extends AppCompatActivity {
 
         public void afterTextChanged(Editable editable1) {
             String bb = editable1.toString();
-
+            DecimalFormat dec = new DecimalFormat("#.0");
             if(!beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")) {
                 //lakukan itung
                 bmiLayout.setVisibility(View.VISIBLE);
-                DecimalFormat dec = new DecimalFormat("#.0");
                 double countBMI = Double.parseDouble(beratBadanView.getText().toString()) / Math.pow(Double.parseDouble(tinggiBadanView.getText().toString())/100, 2);
                 bmi.setText(dec.format(countBMI));
                 setRightLabelBMI(countBMI);
+                skinFold.setVisibility(View.VISIBLE);
                 hitunganKalori.setVisibility(View.VISIBLE);
             }
 
             if(!llaView.getText().toString().equals("")){
-                Double lla = (Double.parseDouble(llaView.getText().toString()) / MainActivity.standarLLA) * 100;
-                llaCount.setText(Double.toString(lla));
+                Double lla = Double.parseDouble(llaView.getText().toString()) * 100 / MainActivity.standarLLA ;
+                llaCount.setText(dec.format(lla));
                 setRightLabelLLA(lla);
+                skinFold.setVisibility(View.VISIBLE);
                 hitunganKalori.setVisibility(View.VISIBLE);
             }
 
@@ -219,11 +233,13 @@ public class MainActivity extends AppCompatActivity {
                 totKal.setVisibility(View.VISIBLE);
             }
 
-            Log.d("mlview", "afterTextChanged: " + mlView.getText().toString());
-            Log.d("beratView", "afterTextChanged: " + beratBadanView.getText().toString());
             if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
                 double cair = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(mlView.getText().toString());
                 totCair.setText(Double.toString(cair));
+                percentage.setVisibility(View.VISIBLE);
+            }
+
+            if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
                 btn.setVisibility(View.VISIBLE);
             }
         }
@@ -243,13 +259,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setRightLabelLLA (double llaResult){
         if(llaResult < 90){
-            bmiStatus.setText("Underweight");
+            llaStatus.setText("Underweight");
         } else if(90 <= llaResult && llaResult <= 110){
-            bmiStatus.setText("Healthy");
+            llaStatus.setText("Healthy");
         } else if(110 <= llaResult && llaResult <= 120){
-            bmiStatus.setText("Overweight");
+            llaStatus.setText("Overweight");
         } else {
-            bmiStatus.setText("Obese");
+            llaStatus.setText("Obese");
         }
     }
 }

@@ -152,8 +152,8 @@ public class Parenteral extends AppCompatActivity {
                 lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)));
                 elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)));
                 kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
-                double remain = Double.parseDouble(infoPribadi.getTotalKalori()) - (parenteralItem[0].getCalories() * ratio);
-                double cairRemain = Double.parseDouble(infoPribadi.getTotalKaloriCair()) - Double.parseDouble(volumeView.getText().toString());
+                double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
+                double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
                 String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
                 sisa.setText(sisaText);
             }

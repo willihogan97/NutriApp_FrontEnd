@@ -14,35 +14,31 @@ public class InfoPribadi implements Parcelable{
         }
     };
 
-    int berat;
-    int tinggi;
-    String skinFold;
-    String lla;
-    String bmi;
-    String kalori;
-    String sheerFactor;
-    String kkalper;
-    String totalKalori;
-    String totalKaloriCair;
-    String persentaseKarbo;
-    String persentaseProtein;
-    String persentaseLemak;
+    double berat;
+    double tinggi;
+    double skinFold;
+    double lla;
+    double bmi;
+    double sheerFactor;
+    double totalKalori;
+    double totalKaloriCair;
+    double persentaseKarbo;
+    double persentaseProtein;
+    double persentaseLemak;
 
     public InfoPribadi() {
 
     }
 
-    public InfoPribadi(int berat, int tinggi, String skinFold, String lla, String bmi,
-                       String kalori, String sheerFactor, String kkalper, String totalKalori,
-                       String totalKaloriCair, String persentaseKarbo, String persentaseProtein, String persentaseLemak) {
+    public InfoPribadi(double berat, double tinggi, double skinFold, double lla, double bmi, double sheerFactor,
+                       double totalKalori, double totalKaloriCair, double persentaseKarbo,
+                       double persentaseProtein, double persentaseLemak) {
         this.berat = berat;
         this.tinggi = tinggi;
         this.skinFold = skinFold;
         this.lla = lla;
         this.bmi = bmi;
-        this.kalori = kalori;
         this.sheerFactor = sheerFactor;
-        this.kkalper = kkalper;
         this.totalKalori = totalKalori;
         this.totalKaloriCair = totalKaloriCair;
         this.persentaseKarbo = persentaseKarbo;
@@ -51,19 +47,17 @@ public class InfoPribadi implements Parcelable{
     }
 
     public InfoPribadi(Parcel in) {
-        this.berat = in.readInt();
-        this.tinggi = in.readInt();
-        this.skinFold = in.readString();
-        this.lla = in.readString();
-        this.bmi = in.readString();
-        this.kalori = in.readString();
-        this.sheerFactor = in.readString();
-        this.kkalper = in.readString();
-        this.totalKalori = in.readString();
-        this.totalKaloriCair = in.readString();
-        this.persentaseKarbo = in.readString();
-        this.persentaseProtein = in.readString();
-        this.persentaseLemak = in.readString();
+        this.berat = Double.parseDouble(in.readString());
+        this.tinggi = Double.parseDouble(in.readString());
+        this.skinFold = Double.parseDouble(in.readString());
+        this.lla = Double.parseDouble(in.readString());
+        this.bmi = Double.parseDouble(in.readString());
+        this.sheerFactor = Double.parseDouble(in.readString());
+        this.totalKalori = Double.parseDouble(in.readString());
+        this.totalKaloriCair = Double.parseDouble(in.readString());
+        this.persentaseKarbo = Double.parseDouble(in.readString());
+        this.persentaseProtein = Double.parseDouble(in.readString());
+        this.persentaseLemak = Double.parseDouble(in.readString());
     }
 
     @Override
@@ -73,19 +67,17 @@ public class InfoPribadi implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.berat);
-        dest.writeInt(this.tinggi);
-        dest.writeString(this.skinFold);
-        dest.writeString(this.lla);
-        dest.writeString(this.bmi);
-        dest.writeString(this.kalori);
-        dest.writeString(this.sheerFactor);
-        dest.writeString(this.kkalper);
-        dest.writeString(this.totalKalori);
-        dest.writeString(this.totalKaloriCair);
-        dest.writeString(this.persentaseKarbo);
-        dest.writeString(this.persentaseProtein);
-        dest.writeString(this.persentaseLemak);
+        dest.writeDouble(this.berat);
+        dest.writeDouble(this.tinggi);
+        dest.writeDouble(this.skinFold);
+        dest.writeDouble(this.lla);
+        dest.writeDouble(this.bmi);
+        dest.writeDouble(this.sheerFactor);
+        dest.writeDouble(this.totalKalori);
+        dest.writeDouble(this.totalKaloriCair);
+        dest.writeDouble(this.persentaseKarbo);
+        dest.writeDouble(this.persentaseProtein);
+        dest.writeDouble(this.persentaseLemak);
     }
 
     @Override
@@ -97,7 +89,6 @@ public class InfoPribadi implements Parcelable{
                 ", lla='" + lla + '\'' +
                 ", bmi='" + bmi + '\'' +
                 ", sheerFactor='" + sheerFactor + '\'' +
-                ", kkalper='" + kkalper + '\'' +
                 ", totalKalori='" + totalKalori + '\'' +
                 ", totalKaloriCair='" + totalKaloriCair + '\'' +
                 ", persentaseKarbo='" + persentaseKarbo + '\'' +
@@ -106,107 +97,91 @@ public class InfoPribadi implements Parcelable{
                 '}';
     }
 
-    public int getBerat() {
+    public double getBerat() {
         return berat;
     }
 
-    public void setBerat(int berat) {
+    public void setBerat(double berat) {
         this.berat = berat;
     }
 
-    public int getTinggi() {
+    public double getTinggi() {
         return tinggi;
     }
 
-    public void setTinggi(int tinggi) {
+    public void setTinggi(double tinggi) {
         this.tinggi = tinggi;
     }
 
-    public String getSkinFold() {
+    public double getSkinFold() {
         return skinFold;
     }
 
-    public void setSkinFold(String skinFold) {
+    public void setSkinFold(double skinFold) {
         this.skinFold = skinFold;
     }
 
-    public String getLla() {
+    public double getLla() {
         return lla;
     }
 
-    public void setLla(String lla) {
+    public void setLla(double lla) {
         this.lla = lla;
     }
 
-    public String getBmi() {
+    public double getBmi() {
         return bmi;
     }
 
-    public void setBmi(String bmi) {
+    public void setBmi(double bmi) {
         this.bmi = bmi;
     }
 
-    public String getKalori() {
-        return kalori;
-    }
-
-    public void setKalori(String kalori) {
-        this.kalori = kalori;
-    }
-
-    public String getSheerFactor() {
+    public double getSheerFactor() {
         return sheerFactor;
     }
 
-    public void setSheerFactor(String sheerFactor) {
+    public void setSheerFactor(double sheerFactor) {
         this.sheerFactor = sheerFactor;
     }
 
-    public String getKkalper() {
-        return kkalper;
-    }
-
-    public void setKkalper(String kkalper) {
-        this.kkalper = kkalper;
-    }
-
-    public String getTotalKalori() {
+    public double getTotalKalori() {
         return totalKalori;
     }
 
-    public void setTotalKalori(String totalKalori) {
+    public void setTotalKalori(double totalKalori) {
         this.totalKalori = totalKalori;
     }
 
-    public String getTotalKaloriCair() {
+    public double getTotalKaloriCair() {
         return totalKaloriCair;
     }
 
-    public void setTotalKaloriCair(String totalKaloriCair) {
+    public void setTotalKaloriCair(double totalKaloriCair) {
         this.totalKaloriCair = totalKaloriCair;
     }
 
-    public String getPersentaseKarbo() {
+    public double getPersentaseKarbo() {
         return persentaseKarbo;
     }
 
-    public void setPersentaseKarbo(String persentaseKarbo) {
+    public void setPersentaseKarbo(double persentaseKarbo) {
         this.persentaseKarbo = persentaseKarbo;
     }
 
-    public String getPersentaseProtein() {
+    public double getPersentaseProtein() {
         return persentaseProtein;
     }
 
-    public void setPersentaseProtein(String persentaseProtein) {
+    public void setPersentaseProtein(double persentaseProtein) {
         this.persentaseProtein = persentaseProtein;
     }
 
-    public String getPersentaseLemak() {
+    public double getPersentaseLemak() {
         return persentaseLemak;
     }
 
-    public void setPersentaseLemak(String persentaseLemak) {
+    public void setPersentaseLemak(double persentaseLemak) {
         this.persentaseLemak = persentaseLemak;
     }
 }
