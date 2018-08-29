@@ -63,7 +63,7 @@
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerBMI">
         <item>Berat - Tinggi Badan</item>
-        <item>Skin Fold - LLA</item>
+        <item>LLA</item>
     </string-array>
 
     <string-array name="spinnerJK">
