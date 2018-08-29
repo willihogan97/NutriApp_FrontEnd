@@ -30,16 +30,15 @@ import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MakananExternalActivity extends AppCompatActivity{
 
     private ListView parentLinearLayout;
+    public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori;
     public static Spinner spinner;
-    private static String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
 
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
 
@@ -61,10 +60,17 @@ public class MakananExternalActivity extends AppCompatActivity{
         mAdapter = new MyCustomAdapter();
         parentLinearLayout = (ListView) findViewById(R.id.list_view);
 
+        //Untuk textView
+        totalKarboJadwal = (TextView) findViewById(R.id.totalKarboJadwal);
+        totalProteinJadwal = (TextView) findViewById(R.id.totalProteinJadwal);
+        totalLemakJadwal = (TextView) findViewById(R.id.totalLemakJadwal);
+        totalKaloriJadwal = (TextView) findViewById(R.id.totalKaloriJadwal);
+        sisaKalori = (TextView) findViewById(R.id.sisaKalori);
+
         //Untuk Spinner
         spinner = (Spinner)findViewById(R.id.spinnerTipeMakananExternal);
-        String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, countries);
+        String[] isiSpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, isiSpinner);
 
         spinner.setAdapter(adapter);
 //        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -101,35 +107,42 @@ public class MakananExternalActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Result.class);
-                int totalKarbo = 0;
-                int totalProtein = 0;
-                int totalLemak = 0;
-                int totalKalori = 0;
-                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
-                    View a = getViewByPosition(i, parentLinearLayout);
-                    TextView karbo = (TextView) a.findViewById(R.id.karbo);
-                    TextView lemak = (TextView) a.findViewById(R.id.lemak);
-                    TextView kalori = (TextView) a.findViewById(R.id.kalori);
-                    TextView protein = (TextView) a.findViewById(R.id.protein);
-                    if (!karbo.getText().toString().equals("")) {
-                        totalKarbo += Integer.parseInt(karbo.getText().toString());
-                    }
-                    if (!protein.getText().toString().equals("")) {
-                        totalProtein += Integer.parseInt(protein.getText().toString());
-                    }
-                    if (!lemak.getText().toString().equals("")) {
-                        totalLemak += Integer.parseInt(lemak.getText().toString());
-                    }
-                    if (!kalori.getText().toString().equals("")) {
-                        totalKalori += Integer.parseInt(kalori.getText().toString());
-                    }
+                double totalKarbo = 0;
+                double totalProtein = 0;
+                double totalLemak = 0;
+                double totalKalori = 0;
+//                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
+//                    View a = getViewByPosition(i, parentLinearLayout);
+//                    TextView karbo = (TextView) a.findViewById(R.id.karbo);
+//                    TextView lemak = (TextView) a.findViewById(R.id.lemak);
+//                    TextView kalori = (TextView) a.findViewById(R.id.kalori);
+//                    TextView protein = (TextView) a.findViewById(R.id.protein);
+//                    if (!karbo.getText().toString().equals("")) {
+//                        totalKarbo += Integer.parseInt(karbo.getText().toString());
+//                    }
+//                    if (!protein.getText().toString().equals("")) {
+//                        totalProtein += Integer.parseInt(protein.getText().toString());
+//                    }
+//                    if (!lemak.getText().toString().equals("")) {
+//                        totalLemak += Integer.parseInt(lemak.getText().toString());
+//                    }
+//                    if (!kalori.getText().toString().equals("")) {
+//                        totalKalori += Integer.parseInt(kalori.getText().toString());
+//                    }
+//                }
+
+                for (int i = 0 ; i < listJadwalMakananExternal.size() ; i++) {
+                    totalKalori += listJadwalMakananExternal.get(i).getTotalKalori();
+                    totalKarbo += listJadwalMakananExternal.get(i).getKarbo();
+                    totalProtein += listJadwalMakananExternal.get(i).getProtein();
+                    totalLemak += listJadwalMakananExternal.get(i).getLemak();
                 }
+
                 String jenis = spinner.getSelectedItem().toString();
-                TotalMakananExternal makananExternal = new TotalMakananExternal(jenis,totalKarbo + "",totalProtein + "",totalLemak + "",totalKalori);
+                TotalMakananExternal makananExternal = new TotalMakananExternal(totalKarbo + "",totalProtein + "",totalLemak + "",totalKalori + "");
                 intent.putExtra(MAKANANEXTERNAL, makananExternal);
                 intent.putExtra(INFO, infoPribadi);
                 intent.putExtra(PARENTERAL, parenteral);
-
                 startActivityForResult(intent, 200);
             }
         });
@@ -145,14 +158,36 @@ public class MakananExternalActivity extends AppCompatActivity{
         if(requestCode == 200) {
 
             if(resultCode == Activity.RESULT_OK) {
-                JadwalMakananExternal result = data.getParcelableExtra(TambahJadwalExternal.EXTRA_DATA);
-
-                mAdapter.addItem(result);
+                JadwalMakananExternal jadwalMakanan = data.getParcelableExtra(TambahJadwalExternal.EXTRA_DATA);
+                listJadwalMakananExternal.add(jadwalMakanan);
+                calculateAndShowTotal();
+                mAdapter.addItem(jadwalMakanan);
                 parentLinearLayout.setAdapter(mAdapter);
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
             }
         }
+    }
+
+    private void calculateAndShowTotal() {
+        double totalKal = 0;
+        double totalKarbo = 0;
+        double totalProtein = 0;
+        double totalLemak = 0;
+        DecimalFormat dec = new DecimalFormat("#.0");
+        for (JadwalMakananExternal jadwal : listJadwalMakananExternal) {
+            totalKal += jadwal.getTotalKalori();
+            totalKarbo += jadwal.getKarbo();
+            totalLemak += jadwal.getLemak();
+            totalProtein += jadwal.getProtein();
+        }
+        double remain = Double.parseDouble(infoPribadi.getTotalKalori()) - parenteral.getCalories() - (totalKal);
+        String sisaText = dec.format((remain)) + "Kkal";
+        sisaKalori.setText(sisaText);
+        totalKaloriJadwal.setText(dec.format(totalKal));
+        totalKarboJadwal.setText(dec.format(totalKarbo));
+        totalProteinJadwal.setText(dec.format(totalProtein));
+        totalLemakJadwal.setText(dec.format(totalLemak));
     }
 
     //Untuk ambil view dari ListView
@@ -211,11 +246,13 @@ public class MakananExternalActivity extends AppCompatActivity{
                 TextView jam = (TextView) convertView.findViewById(R.id.jam);
                 TextView protein = (TextView) convertView.findViewById(R.id.protein);
                 TextView lemak = (TextView) convertView.findViewById(R.id.lemak);
+                TextView cara = (TextView) convertView.findViewById(R.id.cara);
                 kalori.setText(jadwal.getTotalKalori() + "");
-                karbo.setText(jadwal.getKarbo());
+                karbo.setText(jadwal.getKarbo() + "");
                 jam.setText(jadwal.getJam());
-                protein.setText(jadwal.getProtein());
-                lemak.setText(jadwal.getLemak());
+                protein.setText(jadwal.getProtein() + "");
+                lemak.setText(jadwal.getLemak() + "");
+                cara.setText(jadwal.getCara());
 
                 //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {

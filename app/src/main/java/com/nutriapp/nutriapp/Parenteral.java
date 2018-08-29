@@ -88,6 +88,7 @@ public class Parenteral extends AppCompatActivity {
         //Perform the doInBackground method, passing in our url
         try {
             result = getRequest.execute(myUrl).get();
+            Log.d("resultnya apa nih", "onCreate: " + result);
             JSONObject jsnobject = new JSONObject(result);
             JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
 

@@ -15,35 +15,39 @@ public class JadwalMakananExternal implements Parcelable {
     };
     
     String jam;
-    String karbo;
-    String protein;
-    String lemak;
-    int totalKalori;
+    double karbo;
+    double protein;
+    double lemak;
+    double totalKalori;
+    String cara;
 
     public JadwalMakananExternal() {
     }
 
-    public JadwalMakananExternal(String jam, String karbo, String protein, String lemak, int totalKalori) {
+    public JadwalMakananExternal(String jam, double karbo, double protein, double lemak, double totalKalori, String cara) {
         this.jam = jam;
         this.karbo = karbo;
         this.protein = protein;
         this.lemak = lemak;
         this.totalKalori = totalKalori;
+        this.cara = cara;
     }
 
-    public JadwalMakananExternal(String karbo, String protein, String lemak, int totalKalori) {
+    public JadwalMakananExternal(double karbo, double protein, double lemak, double totalKalori, String cara) {
         this.karbo = karbo;
         this.protein = protein;
         this.lemak = lemak;
         this.totalKalori = totalKalori;
+        this.cara = cara;
     }
 
     public JadwalMakananExternal(Parcel in) {
         this.jam = in.readString();
-        this.karbo = in.readString();
-        this.protein = in.readString();
-        this.lemak = in.readString();
-        this.totalKalori = in.readInt();
+        this.karbo = in.readDouble();
+        this.protein = in.readDouble();
+        this.lemak = in.readDouble();
+        this.totalKalori = in.readDouble();
+        this.cara = in.readString();
     }
 
     @Override
@@ -54,10 +58,11 @@ public class JadwalMakananExternal implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.jam);
-        dest.writeString(this.karbo);
-        dest.writeString(this.protein);
-        dest.writeString(this.lemak);
-        dest.writeInt(this.totalKalori);
+        dest.writeDouble(this.karbo);
+        dest.writeDouble(this.protein);
+        dest.writeDouble(this.lemak);
+        dest.writeDouble(this.totalKalori);
+        dest.writeString(this.cara);
     }
 
     @Override
@@ -68,6 +73,7 @@ public class JadwalMakananExternal implements Parcelable {
                 ", protein='" + protein + '\'' +
                 ", lemak='" + lemak + '\'' +
                 ", totalKalori='" + totalKalori + '\'' +
+                ", cara='" + cara + '\'' +
                 '}';
     }
 
@@ -79,35 +85,43 @@ public class JadwalMakananExternal implements Parcelable {
         this.jam = jam;
     }
 
-    public String getKarbo() {
+    public double getKarbo() {
         return karbo;
     }
 
-    public void setKarbo(String karbo) {
+    public void setKarbo(double karbo) {
         this.karbo = karbo;
     }
 
-    public String getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(String protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 
-    public String getLemak() {
+    public double getLemak() {
         return lemak;
     }
 
-    public void setLemak(String lemak) {
+    public void setLemak(double lemak) {
         this.lemak = lemak;
     }
 
-    public int getTotalKalori() {
+    public double getTotalKalori() {
         return totalKalori;
     }
 
-    public void setTotalKalori(int totalKalori) {
+    public void setTotalKalori(double totalKalori) {
         this.totalKalori = totalKalori;
+    }
+
+    public String getCara() {
+        return cara;
+    }
+
+    public void setCara(String cara) {
+        this.cara = cara;
     }
 }

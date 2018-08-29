@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.25"
+            android:layout_weight="0.22"
             android:textAlignment="center"
             android:text="@string/lemak" />
 
@@ -57,6 +57,15 @@
             android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/kalori" />
+        <TextView
+            style="@style/normalFont"
+            android:id="@+id/cara"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.15"
+            android:textAlignment="center"
+            android:text="@string/cara" />
 
     </LinearLayout>
 </LinearLayout>

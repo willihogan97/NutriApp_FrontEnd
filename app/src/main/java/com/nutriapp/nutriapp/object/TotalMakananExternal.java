@@ -18,12 +18,12 @@ public class TotalMakananExternal implements Parcelable {
     String totalKarbo;
     String totalProtein;
     String totalLemak;
-    int totalKalori;
+    String totalKalori;
 
     public TotalMakananExternal() {
     }
 
-    public TotalMakananExternal(String jenis, String totalKarbo, String totalProtein, String totalLemak, int totalKalori) {
+    public TotalMakananExternal(String jenis, String totalKarbo, String totalProtein, String totalLemak, String totalKalori) {
         this.jenis = jenis;
         this.totalKarbo = totalKarbo;
         this.totalProtein = totalProtein;
@@ -31,7 +31,7 @@ public class TotalMakananExternal implements Parcelable {
         this.totalKalori = totalKalori;
     }
 
-    public TotalMakananExternal(String karbo, String protein, String lemak, int totalKalori) {
+    public TotalMakananExternal(String karbo, String protein, String lemak, String totalKalori) {
         this.totalKarbo = karbo;
         this.totalProtein = protein;
         this.totalLemak = lemak;
@@ -43,7 +43,7 @@ public class TotalMakananExternal implements Parcelable {
         this.totalKarbo = in.readString();
         this.totalProtein = in.readString();
         this.totalLemak = in.readString();
-        this.totalKalori = in.readInt();
+        this.totalKalori = in.readString();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class TotalMakananExternal implements Parcelable {
         dest.writeString(this.totalKarbo);
         dest.writeString(this.totalProtein);
         dest.writeString(this.totalLemak);
-        dest.writeInt(this.totalKalori);
+        dest.writeString(this.totalKalori);
     }
 
     @Override
@@ -103,11 +103,11 @@ public class TotalMakananExternal implements Parcelable {
         this.totalLemak = totalLemak;
     }
 
-    public int getTotalKalori() {
+    public String getTotalKalori() {
         return totalKalori;
     }
 
-    public void setTotalKalori(int totalKalori) {
+    public void setTotalKalori(String totalKalori) {
         this.totalKalori = totalKalori;
     }
 }

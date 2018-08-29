@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textAlignment="center"
-                        android:layout_weight="0.25"
+                        android:layout_weight="0.22"
                         android:text="@string/lemak" />
 
                     <TextView
@@ -79,6 +79,14 @@
                         android:layout_weight="0.2"
                         android:textAlignment="center"
                         android:text="@string/kalori" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.15"
+                        android:textAlignment="center"
+                        android:text="@string/cara" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -129,38 +137,43 @@
 
                     <TextView
                         style="@style/normalFont"
+                        android:id="@+id/totalKarboJadwal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textAlignment="center"
                         android:layout_weight="0.35"
-                        android:text="@string/karbohidrat" />
+                        android:text="0" />
 
                     <TextView
                         style="@style/normalFont"
+                        android:id="@+id/totalProteinJadwal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textAlignment="center"
                         android:layout_weight="0.25"
-                        android:text="@string/protein" />
+                        android:text="0" />
 
                     <TextView
                         style="@style/normalFont"
+                        android:id="@+id/totalLemakJadwal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textAlignment="center"
                         android:layout_weight="0.25"
-                        android:text="@string/lemak" />
+                        android:text="0" />
 
                     <TextView
                         style="@style/normalFont"
+                        android:id="@+id/totalKaloriJadwal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:textAlignment="center"
                         android:layout_weight="0.2"
-                        android:text="@string/kalori" />
+                        android:text="0" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -180,6 +193,7 @@
 
                 <TextView
                     style="@style/normalFont"
+                    android:id="@+id/sisaKalori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"

@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -45,18 +46,15 @@ public class TambahJadwalExternal extends AppCompatActivity {
     public static final String EXTRA_DATA = "EXTRA_DATA";
 
     ArrayList<MakananExternal> listMakanan, listKarbo, listProtein;
+    List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
     JadwalMakananExternal jadwalMakanan;
+    Spinner spinner;
 
     public static EditText totalKalori, buttonPickTime;
 
     //ListView
     private ListView list_item;
     MyCustomAdapter mAdapter;
-
-    //Test doang nanti diganti
-    private static String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +65,14 @@ public class TambahJadwalExternal extends AppCompatActivity {
         mAdapter = new MyCustomAdapter();
         list_item = (ListView) findViewById(R.id.list_item);
 
+        //Buat spinner
+        spinner = (Spinner)findViewById(R.id.spinnerTipeMakananExternal);
+        String[] isiSpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, isiSpinner);
+        spinner.setAdapter(adapter);
+
+        //Ambil data dari database
+        getDataFromDatabase();
 
         //inisiasi jadwal makanan baru
         jadwalMakanan = new JadwalMakananExternal();
@@ -93,10 +99,10 @@ public class TambahJadwalExternal extends AppCompatActivity {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int karbo = 0;
-                int protein = 0;
-                int lemak = 0;
-                int kalori = 0;
+                double karbo = 0;
+                double protein = 0;
+                double lemak = 0;
+                double kalori = 0;
 
                 //Menghitung total semua makanan yang ada pada satu jadwal
                 for (int i = 0 ; i < mAdapter.getCount() ; i++) {
@@ -104,23 +110,33 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
                     TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
                     Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
-
+                    MakananExternal makanan = (MakananExternal) itemSpinner.getSelectedItem();
                     //Itung buat dapetin itu semua
-                    //karbo +=
-                    //protein +=
-                    //lemak +=
-                    //kalori +=
+                    if(!jumlah.getText().toString().equals("")) {
+                        double jumlahInt = Integer.parseInt(jumlah.getText().toString());
+                        double urt = makanan.getUrt();
+                        double pengali = jumlahInt / urt;
+                        karbo += (makanan.getKarbohidrat()*jumlahInt);
+                        protein += (makanan.getProtein()*jumlahInt);
+                        lemak += (makanan.getLemak()*jumlahInt);
+                        kalori += (makanan.getKalori()*jumlahInt);
 
-                    Log.d("namamakanan", "onClick: " + namaMakanan.getText().toString());
-                    Log.d("jumlah", "onClick: " + jumlah.getText().toString());
-                    Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
+//                        karbo += (makanan.getKarbohidrat()*pengali);
+//                        protein += (makanan.getProtein()*pengali);
+//                        lemak += (makanan.getLemak()*pengali);
+//                        kalori += (makanan.getKalori()*pengali);
+                    }
+//                    Log.d("namamakanan", "onClick: " + namaMakanan.getText().toString());
+//                    Log.d("jumlah", "onClick: " + jumlah.getText().toString());
+//                    Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
                 }
 
                 jadwalMakanan.setJam(buttonPickTime.getText().toString());
-                jadwalMakanan.setKarbo(karbo + "");
-                jadwalMakanan.setProtein(protein + "");
-                jadwalMakanan.setLemak(lemak + "");
+                jadwalMakanan.setKarbo(karbo);
+                jadwalMakanan.setProtein(protein);
+                jadwalMakanan.setLemak(lemak);
                 jadwalMakanan.setTotalKalori(kalori);
+                jadwalMakanan.setCara(spinner.getSelectedItem().toString());
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, jadwalMakanan);
                 setResult(Activity.RESULT_OK, data);
@@ -137,28 +153,61 @@ public class TambahJadwalExternal extends AppCompatActivity {
             }
         });
 
-        //Ambil data dari database
-        String myUrl = "http://10.0.2.2:8080/api/makananexternal/all";
+
+    }
+
+    private void getDataFromDatabase() {
+
+        String myUrl = "http://nutriapp-backend.herokuapp.com/api/external/all";
 
         //String to place our result in
-        final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
+        listAll = new ArrayList<>();
         String result;
         HttpGetRequest newGetReq = new HttpGetRequest();
         try {
+            Log.d("getdatagasi", "getDataFromDatabase: ");
+            listKarboSpinner = new ArrayList<>();
+            listProteinSpinner = new ArrayList<>();
+            listLemakSpinner = new ArrayList<>();
+            listMinyakSpinner = new ArrayList<>();
+            listSusuSpinner = new ArrayList<>();
+            listBuahSpinner = new ArrayList<>();
+            listSayuranSpinner = new ArrayList<>();
             result = newGetReq.execute(myUrl).get();
             JSONObject jsonObject = new JSONObject(result);
             JSONArray jsonArray = jsonObject.getJSONArray("result");
             for (int i = 0; i < jsonArray.length(); i++) {
                 String nama = jsonArray.getJSONObject(i).getString("nama");
-                Double karbohidrat = jsonArray.getJSONObject(i).getDouble("karbohidrat");
-                Double protein = jsonArray.getJSONObject(i).getDouble("protein");
-                Double lemak = jsonArray.getJSONObject(i).getDouble("lemak");
-                String urt = jsonArray.getJSONObject(i).getString("urt");
+                double karbohidrat = jsonArray.getJSONObject(i).getDouble("karbohidrat");
+                double protein = jsonArray.getJSONObject(i).getDouble("protein");
+                double lemak = jsonArray.getJSONObject(i).getDouble("lemak");
+                double urt = jsonArray.getJSONObject(i).getDouble("urt");
                 int tipe = jsonArray.getJSONObject(i).getInt("tipe");
-                Double kalori = jsonArray.getJSONObject(i).getDouble("kalori");
-                MakananExternal makanan = new MakananExternal()
-
+                double kalori = jsonArray.getJSONObject(i).getDouble("kalori");
+                MakananExternal makanan = new MakananExternal(tipe, kalori, karbohidrat, protein, urt, lemak, nama);
+                listAll.add(makanan);
             }
+            for (MakananExternal makanan : listAll) {
+                if(makanan.getJenis()==1) {
+                    listKarboSpinner.add(makanan);
+                } else if(makanan.getJenis()==2) {
+                    listProteinSpinner.add(makanan);
+                } else if(makanan.getJenis()==3) {
+                    listLemakSpinner.add(makanan);
+                } else if(makanan.getJenis()==4) {
+                    listSayuranSpinner.add(makanan);
+                } else if(makanan.getJenis()==5) {
+                    listBuahSpinner.add(makanan);
+                } else if(makanan.getJenis()==6) {
+                    listSusuSpinner.add(makanan);
+                } else if(makanan.getJenis()==7) {
+                    listMinyakSpinner.add(makanan);
+                }
+            }
+            mAdapter.notifyDataSetChanged();
+            list_item.invalidateViews();
+            list_item.refreshDrawableState();
+            Log.d("iniape", "getDataFromDatabase: " + listSusuSpinner.toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -196,6 +245,9 @@ public class TambahJadwalExternal extends AppCompatActivity {
 
         if(requestCode == 200) {
             if(resultCode == Activity.RESULT_OK) {
+                Log.d("masuksini", "onActivityResult: ");
+                getDataFromDatabase();
+                mAdapter.notifyDataSetChanged();
 //                final String result = data.getStringExtra(TambahJadwalExternal.EXTRA_DATA);
 //                Gson gson = new Gson();
 //                MakananExternal makanan =  gson.fromJson(result, MakananExternal.class);
@@ -204,6 +256,8 @@ public class TambahJadwalExternal extends AppCompatActivity {
 //                jadwalMakanan.setLemak(makanan.getUrt());
 //                jadwalMakanan.setProtein(makanan.getProtein());
 //                jadwalMakanan.setTotalKalori(10);
+
+
 
             } else {
                 // AnotherActivity was not successful. No data to retrieve.
@@ -282,20 +336,47 @@ public class TambahJadwalExternal extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
 //            NumericViewHolder holder = new NumericViewHolder();
             if (convertView == null) {
-
+                String namaTipe = mData.get(position);
                 convertView = mInflater.inflate(R.layout.tambah_jadwal_external_row, null);
                 TextView namaMakanan = (TextView) convertView.findViewById(R.id.namaMakanan);
-                namaMakanan.setText(mData.get(position));
-                Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
-                if(mData.get(position).equalsIgnoreCase("karbohidrat")) {
+                namaMakanan.setText(namaTipe);
+                final Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
+                ArrayList<MakananExternal> listSpinner = new ArrayList<>();
 
+//                1 = Karbohidrat
+//                2 = protein
+//                3 = lemak
+//                4 = sayuran
+//                5 = buah/gula
+//                6 = susu
+//                7 = minyak
+
+                ArrayAdapter<MakananExternal> adapter;
+                if(namaTipe.equalsIgnoreCase("karbohidrat")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listKarboSpinner);
+                } else if(namaTipe.equalsIgnoreCase("protein")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listProteinSpinner);
+                } else if(namaTipe.equalsIgnoreCase("lemak")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listLemakSpinner);
+                } else if(namaTipe.equalsIgnoreCase("sayuran")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listSayuranSpinner);
+                } else if(namaTipe.equalsIgnoreCase("buah/gula")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listBuahSpinner);
+                } else if(namaTipe.equalsIgnoreCase("susu")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listSusuSpinner);
+                } else if(namaTipe.equalsIgnoreCase("minyak")) {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listMinyakSpinner);
+                } else {
+                    adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item, listAll);
                 }
 
-
                 String[] countries = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, countries);
+
                 adapter.setDropDownViewResource(R.layout.spinner_layout);
                 spinner.setAdapter(adapter);
+
+
+                final TextView kaloriView = convertView.findViewById(R.id.kaloriTotalSatuan);
 
                 final EditText jumlahView = (EditText) convertView.findViewById(R.id.jumlah);
                 jumlahView.addTextChangedListener(new TextWatcher() {
@@ -321,8 +402,46 @@ public class TambahJadwalExternal extends AppCompatActivity {
                                 String newMakanan = "Tambahan";
                                 mAdapter.addItem(newMakanan);
                             }
+
+                            MakananExternal a = (MakananExternal) spinner.getSelectedItem();
+                            double kal = a.getKalori();
+//                            double urt = Double.parseDouble(a.getUrt());
+                            int jumlah = Integer.parseInt(jumlahView.getText().toString());
+                            double total = kal * jumlah;
+//                            double total = kal * jumlah / urt;
+                            kaloriView.setText(total + "");
+                        } else {
+                            kaloriView.setText("0");
+
+                            //itung lagi kalori total
+                            //kalo bisa delete listviewnya
                         }
                     }
+                });
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        if(!jumlahView.getText().toString().equals("")) {
+                            MakananExternal a = (MakananExternal) spinner.getSelectedItem();
+                            double kal = a.getKalori();
+//                            double urt = Double.parseDouble(a.getUrt());
+                            int jumlah = Integer.parseInt(jumlahView.getText().toString());
+                            double total = kal * jumlah;
+//                            double total = kal * jumlah / urt;
+                            kaloriView.setText(total + "");
+                        } else {
+                            kaloriView.setText("0");
+
+                            //itung lagi kalori total
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
                 });
             }
 

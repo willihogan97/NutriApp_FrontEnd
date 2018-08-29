@@ -33,13 +33,13 @@ public class Parenteral implements Parcelable {
     }
 
     public Parenteral(Parcel in) {
-        this.calories = Double.parseDouble(in.readString());
-        this.carbohydrate = Double.parseDouble(in.readString());
-        this.electrolite = Double.parseDouble(in.readString());
-        this.fat = Double.parseDouble(in.readString());
         this.name = in.readString();
-        this.protein = Double.parseDouble(in.readString());
         this.volume = Double.parseDouble(in.readString());
+        this.carbohydrate = Double.parseDouble(in.readString());
+        this.protein = Double.parseDouble(in.readString());
+        this.fat = Double.parseDouble(in.readString());
+        this.electrolite = Double.parseDouble(in.readString());
+        this.calories = Double.parseDouble(in.readString());
     }
 
         @Override

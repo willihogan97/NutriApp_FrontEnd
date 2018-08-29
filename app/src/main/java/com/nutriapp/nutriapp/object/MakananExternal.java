@@ -1,15 +1,15 @@
 package com.nutriapp.nutriapp.object;
 
 public class MakananExternal {
-    double jenis;
+    int jenis;
     double kalori;
     double karbohidrat;
     double protein;
-    String urt;
+    double urt;
     double lemak;
     String nama;
 
-    public MakananExternal(double jenis, double kalori, double karbohidrat, double protein, String urt, double lemak, String nama) {
+    public MakananExternal(int jenis, double kalori, double karbohidrat, double protein, double urt, double lemak, String nama) {
         this.jenis = jenis;
         this.kalori = kalori;
         this.karbohidrat = karbohidrat;
@@ -17,6 +17,11 @@ public class MakananExternal {
         this.urt = urt;
         this.lemak = lemak;
         this.nama = nama;
+    }
+
+    @Override
+    public String toString() {
+        return this.nama;
     }
 
     public String getNama() {
@@ -27,11 +32,11 @@ public class MakananExternal {
         this.nama = nama;
     }
 
-    public double getJenis() {
+    public int getJenis() {
         return jenis;
     }
 
-    public void setJenis(double jenis) {
+    public void setJenis(int jenis) {
         this.jenis = jenis;
     }
 
@@ -59,11 +64,11 @@ public class MakananExternal {
         this.protein = protein;
     }
 
-    public String getUrt() {
+    public double getUrt() {
         return urt;
     }
 
-    public void setUrt(String urt) {
+    public void setUrt(double urt) {
         this.urt = urt;
     }
 

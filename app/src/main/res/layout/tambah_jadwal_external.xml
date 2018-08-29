@@ -59,6 +59,18 @@
                     android:layout_weight="0.5" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Spinner
+                    style="@style/normalFont"
+                    android:id="@+id/spinnerTipeMakananExternal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginLeft="100dp" />
+            </LinearLayout>
+
 
             <ListView
                 android:id="@+id/list_item"
