@@ -43,6 +43,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import steelkiwi.com.library.DotsLoaderView;
+
 @SuppressLint("Registered")
 public class Parenteral extends AppCompatActivity {
 
@@ -51,6 +53,7 @@ public class Parenteral extends AppCompatActivity {
     LinearLayout selection, volume, detail;
     TextView karbohidrat, protein, lemak, elektrolit, kalori, sisa;
     InfoPribadi infoPribadi;
+    DotsLoaderView dotsLoaderView;
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
@@ -70,6 +73,7 @@ public class Parenteral extends AppCompatActivity {
         elektrolit = findViewById(R.id.electroliteDetailVslue);
         kalori = findViewById(R.id.caloriesDetailVslue);
         sisa = findViewById(R.id.caloriesRemaindersValue);
+        dotsLoaderView = findViewById(R.id.loader);
 
         selection.setVisibility(View.VISIBLE);
         volume.setVisibility(View.GONE);
@@ -78,34 +82,71 @@ public class Parenteral extends AppCompatActivity {
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
 
-        String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
+        final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
         //String to place our result in
         final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
-        String result;
-        HttpGetRequest getRequest = new HttpGetRequest();
+        final String[] result = new String[1];
+        final HttpGetRequest getRequest = new HttpGetRequest();
 
         //Perform the doInBackground method, passing in our url
-        try {
-            result = getRequest.execute(myUrl).get();
-            Log.d("resultnya apa nih", "onCreate: " + result);
-            JSONObject jsnobject = new JSONObject(result);
-            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
-
-            for (int i = 0; i < jsonArrayResult.length(); i++) {
-                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
-                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
-                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
-                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
-                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
-                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
-                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
-                listAll.add(parenteral);
+        @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
+            @Override
+            protected void onPreExecute() {
+                dotsLoaderView.show();
             }
 
-        } catch (InterruptedException | ExecutionException | JSONException e) {
-            e.printStackTrace();
-        }
+            @Override
+            protected String doInBackground(String... strings) {
+                try{
+                    result[0] = getRequest.execute(myUrl).get();
+                    Log.d("resultnya apa nih", "onCreate: " + result[0]);
+                    JSONObject jsnobject = new JSONObject(result[0]);
+                    JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+
+                    for (int i = 0; i < jsonArrayResult.length(); i++) {
+                        String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+                        double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+                        double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+                        double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+                        double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+                        double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+                        com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+                        listAll.add(parenteral);
+                    }
+                } catch (InterruptedException | ExecutionException | JSONException e){
+                    e.printStackTrace();
+                }
+                return "done";
+            }
+
+            @Override
+            protected void onPostExecute(String string) {
+                if(string.equals("done"))
+                    dotsLoaderView.hide();
+            }
+        };
+        loaderAsync.execute();
+//        try {
+////            result = getRequest.execute(myUrl).get();
+////            Log.d("resultnya apa nih", "onCreate: " + result);
+////            JSONObject jsnobject = new JSONObject(result);
+////            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+////
+////            for (int i = 0; i < jsonArrayResult.length(); i++) {
+////                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+////                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+////                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+////                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+////                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+////                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+////                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+////                listAll.add(parenteral);
+////            }
+////
+////        } catch (InterruptedException | ExecutionException | JSONException e) {
+////            e.printStackTrace();
+////        }
 
         final Spinner s = findViewById(R.id.parenteralSelection);
         ArrayAdapter<com.nutriapp.nutriapp.object.Parenteral> adapter = new ArrayAdapter<>(this,

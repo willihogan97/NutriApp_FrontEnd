@@ -62,11 +62,6 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
 
     <!--BUAT ITEM SPINNER-->
-    <string-array name="spinnerBMI">
-        <item>Berat - Tinggi Badan</item>
-        <item>LLA</item>
-    </string-array>
-
     <string-array name="spinnerJK">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
