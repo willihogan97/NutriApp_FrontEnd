@@ -26,8 +26,9 @@ public class InfoPribadi implements Parcelable{
     double persentaseProtein;
     double persentaseLemak;
 
-    public InfoPribadi() {
-
+    public InfoPribadi(double totalKalori, double totalKaloriCair) {
+        this.totalKalori = totalKalori;
+        this.totalKaloriCair = totalKaloriCair;
     }
 
     public InfoPribadi(double berat, double tinggi, double skinFold, double lla, double bmi, double sheerFactor,
@@ -47,17 +48,17 @@ public class InfoPribadi implements Parcelable{
     }
 
     public InfoPribadi(Parcel in) {
-        this.berat = Double.parseDouble(in.readString());
-        this.tinggi = Double.parseDouble(in.readString());
-        this.skinFold = Double.parseDouble(in.readString());
-        this.lla = Double.parseDouble(in.readString());
-        this.bmi = Double.parseDouble(in.readString());
-        this.sheerFactor = Double.parseDouble(in.readString());
-        this.totalKalori = Double.parseDouble(in.readString());
-        this.totalKaloriCair = Double.parseDouble(in.readString());
-        this.persentaseKarbo = Double.parseDouble(in.readString());
-        this.persentaseProtein = Double.parseDouble(in.readString());
-        this.persentaseLemak = Double.parseDouble(in.readString());
+        this.berat = in.readDouble();
+        this.tinggi = in.readDouble();
+        this.skinFold = in.readDouble();
+        this.lla = in.readDouble();
+        this.bmi = in.readDouble();
+        this.sheerFactor = in.readDouble();
+        this.totalKalori = in.readDouble();
+        this.totalKaloriCair = in.readDouble();
+        this.persentaseKarbo = in.readDouble();
+        this.persentaseProtein = in.readDouble();
+        this.persentaseLemak = in.readDouble();
     }
 
     @Override

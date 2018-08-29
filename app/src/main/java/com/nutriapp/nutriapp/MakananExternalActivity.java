@@ -181,7 +181,7 @@ public class MakananExternalActivity extends AppCompatActivity{
             totalLemak += jadwal.getLemak();
             totalProtein += jadwal.getProtein();
         }
-        double remain = Double.parseDouble(infoPribadi.getTotalKalori()) - parenteral.getCalories() - (totalKal);
+        double remain = infoPribadi.getTotalKalori() - parenteral.getCalories() - (totalKal);
         String sisaText = dec.format((remain)) + "Kkal";
         sisaKalori.setText(sisaText);
         totalKaloriJadwal.setText(dec.format(totalKal));

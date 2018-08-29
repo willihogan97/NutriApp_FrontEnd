@@ -36,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -49,8 +50,11 @@ public class TambahJadwalExternal extends AppCompatActivity {
     List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
     JadwalMakananExternal jadwalMakanan;
     Spinner spinner;
+    TextView totalKalSeluruh;
+    double totalKalSeluruhDouble = 0;
+    DecimalFormat dec;
 
-    public static EditText totalKalori, buttonPickTime;
+    public static EditText buttonPickTime;
 
     //ListView
     private ListView list_item;
@@ -60,6 +64,8 @@ public class TambahJadwalExternal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_jadwal_external);
+
+        dec = new DecimalFormat("#.0");
 
         //Inisiasi ListView
         mAdapter = new MyCustomAdapter();
@@ -78,7 +84,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
         jadwalMakanan = new JadwalMakananExternal();
         listMakanan = new ArrayList<MakananExternal>();
 
-        totalKalori = (EditText) findViewById(R.id.totalKal);
+        totalKalSeluruh = (TextView) findViewById(R.id.totalKal);
         buttonPickTime = (EditText) findViewById(R.id.pickTime);
 
         final View buttonPlus = findViewById(R.id.btnPlus);
@@ -390,6 +396,13 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable s) {
 
+                        double kaloriSebelumnya;
+                        if(!kaloriView.getText().toString().equals("")) {
+                            kaloriSebelumnya = Double.parseDouble(kaloriView.getText().toString());
+                        } else {
+                            kaloriSebelumnya = 0;
+                        }
+
                         if(!jumlahView.getText().toString().equals("")) {
                             isType.set(position, true);
                             Boolean isAllTyped = true;
@@ -405,12 +418,16 @@ public class TambahJadwalExternal extends AppCompatActivity {
 
                             MakananExternal a = (MakananExternal) spinner.getSelectedItem();
                             double kal = a.getKalori();
-//                            double urt = Double.parseDouble(a.getUrt());
+                            double urt = a.getUrt();
                             int jumlah = Integer.parseInt(jumlahView.getText().toString());
-                            double total = kal * jumlah;
-//                            double total = kal * jumlah / urt;
-                            kaloriView.setText(total + "");
+//                            double total = kal * jumlah;
+                            double total = kal * jumlah / urt;
+                            kaloriView.setText(dec.format(total));
+                            totalKalSeluruhDouble = totalKalSeluruhDouble - kaloriSebelumnya + total;
+                            totalKalSeluruh.setText(dec.format(totalKalSeluruhDouble));
                         } else {
+                            totalKalSeluruhDouble = totalKalSeluruhDouble - kaloriSebelumnya;
+                            totalKalSeluruh.setText(dec.format(totalKalSeluruhDouble));
                             kaloriView.setText("0");
 
                             //itung lagi kalori total
@@ -422,16 +439,25 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        double kaloriSebelumnya;
+                        if(!kaloriView.getText().toString().equals("")) {
+                            kaloriSebelumnya = Double.parseDouble(kaloriView.getText().toString());
+                        } else {
+                            kaloriSebelumnya = 0;
+                        }
                         if(!jumlahView.getText().toString().equals("")) {
                             MakananExternal a = (MakananExternal) spinner.getSelectedItem();
                             double kal = a.getKalori();
-//                            double urt = Double.parseDouble(a.getUrt());
+                            double urt = a.getUrt();
                             int jumlah = Integer.parseInt(jumlahView.getText().toString());
-                            double total = kal * jumlah;
-//                            double total = kal * jumlah / urt;
-                            kaloriView.setText(total + "");
+                            double total = kal * jumlah / urt;
+                            kaloriView.setText(dec.format(total));
+                            totalKalSeluruhDouble = totalKalSeluruhDouble - kaloriSebelumnya + total;
+                            totalKalSeluruh.setText(dec.format(totalKalSeluruhDouble));
                         } else {
                             kaloriView.setText("0");
+                            totalKalSeluruhDouble = totalKalSeluruhDouble - kaloriSebelumnya;
+                            totalKalSeluruh.setText(dec.format(totalKalSeluruhDouble));
 
                             //itung lagi kalori total
                         }
