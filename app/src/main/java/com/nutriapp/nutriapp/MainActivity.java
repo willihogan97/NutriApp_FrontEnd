@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static double standarLLA;
     Button btnnext;
-    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, mlView, karbo, protein, lemak;
+    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, stressFactorView, multiplier, mlView, karbo, protein, lemak;
     LinearLayout percentage, cairan, totKal, normalKal, bmiLayout, hitunganKalori, btn, llaResult, stressFactor;
     TextView bmi, bmiStatus, llaStatus, totKalori, totCair, llaCount;
     public static final String INFO = "INFO_PRIBADI";
@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         kkalView = findViewById(R.id.kalori);
         mlView =  findViewById(R.id.mlkal);
         llaView =  findViewById(R.id.lla);
+        stressFactorView = findViewById(R.id.sheerFac);
+        multiplier = findViewById(R.id.multiply);
         karbo =  findViewById(R.id.karbohidrat);
         protein =  findViewById(R.id.protein);
         lemak =  findViewById(R.id.lemak);
@@ -123,7 +125,14 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) { }
         });
 
-        kkalView.addTextChangedListener(new GenericTextWatcher(kkalView));
+        if(normalKal.getVisibility() == View.VISIBLE) {
+            kkalView.addTextChangedListener(new GenericTextWatcher(kkalView));
+        }
+
+        if(stressFactor.getVisibility() == View.VISIBLE){
+            stressFactorView.addTextChangedListener(new GenericTextWatcher(stressFactorView));
+            multiplier.addTextChangedListener(new GenericTextWatcher(multiplier));
+        }
         mlView.addTextChangedListener(new GenericTextWatcher(mlView));
         karbo.addTextChangedListener(new GenericTextWatcher(karbo));
         protein.addTextChangedListener(new GenericTextWatcher(protein));
@@ -171,6 +180,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+                Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
+                totKalori.setText(Double.toString(kalori));
+                cairan.setVisibility(View.VISIBLE);
+                totKal.setVisibility(View.VISIBLE);
+            }
+
+            if(!stressFactorView.getText().toString().equals("") && !multiplier.getText().toString().equals("")){
                 Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
                 totKalori.setText(Double.toString(kalori));
                 cairan.setVisibility(View.VISIBLE);
