@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         llaCount =  findViewById(R.id.llaCount);
         llaStatus =  findViewById(R.id.llaStatus);
         dotsLoaderView = findViewById(R.id.loader);
+        skinFoldView = findViewById(R.id.SkinFold);
 
         percentage.setVisibility(View.GONE);
         cairan.setVisibility(View.GONE);
@@ -142,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
+//            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
 
-//            InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView), checkNull(tinggiBadanView),
-//                    checkNull(skinFoldView), checkNull(llaView), Double.parseDouble(bmi.getText().toString()),
-//                    checkNull(stressFactorView), Double.parseDouble(totKalori.getText().toString()),
-//                    Double.parseDouble(totCair.getText().toString()), checkNull(karbo), checkNull(protein),  checkNull(lemak));
+            InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
+                    checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
+                    checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
+                    Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
             intent.putExtra(INFO, infoPribadi);
             startActivityForResult(intent, 200);
             }
@@ -230,14 +231,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public double checkNull (EditText string){
-        Log.d("check",string.getText().toString());
-        if(string.getText().toString().matches("")){
+    public double checkNull (String string){
+        Log.d("check",string);
+        if(string.equals("")){
             Log.d("MyApp","I am");
             return 0;
         } else {
             Log.d("MyApp","I am here");
-            return Double.parseDouble(string.getText().toString());
+            return Double.parseDouble(string);
         }
     }
 }
