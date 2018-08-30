@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.5"
-                    android:text="@string/tipe_bmi" />
+                    android:text="@string/berat_badan" />
 
                 <TextView
                     style="@style/normalFont"
@@ -38,164 +38,21 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.1" />
 
-                <Spinner
+                <EditText
                     style="@style/normalFont"
-                    android:id="@+id/bmidropdown"
+                    android:id="@+id/beratBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/normalBMI"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1.5"
-                        android:text="@string/berat_badan" />
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/colon"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.1" />
-
-                    <EditText
-                        style="@style/normalFont"
-                        android:id="@+id/beratBadan"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:inputType="numberDecimal"
-                        android:maxLines="1" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1.5"
-                        android:text="@string/tinggi_badan" />
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/colon"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.1" />
-
-                    <EditText
-                        style="@style/normalFont"
-                        android:id="@+id/tinggiBadan"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:inputType="numberDecimal" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/otherBMI"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1.5"
-                        android:text="@string/jenis_kelamin" />
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/colon"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.1" />
-
-                    <Spinner
-                        style="@style/normalFont"
-                        android:id="@+id/jkdropdown"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="2"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1.5"
-                        android:text="@string/lla" />
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:id="@+id/FoodURTColon"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/colon"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.1" />
-
-                    <EditText
-                        style="@style/normalFont"
-                        android:id="@+id/lla"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:inputType="numberDecimal"
-                        android:ems="10" />
-                </LinearLayout>
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:id="@+id/llaResult"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -203,32 +60,25 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.7"/>
-
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/llaCount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.9"/>
+                    android:layout_weight="1.5"
+                    android:text="@string/tinggi_badan" />
 
                 <TextView
                     style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@string/colon"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="@dimen/vertical_margin"
-                    android:layout_weight="0.1"
-                    android:text="@string/percent" />
+                    android:layout_weight="0.1" />
 
-                <TextView
+                <EditText
                     style="@style/normalFont"
-                    android:id="@+id/llaStatus"
+                    android:id="@+id/tinggiBadan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -262,6 +112,111 @@
                     android:layout_weight="2"
                     android:inputType="numberDecimal"
                     android:orientation="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/jenis_kelamin" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1" />
+
+                <Spinner
+                    style="@style/normalFont"
+                    android:id="@+id/jkdropdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/lla" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/FoodURTColon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1" />
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/lla"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="numberDecimal"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:id="@+id/llaResult"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.7"/>
+
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/llaCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.9"/>
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/vertical_margin"
+                    android:layout_weight="0.1"
+                    android:text="@string/percent" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/llaStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
@@ -402,7 +357,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:ems="10" />
 
                 <TextView
@@ -420,7 +375,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:layout_gravity="center_vertical"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:ems="10" />
             </LinearLayout>
 

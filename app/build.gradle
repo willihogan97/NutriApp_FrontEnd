@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.nutriapp.nutriapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -28,4 +28,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:gridlayout-v7:27.1.1'
     compile 'com.android.volley:volley:1.1.1'
+    compile 'com.steelkiwi:dots-loader-view:1.0.0'
 }
