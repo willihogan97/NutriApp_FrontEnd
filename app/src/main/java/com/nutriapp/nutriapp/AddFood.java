@@ -25,6 +25,8 @@ import com.nutriapp.nutriapp.object.Parenteral;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 @SuppressLint("Registered")
 public class AddFood extends AppCompatActivity {
 
@@ -86,21 +88,18 @@ public class AddFood extends AppCompatActivity {
                         , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
                 String makanan = (new Gson().toJson(makananBaru));
                 //Tinggal kasi ke backend
+                String result = addDatabase("/api/external/add", makananBaru);
 
                 final Intent data = new Intent();
                 data.putExtra(EXTRA_DATA, makanan);
-
                 setResult(Activity.RESULT_OK, data);
                 finish();
-
-                addDatabase("/api/external/add", makananBaru);
-                setContentView(R.layout.tambah_jadwal_external);
             }
         });
     }
 
     public String addDatabase(final String url, MakananExternal makananExternal) {
-        StringBuilder result = new StringBuilder();
+        String result = "";
 
         //url backend
         String apiUrl = "http://nutriapp-backend.herokuapp.com" + url;
@@ -118,24 +117,50 @@ public class AddFood extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        RequestQueue req = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
+        HttpSendRequest getRequest = new HttpSendRequest();
+        try {
+            result = getRequest.execute(apiUrl, json.toString()).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.e("isinya", "sendGet: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
+//        String myUrl = "http://nutriapp-backend.herokuapp.com/api/external/add";
+//
+//        String result;
+//        JSONObject json = new JSONObject();
+//        try {
+//            json.put("nama", "student");
+//            json.put("tipe", 2);
+//            json.put("urt", 3);
+//            json.put("karbohidrat", 2);
+//            json.put("protein", 4);
+//            json.put("lemak", 5);
+//            json.put("kalori", 1);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.d("asd", "onErrorResponse: asd");
-                    }
-                });
-
-        req.add(jsonObjectRequest);
+//        RequestQueue req = Volley.newRequestQueue(this);
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+//                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
+//
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.e("isinya", "sendGet: " + response.toString());
+//                    }
+//                }, new Response.ErrorListener() {
+//
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        // TODO: Handle error
+//                        Log.d("asd", "onErrorResponse: asd");
+//                    }
+//                });
+//
+//        req.add(jsonObjectRequest);
 
         return result.toString();
     }

@@ -182,12 +182,13 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-            InfoPribadi infoPribadi = new InfoPribadi(Double.parseDouble(beratBadanView.getText().toString()),
-                    Double.parseDouble(tinggiBadanView.getText().toString()), Double.parseDouble(skinFoldView.getText().toString()),
-                    Double.parseDouble(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
-                    Double.parseDouble(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
-                    Double.parseDouble(totCair.getText().toString()), Double.parseDouble(karbo.getText().toString()),
-                    Double.parseDouble(protein.getText().toString()), Double.parseDouble(protein.getText().toString()));
+//            InfoPribadi infoPribadi = new InfoPribadi(Double.parseDouble(beratBadanView.getText().toString()),
+//                    Double.parseDouble(tinggiBadanView.getText().toString()), Double.parseDouble(skinFoldView.getText().toString()),
+//                    Double.parseDouble(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
+//                    Double.parseDouble(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
+//                    Double.parseDouble(totCair.getText().toString()), Double.parseDouble(karbo.getText().toString()),
+//                    Double.parseDouble(protein.getText().toString()), Double.parseDouble(protein.getText().toString()));
+            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
             intent.putExtra(INFO, infoPribadi);
             startActivityForResult(intent, 200);
             }

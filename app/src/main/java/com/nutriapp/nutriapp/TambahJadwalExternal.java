@@ -212,6 +212,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
             }
             mAdapter.notifyDataSetChanged();
             list_item.invalidateViews();
+            list_item.invalidate();
             list_item.refreshDrawableState();
             Log.d("iniape", "getDataFromDatabase: " + listSusuSpinner.toString());
         } catch (InterruptedException e) {
