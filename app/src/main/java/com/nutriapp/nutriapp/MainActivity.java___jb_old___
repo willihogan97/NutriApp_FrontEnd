@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
-                if(Double.parseDouble(kkalView.getText().toString()) <= 20 && Double.parseDouble(kkalView.getText().toString()) >= 35) {
+                if(Double.parseDouble(kkalView.getText().toString()) <= 20 | Double.parseDouble(kkalView.getText().toString()) >= 35) {
                     Toast.makeText(getApplicationContext(), "Kkal harus dalam range 20-35", Toast.LENGTH_LONG);
                 } else {
                     Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(!stressFactorView.getText().toString().equals("") && !multiplier.getText().toString().equals("")){
-                if(Double.parseDouble(stressFactorView.getText().toString()) <= 20 && Double.parseDouble(multiplier.getText().toString()) >= 35) {
+                if(Double.parseDouble(stressFactorView.getText().toString()) <= 20 | Double.parseDouble(multiplier.getText().toString()) >= 35) {
                     Toast.makeText(getApplicationContext(), "Stress factor dan pengali tidak sesuai", Toast.LENGTH_LONG);
                 } else {
                     Double kalori = Double.parseDouble(stressFactorView.getText().toString()) * Double.parseDouble(multiplier.getText().toString());

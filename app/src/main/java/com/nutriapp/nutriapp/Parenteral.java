@@ -55,7 +55,7 @@ public class Parenteral extends AppCompatActivity {
     InfoPribadi infoPribadi;
     DotsLoaderView dotsLoaderView;
     ArrayAdapter<com.nutriapp.nutriapp.object.Parenteral> adapter;
-     Spinner s ;
+    Spinner s;
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";

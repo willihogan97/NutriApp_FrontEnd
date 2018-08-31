@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -47,26 +48,32 @@ public class AddParenteral extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carbohydrate = carbohydrateView.getText().toString();
-                name = nameView.getText().toString();
-                protein = proteinView.getText().toString();
-                calories = caloriesView.getText().toString();
-                fat = fatView.getText().toString();
-                volume = volumeView.getText().toString();
-                electrolite = electroliteView.getText().toString();
+                if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("") | proteinView.getText().toString().equals("")
+                        | caloriesView.getText().toString().equals("") | fatView.getText().toString().equals("")
+                        | volumeView.getText().toString().equals("") | electroliteView.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG);
+                } else {
+                    carbohydrate = carbohydrateView.getText().toString();
+                    name = nameView.getText().toString();
+                    protein = proteinView.getText().toString();
+                    calories = caloriesView.getText().toString();
+                    fat = fatView.getText().toString();
+                    volume = volumeView.getText().toString();
+                    electrolite = electroliteView.getText().toString();
 
-                Parenteral makananBaru = new Parenteral(name, Double.parseDouble(volume),
-                        Double.parseDouble(carbohydrate), Double.parseDouble(protein), Double.parseDouble(fat),
-                        Double.parseDouble(electrolite), Double.parseDouble(calories));
-                String makanan = (new Gson().toJson(makananBaru));
-                final Intent data = new Intent();
-                data.putExtra(EXTRA_DATA, makanan);
+                    Parenteral makananBaru = new Parenteral(name, Double.parseDouble(volume),
+                            Double.parseDouble(carbohydrate), Double.parseDouble(protein), Double.parseDouble(fat),
+                            Double.parseDouble(electrolite), Double.parseDouble(calories));
+                    String makanan = (new Gson().toJson(makananBaru));
+                    final Intent data = new Intent();
+                    data.putExtra(EXTRA_DATA, makanan);
 
-                setResult(Activity.RESULT_OK, data);
-                finish();
+                    setResult(Activity.RESULT_OK, data);
+                    finish();
 
-                addDatabase("/api/parenteral/add", makananBaru);
-                setContentView(R.layout.parenteral);
+                    addDatabase("/api/parenteral/add", makananBaru);
+                    setContentView(R.layout.parenteral);
+                }
             }
         });
     }

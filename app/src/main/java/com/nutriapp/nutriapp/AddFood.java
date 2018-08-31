@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -61,39 +62,46 @@ public class AddFood extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carbohydrate = carbohydrateView.getText().toString();
-                name = nameView.getText().toString();
-                protein = proteinView.getText().toString();
-                calories = caloriesView.getText().toString();
-                fat = fatView.getText().toString();
-                urt = urtView.getText().toString();
-                int tipe = 0;
-                if(s.getSelectedItem().toString().equalsIgnoreCase("Karbohidrat")) {
-                    tipe = 1;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("protein")) {
-                    tipe = 2;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("lemak")) {
-                    tipe = 3;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("sayuran")) {
-                    tipe = 4;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("buah/gula")) {
-                    tipe = 5;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("susu")) {
-                    tipe = 6;
-                } else if(s.getSelectedItem().toString().equalsIgnoreCase("minyak")) {
-                    tipe = 7;
+                if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("")
+                        | proteinView.getText().toString().equals("") | caloriesView.getText().toString().equals("")
+                        | fatView.getText().toString().equals("") | urtView.getText().toString().equals("")
+                        | s.getSelectedItem().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG);
+                } else {
+                    carbohydrate = carbohydrateView.getText().toString();
+                    name = nameView.getText().toString();
+                    protein = proteinView.getText().toString();
+                    calories = caloriesView.getText().toString();
+                    fat = fatView.getText().toString();
+                    urt = urtView.getText().toString();
+                    int tipe = 0;
+                    if (s.getSelectedItem().toString().equalsIgnoreCase("Karbohidrat")) {
+                        tipe = 1;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("protein")) {
+                        tipe = 2;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("lemak")) {
+                        tipe = 3;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("sayuran")) {
+                        tipe = 4;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("buah/gula")) {
+                        tipe = 5;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("susu")) {
+                        tipe = 6;
+                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("minyak")) {
+                        tipe = 7;
+                    }
+
+                    MakananExternal makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
+                            , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
+                    String makanan = (new Gson().toJson(makananBaru));
+                    //Tinggal kasi ke backend
+                    String result = addDatabase("/api/external/add", makananBaru);
+
+                    final Intent data = new Intent();
+                    data.putExtra(EXTRA_DATA, makanan);
+                    setResult(Activity.RESULT_OK, data);
+                    finish();
                 }
-
-                MakananExternal makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
-                        , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
-                String makanan = (new Gson().toJson(makananBaru));
-                //Tinggal kasi ke backend
-                String result = addDatabase("/api/external/add", makananBaru);
-
-                final Intent data = new Intent();
-                data.putExtra(EXTRA_DATA, makanan);
-                setResult(Activity.RESULT_OK, data);
-                finish();
             }
         });
     }
