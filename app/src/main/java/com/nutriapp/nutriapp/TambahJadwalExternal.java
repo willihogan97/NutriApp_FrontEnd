@@ -1,12 +1,16 @@
 package com.nutriapp.nutriapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -42,6 +46,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import steelkiwi.com.library.DotsLoaderView;
+
 public class TambahJadwalExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
@@ -53,6 +59,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
     TextView totalKalSeluruh;
     double totalKalSeluruhDouble = 0;
     DecimalFormat dec;
+    DotsLoaderView dotsLoaderView;
 
     public static EditText buttonPickTime;
 
@@ -66,6 +73,28 @@ public class TambahJadwalExternal extends AppCompatActivity {
         setContentView(R.layout.tambah_jadwal_external);
 
         dec = new DecimalFormat("#.0");
+
+        dotsLoaderView = findViewById(R.id.loader);
+        @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
+            @Override
+            protected void onPreExecute() {
+                dotsLoaderView.show();
+            }
+
+            @Override
+            protected String doInBackground(String... strings) {
+                TambahJadwalExternal.this.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        addAllMandatoryFood();
+                        dotsLoaderView.hide();
+                    }
+                });
+                return "done";
+            }
+        };
+        loaderAsync.execute();
 
         //Inisiasi ListView
         mAdapter = new MyCustomAdapter();
@@ -90,8 +119,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
         final View buttonPlus = findViewById(R.id.btnPlus);
         final View buttonOk = findViewById(R.id.btnOk);
 
-        addAllMandatoryFood();
-
         //Melakukan penambahan makanan
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,48 +132,73 @@ public class TambahJadwalExternal extends AppCompatActivity {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double karbo = 0;
-                double protein = 0;
-                double lemak = 0;
-                double kalori = 0;
+                AlertDialog.Builder builder = new AlertDialog.Builder(TambahJadwalExternal.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Apa anda yakin untuk menyimpan makanan external ini ?");
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        double karbo = 0;
+                        double protein = 0;
+                        double lemak = 0;
+                        double kalori = 0;
+                        boolean isSaveable = true;
 
-                //Menghitung total semua makanan yang ada pada satu jadwal
-                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
-                    View a = getViewByPosition(i, list_item);
-                    TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
-                    TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
-                    Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
-                    MakananExternal makanan = (MakananExternal) itemSpinner.getSelectedItem();
-                    //Itung buat dapetin itu semua
-                    if(!jumlah.getText().toString().equals("")) {
-                        double jumlahInt = Integer.parseInt(jumlah.getText().toString());
-                        double urt = makanan.getUrt();
-                        double pengali = jumlahInt / urt;
-                        karbo += (makanan.getKarbohidrat()*jumlahInt);
-                        protein += (makanan.getProtein()*jumlahInt);
-                        lemak += (makanan.getLemak()*jumlahInt);
-                        kalori += (makanan.getKalori()*jumlahInt);
+                        //Menghitung total semua makanan yang ada pada satu jadwal
+                        for (int i = 0 ; i < mAdapter.getCount() ; i++) {
+                            View a = getViewByPosition(i, list_item);
+                            TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
+                            TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
+                            Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
+                            MakananExternal makanan = (MakananExternal) itemSpinner.getSelectedItem();
+                            //Itung buat dapetin itu semua
+                            if (!jumlah.getText().toString().equals("")) {
+                                double jumlahInt = Integer.parseInt(jumlah.getText().toString());
+                                double urt = makanan.getUrt();
+                                double pengali = jumlahInt / urt;
+                                karbo += (makanan.getKarbohidrat() * pengali);
+                                protein += (makanan.getProtein() * pengali);
+                                lemak += (makanan.getLemak() * pengali);
+                                kalori += (makanan.getKalori() * pengali);
+                            } else {
+                                if (i <= 7) {
+                                    CharSequence text = "Isi seluruh mandatory";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    isSaveable = false;
+                                    Toast.makeText(getApplicationContext(), text, duration).show();
+                                }
+                            }
+                        }
 
-//                        karbo += (makanan.getKarbohidrat()*pengali);
-//                        protein += (makanan.getProtein()*pengali);
-//                        lemak += (makanan.getLemak()*pengali);
-//                        kalori += (makanan.getKalori()*pengali);
+                        if(isSaveable && buttonPickTime.getText().toString().equals("")) {
+                            CharSequence text = "Isi Jam";
+                            int duration = Toast.LENGTH_SHORT;
+                            isSaveable = false;
+                            Toast.makeText(getApplicationContext(), text, duration).show();
+                        }
+
+                        if(isSaveable) {
+                            jadwalMakanan.setJam(buttonPickTime.getText().toString());
+                            jadwalMakanan.setKarbo(karbo);
+                            jadwalMakanan.setProtein(protein);
+                            jadwalMakanan.setLemak(lemak);
+                            jadwalMakanan.setTotalKalori(kalori);
+                            jadwalMakanan.setCara(spinner.getSelectedItem().toString());
+                            final Intent data = new Intent();
+                            data.putExtra(EXTRA_DATA, jadwalMakanan);
+                            setResult(Activity.RESULT_OK, data);
+                            finish();
+                        }
                     }
-//                    Log.d("namamakanan", "onClick: " + namaMakanan.getText().toString());
-//                    Log.d("jumlah", "onClick: " + jumlah.getText().toString());
-//                    Log.d("itemSpinner", "onClick: " + itemSpinner.getSelectedItem().toString());
-                }
+                });
+                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
 
-                jadwalMakanan.setJam(buttonPickTime.getText().toString());
-                jadwalMakanan.setKarbo(karbo);
-                jadwalMakanan.setProtein(protein);
-                jadwalMakanan.setLemak(lemak);
-                jadwalMakanan.setTotalKalori(kalori);
-                jadwalMakanan.setCara(spinner.getSelectedItem().toString());
-                final Intent data = new Intent();
-                data.putExtra(EXTRA_DATA, jadwalMakanan);
-                setResult(Activity.RESULT_OK, data);
-                finish();
             }
         });
 

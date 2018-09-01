@@ -140,20 +140,70 @@ public class MainActivity extends AppCompatActivity {
         protein.addTextChangedListener(new GenericTextWatcher(protein));
         lemak.addTextChangedListener(new GenericTextWatcher(lemak));
 
+        kkalView.addTextChangedListener(new GenericTextWatcher(kkalView));
+        stressFactorView.addTextChangedListener(new GenericTextWatcher(stressFactorView));
+        multiplier.addTextChangedListener(new GenericTextWatcher(multiplier));
+
         Button button = findViewById(R.id.btnNext);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-//            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
+                if(checkValidity()) {
+                    Intent intent = new Intent(getApplicationContext(), Parenteral.class);
+        //            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
 
-            InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
-                    checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
-                    checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
-                    Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
-            intent.putExtra(INFO, infoPribadi);
-            startActivityForResult(intent, 200);
+                    InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
+                            checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
+                            checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
+                            Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
+                    intent.putExtra(INFO, infoPribadi);
+                    startActivityForResult(intent, 200);
+                }
             }
         });
+    }
+
+    private boolean checkValidity() {
+        if(!beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")) {
+            if (Double.parseDouble(beratBadanView.getText().toString()) < 1 | Double.parseDouble(tinggiBadanView.getText().toString()) < 1) {
+                Toast.makeText(getApplicationContext(), "Berat badan / tinggi badan tidak sesuai", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+            if(Double.parseDouble(llaView.getText().toString()) < 1) {
+                Toast.makeText(getApplicationContext(), "LLA tidak sesuai", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+            if(Double.parseDouble(kkalView.getText().toString()) <= 20 && Double.parseDouble(kkalView.getText().toString()) >= 35) {
+                Toast.makeText(getApplicationContext(), "Kkal harus dalam range 20-35", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        if(!stressFactorView.getText().toString().equals("") && !multiplier.getText().toString().equals("")){
+            if(Double.parseDouble(stressFactorView.getText().toString()) <= 20 && Double.parseDouble(multiplier.getText().toString()) >= 35) {
+                Toast.makeText(getApplicationContext(), "Stress factor dan pengali tidak sesuai", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+            if(Double.parseDouble(mlView.getText().toString()) >= 35 && Double.parseDouble(mlView.getText().toString()) <= 45) {
+                Toast.makeText(getApplicationContext(), "ml/hari harus dalam range 35-45", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
+            if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(kkalView.getText().toString()) +
+                    Double.parseDouble(lemak.getText().toString())) <= 100) {
+                Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
     }
 
     private class GenericTextWatcher implements TextWatcher{
@@ -167,68 +217,43 @@ public class MainActivity extends AppCompatActivity {
         public void afterTextChanged(Editable editable1) {
             DecimalFormat dec = new DecimalFormat("#.0");
             if(!beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")) {
-                if(Double.parseDouble(beratBadanView.getText().toString()) < 1 | Double.parseDouble(tinggiBadanView.getText().toString()) < 1){
-                    Toast.makeText(getApplicationContext(), "Berat badan / tinggi badan tidak sesuai", Toast.LENGTH_LONG);
-                } else {
-                    //lakukan itung
-                    bmiLayout.setVisibility(View.VISIBLE);
-                    double countBMI = Double.parseDouble(beratBadanView.getText().toString()) / Math.pow(Double.parseDouble(tinggiBadanView.getText().toString()) / 100, 2);
-                    bmi.setText(dec.format(countBMI));
-                    setRightLabelBMI(countBMI);
-                    hitunganKalori.setVisibility(View.VISIBLE);
-                }
+                //lakukan itung
+                bmiLayout.setVisibility(View.VISIBLE);
+                double countBMI = Double.parseDouble(beratBadanView.getText().toString()) / Math.pow(Double.parseDouble(tinggiBadanView.getText().toString()) / 100, 2);
+                bmi.setText(dec.format(countBMI));
+                setRightLabelBMI(countBMI);
+                hitunganKalori.setVisibility(View.VISIBLE);
             }
 
             if(!llaView.getText().toString().equals("")){
-                if(Double.parseDouble(llaView.getText().toString()) < 1) {
-                    Toast.makeText(getApplicationContext(), "LLA tidak sesuai", Toast.LENGTH_LONG);
-                } else {
-                    Double lla = Double.parseDouble(llaView.getText().toString()) * 100 / MainActivity.standarLLA;
-                    llaCount.setText(dec.format(lla));
-                    setRightLabelLLA(lla);
-                    hitunganKalori.setVisibility(View.VISIBLE);
-                }
+                Double lla = Double.parseDouble(llaView.getText().toString()) * 100 / MainActivity.standarLLA;
+                llaCount.setText(dec.format(lla));
+                setRightLabelLLA(lla);
+                hitunganKalori.setVisibility(View.VISIBLE);
             }
 
             if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
-                if(Double.parseDouble(kkalView.getText().toString()) <= 20 && Double.parseDouble(kkalView.getText().toString()) >= 35) {
-                    Toast.makeText(getApplicationContext(), "Kkal harus dalam range 20-35", Toast.LENGTH_LONG);
-                } else {
-                    Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
-                    totKalori.setText(Double.toString(kalori));
-                    cairan.setVisibility(View.VISIBLE);
-                    totKal.setVisibility(View.VISIBLE);
-                }
+                Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
+                totKalori.setText(Double.toString(kalori));
+                cairan.setVisibility(View.VISIBLE);
+                totKal.setVisibility(View.VISIBLE);
             }
 
             if(!stressFactorView.getText().toString().equals("") && !multiplier.getText().toString().equals("")){
-                if(Double.parseDouble(stressFactorView.getText().toString()) <= 20 && Double.parseDouble(multiplier.getText().toString()) >= 35) {
-                    Toast.makeText(getApplicationContext(), "Stress factor dan pengali tidak sesuai", Toast.LENGTH_LONG);
-                } else {
-                    Double kalori = Double.parseDouble(stressFactorView.getText().toString()) * Double.parseDouble(multiplier.getText().toString());
-                    totKalori.setText(Double.toString(kalori));
-                    cairan.setVisibility(View.VISIBLE);
-                    totKal.setVisibility(View.VISIBLE);
-                }
+                Double kalori = Double.parseDouble(stressFactorView.getText().toString()) * Double.parseDouble(multiplier.getText().toString());
+                totKalori.setText(Double.toString(kalori));
+                cairan.setVisibility(View.VISIBLE);
+                totKal.setVisibility(View.VISIBLE);
             }
 
             if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
-                if(Double.parseDouble(mlView.getText().toString()) <= 35 | Double.parseDouble(mlView.getText().toString()) >= 45) {
-                    Toast.makeText(getApplicationContext(), "ml/hari harus dalam range 35-45", Toast.LENGTH_LONG);
-                } else {
-                    double cair = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(mlView.getText().toString());
-                    totCair.setText(Double.toString(cair));
-                    percentage.setVisibility(View.VISIBLE);
-                }
+                double cair = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(mlView.getText().toString());
+                totCair.setText(Double.toString(cair));
+                percentage.setVisibility(View.VISIBLE);
             }
 
             if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
-                if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(kkalView.getText().toString()) +
-                        Double.parseDouble(lemak.getText().toString())) <= 100) {
-                    Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG);
-                } else {
-                    btn.setVisibility(View.VISIBLE);
-                }
+                btn.setVisibility(View.VISIBLE);
             }
         }
     }

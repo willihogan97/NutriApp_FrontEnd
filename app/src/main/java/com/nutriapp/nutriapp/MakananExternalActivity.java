@@ -3,7 +3,9 @@ package com.nutriapp.nutriapp;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 
 import com.nutriapp.nutriapp.object.InfoPribadi;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
+import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
 import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
@@ -38,8 +41,6 @@ public class MakananExternalActivity extends AppCompatActivity{
 
     private ListView parentLinearLayout;
     public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori;
-    public static Spinner spinner;
-
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
 
 
@@ -67,25 +68,6 @@ public class MakananExternalActivity extends AppCompatActivity{
         totalKaloriJadwal = (TextView) findViewById(R.id.totalKaloriJadwal);
         sisaKalori = (TextView) findViewById(R.id.sisaKalori);
 
-        //Untuk Spinner
-        spinner = (Spinner)findViewById(R.id.spinnerTipeMakananExternal);
-        String[] isiSpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, isiSpinner);
-
-        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-//                Log.d("item yang dipilih", spinner.getSelectedItem().toString());
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parentView) {
-//                // your code here
-//            }
-//
-//        });
-
         //Ambil data intent
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
@@ -96,7 +78,6 @@ public class MakananExternalActivity extends AppCompatActivity{
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), TambahJadwalExternal.class);
-
             startActivityForResult(intent, 200);
             }
         });
@@ -106,11 +87,17 @@ public class MakananExternalActivity extends AppCompatActivity{
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Result.class);
-                double totalKarbo = 0;
-                double totalProtein = 0;
-                double totalLemak = 0;
-                double totalKalori = 0;
+                AlertDialog.Builder builder = new AlertDialog.Builder(MakananExternalActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Apa anda yakin untuk menyimpan makanan external ini ?");
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), Result.class);
+                        double totalKarbo = 0;
+                        double totalProtein = 0;
+                        double totalLemak = 0;
+                        double totalKalori = 0;
 //                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
 //                    View a = getViewByPosition(i, parentLinearLayout);
 //                    TextView karbo = (TextView) a.findViewById(R.id.karbo);
@@ -131,19 +118,27 @@ public class MakananExternalActivity extends AppCompatActivity{
 //                    }
 //                }
 
-                for (int i = 0 ; i < listJadwalMakananExternal.size() ; i++) {
-                    totalKalori += listJadwalMakananExternal.get(i).getTotalKalori();
-                    totalKarbo += listJadwalMakananExternal.get(i).getKarbo();
-                    totalProtein += listJadwalMakananExternal.get(i).getProtein();
-                    totalLemak += listJadwalMakananExternal.get(i).getLemak();
-                }
+                        for (int i = 0 ; i < listJadwalMakananExternal.size() ; i++) {
+                            totalKalori += listJadwalMakananExternal.get(i).getTotalKalori();
+                            totalKarbo += listJadwalMakananExternal.get(i).getKarbo();
+                            totalProtein += listJadwalMakananExternal.get(i).getProtein();
+                            totalLemak += listJadwalMakananExternal.get(i).getLemak();
+                        }
+                        TotalMakananExternal makananExternal = new TotalMakananExternal(totalKarbo + "",totalProtein + "",totalLemak + "",totalKalori + "");
+                        intent.putExtra(MAKANANEXTERNAL, makananExternal);
+                        intent.putExtra(INFO, infoPribadi);
+                        intent.putExtra(PARENTERAL, parenteral);
+                        startActivityForResult(intent, 200);
+                    }
+                });
+                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
 
-                String jenis = spinner.getSelectedItem().toString();
-                TotalMakananExternal makananExternal = new TotalMakananExternal(totalKarbo + "",totalProtein + "",totalLemak + "",totalKalori + "");
-                intent.putExtra(MAKANANEXTERNAL, makananExternal);
-                intent.putExtra(INFO, infoPribadi);
-                intent.putExtra(PARENTERAL, parenteral);
-                startActivityForResult(intent, 200);
             }
         });
 

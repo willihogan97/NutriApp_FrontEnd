@@ -23,6 +23,8 @@ import com.nutriapp.nutriapp.object.Parenteral;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 @SuppressLint("Registered")
 public class AddParenteral extends AppCompatActivity {
 
@@ -51,7 +53,7 @@ public class AddParenteral extends AppCompatActivity {
                 if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("") | proteinView.getText().toString().equals("")
                         | caloriesView.getText().toString().equals("") | fatView.getText().toString().equals("")
                         | volumeView.getText().toString().equals("") | electroliteView.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
                 } else {
                     carbohydrate = carbohydrateView.getText().toString();
                     name = nameView.getText().toString();
@@ -65,13 +67,12 @@ public class AddParenteral extends AppCompatActivity {
                             Double.parseDouble(carbohydrate), Double.parseDouble(protein), Double.parseDouble(fat),
                             Double.parseDouble(electrolite), Double.parseDouble(calories));
                     String makanan = (new Gson().toJson(makananBaru));
+                    addDatabase("/api/parenteral/add", makananBaru);
                     final Intent data = new Intent();
                     data.putExtra(EXTRA_DATA, makanan);
 
                     setResult(Activity.RESULT_OK, data);
                     finish();
-
-                    addDatabase("/api/parenteral/add", makananBaru);
                     setContentView(R.layout.parenteral);
                 }
             }
@@ -79,7 +80,7 @@ public class AddParenteral extends AppCompatActivity {
     }
 
     public String addDatabase(final String url, Parenteral parenteralModel) {
-        StringBuilder result = new StringBuilder();
+        String result = "";
 
         //url backend
         String apiUrl = "http://nutriapp-backend.herokuapp.com" + url;
@@ -97,25 +98,14 @@ public class AddParenteral extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        RequestQueue req = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.e("isinya", "sendGet: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.d("asd", "onErrorResponse: asd");
-                    }
-                });
-
-        req.add(jsonObjectRequest);
-
+        HttpSendRequest getRequest = new HttpSendRequest();
+        try {
+            result = getRequest.execute(apiUrl, json.toString()).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         return result.toString();
     }
 }

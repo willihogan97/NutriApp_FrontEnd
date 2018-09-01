@@ -2,8 +2,11 @@ package com.nutriapp.nutriapp;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,10 +26,13 @@ import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
+
+import steelkiwi.com.library.DotsLoaderView;
 
 @SuppressLint("Registered")
 public class AddFood extends AppCompatActivity {
@@ -35,11 +41,17 @@ public class AddFood extends AppCompatActivity {
     Button submit;
     EditText urtView, nameView, carbohydrateView, proteinView, fatView, caloriesView;
     String urt, name, carbohydrate, protein, fat, calories;
+    DotsLoaderView dotsLoaderView;
+    MakananExternal makananBaru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_food);
+
+        dotsLoaderView = findViewById(R.id.loader);
+        dotsLoaderView.show();
+        dotsLoaderView.hide();
 
         String[] arraySpinner = new String[] {
                 "Karbohidrat", "Protein", "Lemak", "Sayuran", "Buah/Gula", "Susu", "Minyak"
@@ -57,51 +69,88 @@ public class AddFood extends AppCompatActivity {
         fatView = (EditText) findViewById(R.id.addFoodFat);
         caloriesView = (EditText) findViewById(R.id.addFoodCalories);
 
+        @SuppressLint("StaticFieldLeak") final AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
+            @Override
+            protected void onPreExecute() {
+                dotsLoaderView.animateViews();
+                dotsLoaderView.show();
+            }
+
+            @Override
+            protected String doInBackground(String... strings) {
+                AddFood.this.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        String result = addDatabase("/api/external/add", makananBaru);
+                        dotsLoaderView.hide();
+                    }
+                });
+                return "done";
+            }
+        };
 
         submit = findViewById(R.id.buttonAddFood);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("")
-                        | proteinView.getText().toString().equals("") | caloriesView.getText().toString().equals("")
-                        | fatView.getText().toString().equals("") | urtView.getText().toString().equals("")
-                        | s.getSelectedItem().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG);
-                } else {
-                    carbohydrate = carbohydrateView.getText().toString();
-                    name = nameView.getText().toString();
-                    protein = proteinView.getText().toString();
-                    calories = caloriesView.getText().toString();
-                    fat = fatView.getText().toString();
-                    urt = urtView.getText().toString();
-                    int tipe = 0;
-                    if (s.getSelectedItem().toString().equalsIgnoreCase("Karbohidrat")) {
-                        tipe = 1;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("protein")) {
-                        tipe = 2;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("lemak")) {
-                        tipe = 3;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("sayuran")) {
-                        tipe = 4;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("buah/gula")) {
-                        tipe = 5;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("susu")) {
-                        tipe = 6;
-                    } else if (s.getSelectedItem().toString().equalsIgnoreCase("minyak")) {
-                        tipe = 7;
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddFood.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
+//                builder.setIcon(R.drawable.ic_launcher);
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("")
+                                | proteinView.getText().toString().equals("") | caloriesView.getText().toString().equals("")
+                                | fatView.getText().toString().equals("") | urtView.getText().toString().equals("")
+                                | s.getSelectedItem().toString().equals("")){
+                            Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+                        } else {
+                            carbohydrate = carbohydrateView.getText().toString();
+                            name = nameView.getText().toString();
+                            protein = proteinView.getText().toString();
+                            calories = caloriesView.getText().toString();
+                            fat = fatView.getText().toString();
+                            urt = urtView.getText().toString();
+                            int tipe = 0;
+                            if (s.getSelectedItem().toString().equalsIgnoreCase("Karbohidrat")) {
+                                tipe = 1;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("protein")) {
+                                tipe = 2;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("lemak")) {
+                                tipe = 3;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("sayuran")) {
+                                tipe = 4;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("buah/gula")) {
+                                tipe = 5;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("susu")) {
+                                tipe = 6;
+                            } else if (s.getSelectedItem().toString().equalsIgnoreCase("minyak")) {
+                                tipe = 7;
+                            }
+
+                            makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
+                                    , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
+                            String makanan = (new Gson().toJson(makananBaru));
+                            //Tinggal kasi ke backend
+                            loaderAsync.execute();
+
+                            final Intent data = new Intent();
+                            data.putExtra(EXTRA_DATA, makanan);
+                            setResult(Activity.RESULT_OK, data);
+                            finish();
+                        }
                     }
-
-                    MakananExternal makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
-                            , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
-                    String makanan = (new Gson().toJson(makananBaru));
-                    //Tinggal kasi ke backend
-                    String result = addDatabase("/api/external/add", makananBaru);
-
-                    final Intent data = new Intent();
-                    data.putExtra(EXTRA_DATA, makanan);
-                    setResult(Activity.RESULT_OK, data);
-                    finish();
-                }
+                });
+                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
@@ -133,43 +182,6 @@ public class AddFood extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-//        String myUrl = "http://nutriapp-backend.herokuapp.com/api/external/add";
-//
-//        String result;
-//        JSONObject json = new JSONObject();
-//        try {
-//            json.put("nama", "student");
-//            json.put("tipe", 2);
-//            json.put("urt", 3);
-//            json.put("karbohidrat", 2);
-//            json.put("protein", 4);
-//            json.put("lemak", 5);
-//            json.put("kalori", 1);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-
-//        RequestQueue req = Volley.newRequestQueue(this);
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-//                (Request.Method.POST, apiUrl, json, new Response.Listener<JSONObject>() {
-//
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        Log.e("isinya", "sendGet: " + response.toString());
-//                    }
-//                }, new Response.ErrorListener() {
-//
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // TODO: Handle error
-//                        Log.d("asd", "onErrorResponse: asd");
-//                    }
-//                });
-//
-//        req.add(jsonObjectRequest);
-
         return result.toString();
     }
 
