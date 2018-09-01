@@ -88,6 +88,21 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/buttonTambah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tambah_parenteral"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -265,21 +280,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="@string/sisa_kalori" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/vertical_margin">
-
-                    <Button
-                        style="@style/normalFont"
-                        android:id="@+id/buttonTambah"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tambah_parenteral"
-                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout

@@ -1,6 +1,9 @@
 package com.nutriapp.nutriapp;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,7 +19,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.InfoPribadi;
+import com.nutriapp.nutriapp.object.MakananExternal;
 
 import java.text.DecimalFormat;
 
@@ -148,9 +153,30 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(checkValidity()) {
-                    Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-        //            InfoPribadi infoPribadi = new InfoPribadi(0, 0, 0, 0, 0, 0, Double.parseDouble(totKalori.getText().toString()), Double.parseDouble(totCair.getText().toString()), 0, 0, 0);
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//                    builder.setTitle(R.string.app_name);
+//                    builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
+//                    builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.dismiss();
+//                            Intent intent = new Intent(getApplicationContext(), Parenteral.class);
+//                            InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
+//                                    checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
+//                                    checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
+//                                    Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
+//                            intent.putExtra(INFO, infoPribadi);
+//                            startActivityForResult(intent, 200);
+//                        }
+//                    });
+//                    builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.dismiss();
+//                        }
+//                    });
+//                    AlertDialog alert = builder.create();
+//                    alert.show();
 
+                    Intent intent = new Intent(getApplicationContext(), Parenteral.class);
                     InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
                             checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
                             checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
@@ -197,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
-            if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(kkalView.getText().toString()) +
+            if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
                     Double.parseDouble(lemak.getText().toString())) <= 100) {
                 Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG).show();
                 return false;

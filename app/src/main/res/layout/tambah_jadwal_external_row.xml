@@ -37,7 +37,8 @@
             android:id="@+id/jumlah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3" />
+            android:layout_weight="0.3"
+            android:inputType="numberDecimal"/>
 
         <TextView
             style="@style/normalFont"

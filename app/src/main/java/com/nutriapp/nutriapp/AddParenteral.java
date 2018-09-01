@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import steelkiwi.com.library.DotsLoaderView;
+
 @SuppressLint("Registered")
 public class AddParenteral extends AppCompatActivity {
 
@@ -33,10 +35,13 @@ public class AddParenteral extends AppCompatActivity {
     EditText volumeView, nameView, electroliteView, carbohydrateView, proteinView, fatView, caloriesView;
     String name, volume, carbohydrate, electrolite, protein, fat, calories;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_parenteral);
+
+        final DotsLoaderView loaderView = (DotsLoaderView) findViewById(R.id.loader);
 
         volumeView = (EditText) findViewById(R.id.addParenteralVolume);
         nameView = (EditText) findViewById(R.id.addParenteralName);
@@ -50,6 +55,7 @@ public class AddParenteral extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loaderView.show();
                 if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("") | proteinView.getText().toString().equals("")
                         | caloriesView.getText().toString().equals("") | fatView.getText().toString().equals("")
                         | volumeView.getText().toString().equals("") | electroliteView.getText().toString().equals("")){
@@ -70,7 +76,7 @@ public class AddParenteral extends AppCompatActivity {
                     addDatabase("/api/parenteral/add", makananBaru);
                     final Intent data = new Intent();
                     data.putExtra(EXTRA_DATA, makanan);
-
+                    loaderView.hide();
                     setResult(Activity.RESULT_OK, data);
                     finish();
                     setContentView(R.layout.parenteral);

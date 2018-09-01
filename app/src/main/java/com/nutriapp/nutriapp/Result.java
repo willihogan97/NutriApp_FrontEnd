@@ -16,6 +16,8 @@ import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+
 @SuppressLint("Registered")
 public class Result extends AppCompatActivity {
 
@@ -25,11 +27,14 @@ public class Result extends AppCompatActivity {
 
     TextView parenteralVolume, parenteralCarbohydrate, parenteralProtein, parenteralFat, parenteralElectrolite, parenteralCalories, parenteralTotal;
     TextView oralVolume, oralCarbohydrate, oralProtein, oralFat, oralElectrolite, oralCalories, oralTotal;
+    DecimalFormat dec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result);
+
+        dec = new DecimalFormat("#.0");
 
         Intent intent = getIntent();
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
@@ -54,17 +59,17 @@ public class Result extends AppCompatActivity {
         oralCalories = (TextView) findViewById(R.id.oralCalories);
         oralTotal = (TextView) findViewById(R.id.oralTotal);
 
-        parenteralVolume.setText(parenteral.getVolume() + "");
-        parenteralCarbohydrate.setText(parenteral.getCarbohydrate() + "");
-        parenteralProtein.setText(parenteral.getProtein() + "");
-        parenteralFat.setText(parenteral.getFat() + "");
-        parenteralElectrolite.setText(parenteral.getElectrolite() + "");
-        parenteralCalories.setText(parenteral.getCalories() + "");
+        parenteralVolume.setText(dec.format(parenteral.getVolume()));
+        parenteralCarbohydrate.setText(dec.format(parenteral.getCarbohydrate()));
+        parenteralProtein.setText(dec.format(parenteral.getProtein()));
+        parenteralFat.setText(dec.format(parenteral.getFat()));
+        parenteralElectrolite.setText(dec.format(parenteral.getElectrolite()));
+        parenteralCalories.setText(dec.format(parenteral.getCalories()));
 
-        oralCarbohydrate.setText(makananExternal.getTotalKarbo());
-        oralProtein.setText(makananExternal.getTotalProtein());
-        oralFat.setText(makananExternal.getTotalLemak());
-        oralCalories.setText(makananExternal.getTotalKalori());
+        oralCarbohydrate.setText(dec.format(makananExternal.getTotalKarbo()));
+        oralProtein.setText(dec.format(makananExternal.getTotalProtein()));
+        oralFat.setText(dec.format(makananExternal.getTotalLemak()));
+        oralCalories.setText(dec.format(makananExternal.getTotalKalori()));
 
 
         Button buttonCreateNew = findViewById(R.id.buttonCreateNew);

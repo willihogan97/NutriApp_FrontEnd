@@ -178,18 +178,22 @@ public class Parenteral extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                detail.setVisibility(View.VISIBLE);
-                DecimalFormat dec = new DecimalFormat("#.0");
-                double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
-                karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)));
-                protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)));
-                lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)));
-                elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)));
-                kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
-                double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
-                double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
-                String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
-                sisa.setText(sisaText);
+                if(!volumeView.getText().toString().equals("")) {
+                    detail.setVisibility(View.VISIBLE);
+                    DecimalFormat dec = new DecimalFormat("#.0");
+                    double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
+                    karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)));
+                    protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)));
+                    lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)));
+                    elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)));
+                    kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
+                    double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
+                    double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
+                    String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
+                    sisa.setText(sisaText);
+                } else {
+                    detail.setVisibility(View.GONE);
+                }
             }
         });
 

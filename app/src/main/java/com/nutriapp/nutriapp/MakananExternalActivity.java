@@ -52,10 +52,14 @@ public class MakananExternalActivity extends AppCompatActivity{
     InfoPribadi infoPribadi;
     Parenteral parenteral;
 
+    DecimalFormat dec;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.makanan_external);
+
+        dec = new DecimalFormat("#.0");
 
         //Untuk ListView
         mAdapter = new MyCustomAdapter();
@@ -169,7 +173,7 @@ public class MakananExternalActivity extends AppCompatActivity{
         double totalKarbo = 0;
         double totalProtein = 0;
         double totalLemak = 0;
-        DecimalFormat dec = new DecimalFormat("#.0");
+
         for (JadwalMakananExternal jadwal : listJadwalMakananExternal) {
             totalKal += jadwal.getTotalKalori();
             totalKarbo += jadwal.getKarbo();
@@ -242,11 +246,11 @@ public class MakananExternalActivity extends AppCompatActivity{
                 TextView protein = (TextView) convertView.findViewById(R.id.protein);
                 TextView lemak = (TextView) convertView.findViewById(R.id.lemak);
                 TextView cara = (TextView) convertView.findViewById(R.id.cara);
-                kalori.setText(jadwal.getTotalKalori() + "");
-                karbo.setText(jadwal.getKarbo() + "");
+                kalori.setText(dec.format(jadwal.getTotalKalori()));
+                karbo.setText(dec.format(jadwal.getKarbo()));
                 jam.setText(jadwal.getJam());
-                protein.setText(jadwal.getProtein() + "");
-                lemak.setText(jadwal.getLemak() + "");
+                protein.setText(dec.format(jadwal.getProtein()));
+                lemak.setText(dec.format(jadwal.getLemak()));
                 cara.setText(jadwal.getCara());
 
                 //Kalo tiba" perlu aja

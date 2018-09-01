@@ -94,20 +94,18 @@ public class AddFood extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddFood.this);
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
-//                builder.setIcon(R.drawable.ic_launcher);
-                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                        if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("")
-                                | proteinView.getText().toString().equals("") | caloriesView.getText().toString().equals("")
-                                | fatView.getText().toString().equals("") | urtView.getText().toString().equals("")
-                                | s.getSelectedItem().toString().equals("")){
-                            Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
-//                            Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
-                        } else {
+                if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("")
+                        | proteinView.getText().toString().equals("") | caloriesView.getText().toString().equals("")
+                        | fatView.getText().toString().equals("") | urtView.getText().toString().equals("")
+                        | s.getSelectedItem().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AddFood.this);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
+                    builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
                             carbohydrate = carbohydrateView.getText().toString();
                             name = nameView.getText().toString();
                             protein = proteinView.getText().toString();
@@ -142,15 +140,15 @@ public class AddFood extends AppCompatActivity {
                             setResult(Activity.RESULT_OK, data);
                             finish();
                         }
-                    }
-                });
-                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
+                    });
+                    builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
             }
         });
     }
