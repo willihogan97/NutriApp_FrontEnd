@@ -12,11 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.nutriapp.nutriapp.object.InfoPribadi;
-import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
 import com.nutriapp.nutriapp.object.TotalMakananExternal;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 
@@ -46,20 +43,20 @@ public class Result extends AppCompatActivity {
         Log.d("parenteral", "onCreate: " + parenteral.toString());
         Log.d("makanan", "onCreate: " + makananExternal.toString());
 
-        parenteralVolume = (TextView) findViewById(R.id.parenteralVolume);
-        parenteralCarbohydrate = (TextView) findViewById(R.id.parenteralCarbohydrate);
-        parenteralProtein = (TextView) findViewById(R.id.parenteralProtein);
-        parenteralFat = (TextView) findViewById(R.id.parenteralFat);
-        parenteralElectrolite = (TextView) findViewById(R.id.parenteralElectrolite);
-        parenteralCalories = (TextView) findViewById(R.id.parenteralCalories);
-        parenteralTotal = (TextView) findViewById(R.id.parenteralTotal);
-        oralVolume = (TextView) findViewById(R.id.oralVolume);
-        oralCarbohydrate = (TextView) findViewById(R.id.oralCarbohydrate);
-        oralProtein = (TextView) findViewById(R.id.oralProtein);
-        oralFat = (TextView) findViewById(R.id.oralFat);
-        oralElectrolite = (TextView) findViewById(R.id.oralElectrolite);
-        oralCalories = (TextView) findViewById(R.id.oralCalories);
-        oralTotal = (TextView) findViewById(R.id.oralTotal);
+        parenteralVolume = findViewById(R.id.parenteralVolume);
+        parenteralCarbohydrate = findViewById(R.id.parenteralCarbohydrate);
+        parenteralProtein = findViewById(R.id.parenteralProtein);
+        parenteralFat = findViewById(R.id.parenteralFat);
+        parenteralElectrolite = findViewById(R.id.parenteralElectrolite);
+        parenteralCalories = findViewById(R.id.parenteralCalories);
+        parenteralTotal = findViewById(R.id.parenteralTotal);
+        oralVolume = findViewById(R.id.oralVolume);
+        oralCarbohydrate = findViewById(R.id.oralCarbohydrate);
+        oralProtein = findViewById(R.id.oralProtein);
+        oralFat = findViewById(R.id.oralFat);
+        oralElectrolite = findViewById(R.id.oralElectrolite);
+        oralCalories = findViewById(R.id.oralCalories);
+        oralTotal = findViewById(R.id.oralTotal);
 
         parenteralVolume.setText(dec.format(parenteral.getVolume()));
         parenteralCarbohydrate.setText(dec.format(parenteral.getCarbohydrate()));
@@ -84,7 +81,6 @@ public class Result extends AppCompatActivity {
         });
     }
 
-    //sabi nih
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

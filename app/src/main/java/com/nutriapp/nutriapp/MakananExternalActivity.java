@@ -1,6 +1,5 @@
 package com.nutriapp.nutriapp;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,47 +13,33 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nutriapp.nutriapp.object.InfoPribadi;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
-import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
 import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
-import org.w3c.dom.Text;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MakananExternalActivity extends AppCompatActivity{
 
     private ListView parentLinearLayout;
     public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori;
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
-
-
     MyCustomAdapter mAdapter;
+    InfoPribadi infoPribadi;
+    Parenteral parenteral;
+    DecimalFormat dec;
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
     public static final String MAKANANEXTERNAL = "MAKANANEXTERNAL";
-    InfoPribadi infoPribadi;
-    Parenteral parenteral;
-
-    DecimalFormat dec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +50,14 @@ public class MakananExternalActivity extends AppCompatActivity{
 
         //Untuk ListView
         mAdapter = new MyCustomAdapter();
-        parentLinearLayout = (ListView) findViewById(R.id.list_view);
+        parentLinearLayout = findViewById(R.id.list_view);
 
         //Untuk textView
-        totalKarboJadwal = (TextView) findViewById(R.id.totalKarboJadwal);
-        totalProteinJadwal = (TextView) findViewById(R.id.totalProteinJadwal);
-        totalLemakJadwal = (TextView) findViewById(R.id.totalLemakJadwal);
-        totalKaloriJadwal = (TextView) findViewById(R.id.totalKaloriJadwal);
-        sisaKalori = (TextView) findViewById(R.id.sisaKalori);
+        totalKarboJadwal = findViewById(R.id.totalKarboJadwal);
+        totalProteinJadwal = findViewById(R.id.totalProteinJadwal);
+        totalLemakJadwal = findViewById(R.id.totalLemakJadwal);
+        totalKaloriJadwal = findViewById(R.id.totalKaloriJadwal);
+        sisaKalori = findViewById(R.id.sisaKalori);
 
         //Ambil data intent
         Intent intent = getIntent();
@@ -104,25 +89,6 @@ public class MakananExternalActivity extends AppCompatActivity{
                         double totalProtein = 0;
                         double totalLemak = 0;
                         double totalKalori = 0;
-//                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
-//                    View a = getViewByPosition(i, parentLinearLayout);
-//                    TextView karbo = (TextView) a.findViewById(R.id.karbo);
-//                    TextView lemak = (TextView) a.findViewById(R.id.lemak);
-//                    TextView kalori = (TextView) a.findViewById(R.id.kalori);
-//                    TextView protein = (TextView) a.findViewById(R.id.protein);
-//                    if (!karbo.getText().toString().equals("")) {
-//                        totalKarbo += Integer.parseInt(karbo.getText().toString());
-//                    }
-//                    if (!protein.getText().toString().equals("")) {
-//                        totalProtein += Integer.parseInt(protein.getText().toString());
-//                    }
-//                    if (!lemak.getText().toString().equals("")) {
-//                        totalLemak += Integer.parseInt(lemak.getText().toString());
-//                    }
-//                    if (!kalori.getText().toString().equals("")) {
-//                        totalKalori += Integer.parseInt(kalori.getText().toString());
-//                    }
-//                }
 
                         for (int i = 0 ; i < listJadwalMakananExternal.size() ; i++) {
                             totalKalori += listJadwalMakananExternal.get(i).getTotalKalori();
@@ -150,7 +116,6 @@ public class MakananExternalActivity extends AppCompatActivity{
 
     }
 
-    //sabi nih
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -193,8 +158,6 @@ public class MakananExternalActivity extends AppCompatActivity{
                 calculateAndShowTotal();
                 mAdapter.addItem(jadwalMakanan);
                 parentLinearLayout.setAdapter(mAdapter);
-            } else {
-                // AnotherActivity was not successful. No data to retrieve.
             }
         }
     }
@@ -271,12 +234,12 @@ public class MakananExternalActivity extends AppCompatActivity{
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.makanan_external_row, null);
                 JadwalMakananExternal jadwal = getItem(position);
-                TextView kalori = (TextView) convertView.findViewById(R.id.kalori);
-                TextView karbo = (TextView) convertView.findViewById(R.id.karbo);
-                TextView jam = (TextView) convertView.findViewById(R.id.jam);
-                TextView protein = (TextView) convertView.findViewById(R.id.protein);
-                TextView lemak = (TextView) convertView.findViewById(R.id.lemak);
-                TextView cara = (TextView) convertView.findViewById(R.id.cara);
+                TextView kalori = convertView.findViewById(R.id.kalori);
+                TextView karbo = convertView.findViewById(R.id.karbo);
+                TextView jam = convertView.findViewById(R.id.jam);
+                TextView protein = convertView.findViewById(R.id.protein);
+                TextView lemak = convertView.findViewById(R.id.lemak);
+                TextView cara = convertView.findViewById(R.id.cara);
                 kalori.setText(dec.format(jadwal.getTotalKalori()));
                 karbo.setText(dec.format(jadwal.getKarbo()));
                 jam.setText(jadwal.getJam());

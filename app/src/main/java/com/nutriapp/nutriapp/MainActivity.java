@@ -1,9 +1,6 @@
 package com.nutriapp.nutriapp;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,12 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.InfoPribadi;
-import com.nutriapp.nutriapp.object.MakananExternal;
-
 import java.text.DecimalFormat;
-
 import steelkiwi.com.library.DotsLoaderView;
 
 public class MainActivity extends AppCompatActivity {
@@ -153,29 +146,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(checkValidity()) {
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-//                    builder.setTitle(R.string.app_name);
-//                    builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
-//                    builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            dialog.dismiss();
-//                            Intent intent = new Intent(getApplicationContext(), Parenteral.class);
-//                            InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
-//                                    checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
-//                                    checkNull(stressFactorView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
-//                                    Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
-//                            intent.putExtra(INFO, infoPribadi);
-//                            startActivityForResult(intent, 200);
-//                        }
-//                    });
-//                    builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            dialog.dismiss();
-//                        }
-//                    });
-//                    AlertDialog alert = builder.create();
-//                    alert.show();
-
                     Intent intent = new Intent(getApplicationContext(), Parenteral.class);
                     InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
                             checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
@@ -209,14 +179,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if(!stressFactorView.getText().toString().equals("") && !multiplier.getText().toString().equals("")){
-            if(Double.parseDouble(stressFactorView.getText().toString()) <= 20 && Double.parseDouble(multiplier.getText().toString()) >= 35) {
+            if(Double.parseDouble(stressFactorView.getText().toString()) < 1 && Double.parseDouble(multiplier.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "Stress factor dan pengali tidak sesuai", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
 
         if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
-            if(Double.parseDouble(mlView.getText().toString()) >= 35 && Double.parseDouble(mlView.getText().toString()) <= 45) {
+            if(Double.parseDouble(mlView.getText().toString()) <= 35 && Double.parseDouble(mlView.getText().toString()) >= 45) {
                 Toast.makeText(getApplicationContext(), "ml/hari harus dalam range 35-45", Toast.LENGTH_LONG).show();
                 return false;
             }
@@ -224,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
             if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
-                    Double.parseDouble(lemak.getText().toString())) <= 100) {
+                    Double.parseDouble(lemak.getText().toString())) < 100) {
                 Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG).show();
                 return false;
             }

@@ -18,17 +18,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.MakananExternal;
-import com.nutriapp.nutriapp.object.Parenteral;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,17 +50,17 @@ public class AddFood extends AppCompatActivity {
                 "Karbohidrat", "Protein", "Lemak", "Sayuran", "Buah/Gula", "Susu", "Minyak"
         };
 
-        final Spinner s = (Spinner) findViewById(R.id.addFoodDropdown);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
+        final Spinner s = findViewById(R.id.addFoodDropdown);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
-        urtView = (EditText) findViewById(R.id.addFoodURT);
-        nameView = (EditText) findViewById(R.id.addFoodName);
-        carbohydrateView = (EditText) findViewById(R.id.addFoodCarbohydrate);
-        proteinView = (EditText) findViewById(R.id.addFoodProtein);
-        fatView = (EditText) findViewById(R.id.addFoodFat);
-        caloriesView = (EditText) findViewById(R.id.addFoodCalories);
+        urtView = findViewById(R.id.addFoodURT);
+        nameView = findViewById(R.id.addFoodName);
+        carbohydrateView = findViewById(R.id.addFoodCarbohydrate);
+        proteinView = findViewById(R.id.addFoodProtein);
+        fatView = findViewById(R.id.addFoodFat);
+        caloriesView = findViewById(R.id.addFoodCalories);
 
         @SuppressLint("StaticFieldLeak") final AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
             @Override
@@ -84,7 +75,7 @@ public class AddFood extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        String result = addDatabase("/api/external/add", makananBaru);
+                        addDatabase("/api/external/add", makananBaru);
                         dotsLoaderView.hide();
                     }
                 });
@@ -155,8 +146,6 @@ public class AddFood extends AppCompatActivity {
         });
     }
 
-
-    //sabi nih
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -208,12 +197,10 @@ public class AddFood extends AppCompatActivity {
         HttpSendRequest getRequest = new HttpSendRequest();
         try {
             result = getRequest.execute(apiUrl, json.toString()).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        return result.toString();
+        return result;
     }
 
     public double convertTipe(String tipe){
