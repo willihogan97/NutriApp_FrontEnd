@@ -3,7 +3,6 @@ package com.nutriapp.nutriapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,25 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.nutriapp.nutriapp.object.InfoPribadi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +47,9 @@ public class Parenteral extends AppCompatActivity {
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
+    public static final String VOLUME = "VOLUME";
+    public static final String SPINNERSELECTED = "SPINNERSELECTED";
+
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -91,51 +80,74 @@ public class Parenteral extends AppCompatActivity {
 
         //String to place our result in
         final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
-        final String[] result = new String[1];
-        final HttpGetRequest getRequest = new HttpGetRequest();
+
+        dotsLoaderView.show();
+        try{
+            HttpGetRequest getreq = new HttpGetRequest();
+            String result = getreq.execute(myUrl).get();
+            JSONObject jsnobject = new JSONObject(result);
+            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+
+            for (int i = 0; i < jsonArrayResult.length(); i++) {
+                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+                listAll.add(parenteral);
+            }
+            adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            s.setAdapter(adapter);
+            dotsLoaderView.hide();
+        } catch (InterruptedException | ExecutionException | JSONException e){
+            e.printStackTrace();
+        }
 
         //Perform the doInBackground method, passing in our url
-        @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
-            @Override
-            protected void onPreExecute() {
-                dotsLoaderView.show();
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                Parenteral.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        try{
-                            HttpGetRequest getreq = new HttpGetRequest();
-                            String result = getreq.execute(myUrl).get();
-                            JSONObject jsnobject = new JSONObject(result);
-                            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
-
-                            for (int i = 0; i < jsonArrayResult.length(); i++) {
-                                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
-                                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
-                                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
-                                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
-                                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
-                                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
-                                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
-                                listAll.add(parenteral);
-                            }
-                            adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
-                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            s.setAdapter(adapter);
-                            dotsLoaderView.hide();
-                        } catch (InterruptedException | ExecutionException | JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                return "done";
-            }
-        };
-        loaderAsync.execute();
+//        @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
+//            @Override
+//            protected void onPreExecute() {
+//                dotsLoaderView.show();
+//            }
+//
+//            @Override
+//            protected String doInBackground(String... strings) {
+//                Parenteral.this.runOnUiThread(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        try{
+//                            HttpGetRequest getreq = new HttpGetRequest();
+//                            String result = getreq.execute(myUrl).get();
+//                            JSONObject jsnobject = new JSONObject(result);
+//                            JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+//
+//                            for (int i = 0; i < jsonArrayResult.length(); i++) {
+//                                String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+//                                double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+//                                double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+//                                double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+//                                double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+//                                double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+//                                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+//                                listAll.add(parenteral);
+//                            }
+//                            adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
+//                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                            s.setAdapter(adapter);
+//                            dotsLoaderView.hide();
+//                        } catch (InterruptedException | ExecutionException | JSONException e){
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//                return "done";
+//            }
+//        };
+//        loaderAsync.execute();
 
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, listAll);
@@ -151,6 +163,20 @@ public class Parenteral extends AppCompatActivity {
                         if(s.getSelectedItem().toString().equals(listAll.get(i).getName())){
                             parenteralItem[0] = listAll.get(i);
                         }
+                    }
+                    Log.d("asdasd", "onItemSelected: " + listAll.toString());
+                    if(!volumeView.getText().toString().equals("")) {
+                        DecimalFormat dec = new DecimalFormat("#.0");
+                        double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
+                        karbohidrat.setText(dec.format((parenteralItem[0].getCarbohydrate() * ratio)));
+                        protein.setText(dec.format((parenteralItem[0].getProtein() * ratio)));
+                        lemak.setText(dec.format((parenteralItem[0].getFat() * ratio)));
+                        elektrolit.setText(dec.format((parenteralItem[0].getElectrolite() * ratio)));
+                        kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
+                        double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
+                        double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
+                        String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
+                        sisa.setText(sisaText);
                     }
                 }
             }
@@ -216,7 +242,6 @@ public class Parenteral extends AppCompatActivity {
         });
     }
 
-    //sabi nih
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -248,14 +273,39 @@ public class Parenteral extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(requestCode == 200) {
-
             if(resultCode == Activity.RESULT_OK) {
+                final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
-            } else {
-                // AnotherActivity was not successful. No data to retrieve.
+                //String to place our result in
+                final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
+                dotsLoaderView.show();
+                try{
+                    HttpGetRequest getreq = new HttpGetRequest();
+                    String result = getreq.execute(myUrl).get();
+                    JSONObject jsnobject = new JSONObject(result);
+                    JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+                    for (int i = 0; i < jsonArrayResult.length(); i++) {
+                        String nama = jsonArrayResult.getJSONObject(i).getString("nama");
+                        double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
+                        double protein = jsonArrayResult.getJSONObject(i).getDouble("protein");
+                        double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
+                        double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
+                        double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
+                        com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+                        listAll.add(parenteral);
+                    }
+
+                    Log.d("asdasd2", "onActivityResult: " + jsonArrayResult.toString());
+                    adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    s.setAdapter(adapter);
+                    dotsLoaderView.hide();
+                } catch (InterruptedException | ExecutionException | JSONException e){
+                    e.printStackTrace();
+                }
             }
+            else { }
         }
     }
 }

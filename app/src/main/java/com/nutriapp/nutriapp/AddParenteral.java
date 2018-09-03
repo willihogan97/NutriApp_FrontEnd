@@ -13,12 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.Parenteral;
 
@@ -46,14 +40,13 @@ public class AddParenteral extends AppCompatActivity {
         final DotsLoaderView loaderView = (DotsLoaderView) findViewById(R.id.loader);
         loaderView.show();
         loaderView.hide();
-
-        volumeView = (EditText) findViewById(R.id.addParenteralVolume);
-        nameView = (EditText) findViewById(R.id.addParenteralName);
-        electroliteView = (EditText) findViewById(R.id.addParenteralElectrolite);
-        carbohydrateView = (EditText) findViewById(R.id.addParenteralCarbohydrate);
-        proteinView = (EditText) findViewById(R.id.addParenteralProtein);
-        fatView = (EditText) findViewById(R.id.addParenteralFat);
-        caloriesView = (EditText) findViewById(R.id.addParenteralCalories);
+        volumeView = findViewById(R.id.addParenteralVolume);
+        nameView = findViewById(R.id.addParenteralName);
+        electroliteView = findViewById(R.id.addParenteralElectrolite);
+        carbohydrateView = findViewById(R.id.addParenteralCarbohydrate);
+        proteinView = findViewById(R.id.addParenteralProtein);
+        fatView = findViewById(R.id.addParenteralFat);
+        caloriesView = findViewById(R.id.addParenteralCalories);
 
         submit = findViewById(R.id.buttonAddParenteral);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +82,6 @@ public class AddParenteral extends AppCompatActivity {
         });
     }
 
-    //sabi nih
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -140,11 +132,9 @@ public class AddParenteral extends AppCompatActivity {
         HttpSendRequest getRequest = new HttpSendRequest();
         try {
             result = getRequest.execute(apiUrl, json.toString()).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        return result.toString();
+        return result;
     }
 }
