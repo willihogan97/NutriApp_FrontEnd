@@ -16,7 +16,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -218,7 +220,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
         String result;
         HttpGetRequest newGetReq = new HttpGetRequest();
         try {
-            Log.d("getdatagasi", "getDataFromDatabase: ");
             listKarboSpinner = new ArrayList<>();
             listProteinSpinner = new ArrayList<>();
             listLemakSpinner = new ArrayList<>();
@@ -261,7 +262,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
             list_item.invalidateViews();
             list_item.invalidate();
             list_item.refreshDrawableState();
-            Log.d("iniape", "getDataFromDatabase: " + listSusuSpinner.toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -283,11 +283,32 @@ public class TambahJadwalExternal extends AppCompatActivity {
         ListUtils.setDynamicHeight(list_item);
     }
 
-    //Masi belom jalan nanti cari lagi
+    //sabi nih
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            Log.d("CDA", "onKeyDown Called");
+            onBackPressed();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("asdasdasdasd", "onBackPressed: asdasdasdasd");
+        Log.d("backpressed", "onBackPressed: asdasdasdasd");
         finish();
     }
 
