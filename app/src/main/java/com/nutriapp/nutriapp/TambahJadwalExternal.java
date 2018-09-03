@@ -37,6 +37,7 @@ import android.view.View.MeasureSpec;
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
 import com.nutriapp.nutriapp.object.MakananExternal;
+import com.nutriapp.nutriapp.object.TabelMakanan;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +54,7 @@ import steelkiwi.com.library.DotsLoaderView;
 public class TambahJadwalExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
+    public static final String TABELMAKANAN = "TABELMAKANAN";
 
     ArrayList<MakananExternal> listMakanan, listKarbo, listProtein;
     List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
@@ -126,6 +128,23 @@ public class TambahJadwalExternal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddFood.class);
+                double karbo = 0;
+                double protein = 0;
+                double lemak = 0;
+                double kalori = 0;
+                boolean isSaveable = true;
+                ArrayList seluruhTabelmakan = new ArrayList();
+
+                for (int i = 0 ; i < mAdapter.getCount() ; i++) {
+                    View a = getViewByPosition(i, list_item);
+                    TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
+                    TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
+                    Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
+                    TabelMakanan tabelMakananBaru = new TabelMakanan(namaMakanan.getText().toString(), itemSpinner.getSelectedItem().toString(), jumlah.getText().toString());
+                    seluruhTabelmakan.add(tabelMakananBaru);
+                }
+                Log.d("asd", "onClicks: " + seluruhTabelmakan.get(0).toString());
+                intent.putExtra(TABELMAKANAN, seluruhTabelmakan);
                 startActivityForResult(intent, 200);
             }
         });
@@ -161,7 +180,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             lemak += (makanan.getLemak() * pengali);
                             kalori += (makanan.getKalori() * pengali);
                         } else {
-                            if (i < 7) {
+                            if (i < 1) {
                                 CharSequence text = "Isi seluruh mandatory";
                                 int duration = Toast.LENGTH_SHORT;
                                 isSaveable = false;
@@ -322,6 +341,13 @@ public class TambahJadwalExternal extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK) {
                 Log.d("masuksini", "onActivityResult: ");
                 getDataFromDatabase();
+//                for (int i = 0; i < mAdapter.getCount() ; i++) {
+//                    mAdapter.remove(i);
+//                }
+                ArrayList tabelMakanan = data.getParcelableArrayListExtra(AddFood.TABELMAKANAN);
+                Log.d("testtabelmakanan", "onActivityResult: " + tabelMakanan.get(1).toString());
+                mAdapter = new MyCustomAdapter();
+                addAllMandatoryFood();
                 mAdapter.notifyDataSetChanged();
 //                final String result = data.getStringExtra(TambahJadwalExternal.EXTRA_DATA);
 //                Gson gson = new Gson();
@@ -343,7 +369,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
     //Untuk ambil view dari ListView
     public View getViewByPosition(int position, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
-        final int lastListItemPosition =firstListItemPosition + listView.getChildCount() - 1;
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
         if (position < firstListItemPosition || position > lastListItemPosition ) {
             return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
@@ -404,8 +430,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
         public long getItemId(int position) {
             return position;
         }
-
-
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {

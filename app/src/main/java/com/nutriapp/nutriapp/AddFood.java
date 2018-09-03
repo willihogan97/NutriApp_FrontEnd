@@ -27,11 +27,13 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
+import com.nutriapp.nutriapp.object.TabelMakanan;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import steelkiwi.com.library.DotsLoaderView;
@@ -40,11 +42,13 @@ import steelkiwi.com.library.DotsLoaderView;
 public class AddFood extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
+    public static final String TABELMAKANAN = "TABELMAKANAN";
     Button submit;
     EditText urtView, nameView, carbohydrateView, proteinView, fatView, caloriesView;
     String urt, name, carbohydrate, protein, fat, calories;
     DotsLoaderView dotsLoaderView;
     MakananExternal makananBaru;
+    ArrayList<TabelMakanan> tabelMakanan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,10 @@ public class AddFood extends AppCompatActivity {
         dotsLoaderView = findViewById(R.id.loader);
         dotsLoaderView.show();
         dotsLoaderView.hide();
+
+        Intent intent = getIntent();
+        tabelMakanan = intent.getParcelableArrayListExtra(TambahJadwalExternal.TABELMAKANAN);
+        Log.d("asd", "onClick: " + tabelMakanan.get(0).toString());
 
         String[] arraySpinner = new String[] {
                 "Karbohidrat", "Protein", "Lemak", "Sayuran", "Buah/Gula", "Susu", "Minyak"
@@ -139,6 +147,7 @@ public class AddFood extends AppCompatActivity {
 
                             final Intent data = new Intent();
                             data.putExtra(EXTRA_DATA, makanan);
+                            data.putExtra(TABELMAKANAN, tabelMakanan);
                             setResult(Activity.RESULT_OK, data);
                             finish();
                         }

@@ -44,6 +44,8 @@ public class AddParenteral extends AppCompatActivity {
         setContentView(R.layout.add_parenteral);
 
         final DotsLoaderView loaderView = (DotsLoaderView) findViewById(R.id.loader);
+        loaderView.show();
+        loaderView.hide();
 
         volumeView = (EditText) findViewById(R.id.addParenteralVolume);
         nameView = (EditText) findViewById(R.id.addParenteralName);
