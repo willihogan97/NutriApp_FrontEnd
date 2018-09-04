@@ -85,39 +85,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/vertical_margin"
-                android:id="@+id/skinFoldLayout"
-                android:orientation="horizontal" >
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/skin_fold" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/SkinFold"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:inputType="numberDecimal"
-                    android:orientation="horizontal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -144,6 +111,83 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"/>
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/umur" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1" />
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:id="@+id/skinFoldLayout"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/skin_fold" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1" />
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/SkinFold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:id="@+id/skinFoldStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/bmi" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -199,7 +243,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.9"/>
+                    android:layout_weight="0.925"/>
 
                 <TextView
                     style="@style/normalFont"
@@ -207,7 +251,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/vertical_margin"
-                    android:layout_weight="0.1"
+                    android:layout_weight="0.15"
                     android:text="@string/percent" />
 
                 <TextView
@@ -216,7 +260,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"/>
+                    android:layout_weight="0.925"/>
             </LinearLayout>
 
             <LinearLayout
@@ -334,49 +378,29 @@
                 android:orientation="horizontal"
                 android:id="@+id/stressFactor">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:text="@string/stress_factor" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.5"
+                        android:text="@string/aktivitas" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1" />
 
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/sheerFac"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
-                    android:inputType="numberDecimal"
-                    android:ems="10" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="x"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.1" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/multiply"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:layout_gravity="center_vertical"
-                    android:inputType="numberDecimal"
-                    android:ems="10" />
+                    <Spinner
+                        style="@style/normalFont"
+                        android:id="@+id/multiplierDropdown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"/>
             </LinearLayout>
 
             <LinearLayout
