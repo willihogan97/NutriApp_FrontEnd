@@ -44,6 +44,7 @@ public class Parenteral extends AppCompatActivity {
     DotsLoaderView dotsLoaderView;
     ArrayAdapter<com.nutriapp.nutriapp.object.Parenteral> adapter;
     Spinner s;
+    List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
@@ -79,7 +80,7 @@ public class Parenteral extends AppCompatActivity {
         final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
         //String to place our result in
-        final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
+        listAll = new ArrayList<>();
 
         dotsLoaderView.show();
         try{
@@ -278,7 +279,7 @@ public class Parenteral extends AppCompatActivity {
                 final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
                 //String to place our result in
-                final List<com.nutriapp.nutriapp.object.Parenteral> listAll = new ArrayList<>();
+                listAll = new ArrayList<>();
                 dotsLoaderView.show();
                 try{
                     HttpGetRequest getreq = new HttpGetRequest();
