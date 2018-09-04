@@ -17,17 +17,20 @@ public class TabelMakanan implements Parcelable {
     String jenis;
     String spinner;
     String berat;
+    String totalKalori;
 
-    public TabelMakanan(String jenis, String spinner, String berat) {
+    public TabelMakanan(String jenis, String spinner, String berat, String totalKalori) {
         this.jenis = jenis;
         this.spinner = spinner;
         this.berat = berat;
+        this.totalKalori = totalKalori;
     }
 
     public TabelMakanan(Parcel in) {
         this.jenis = in.readString();
         this.spinner = in.readString();
         this.berat = in.readString();
+        this.totalKalori = in.readString();
     }
 
     @Override
@@ -40,6 +43,7 @@ public class TabelMakanan implements Parcelable {
         dest.writeString(this.jenis);
         dest.writeString(this.spinner);
         dest.writeString(this.berat);
+        dest.writeString(this.totalKalori);
     }
 
     @Override
@@ -48,6 +52,7 @@ public class TabelMakanan implements Parcelable {
                 "jenis='" + jenis + '\'' +
                 ", spinner='" + spinner + '\'' +
                 ", berat='" + berat + '\'' +
+                ", totalKalori='" + totalKalori + '\'' +
                 '}';
     }
 
@@ -73,5 +78,13 @@ public class TabelMakanan implements Parcelable {
 
     public void setBerat(String berat) {
         this.berat = berat;
+    }
+
+    public String getTotalKalori() {
+        return totalKalori;
+    }
+
+    public void setTotalKalori(String totalKalori) {
+        this.totalKalori = totalKalori;
     }
 }

@@ -279,12 +279,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public double checkNull (String string){
-        Log.d("check",string);
         if(string.equals("")){
-            Log.d("MyApp","I am");
             return 0;
         } else {
-            Log.d("MyApp","I am here");
             return Double.parseDouble(string);
         }
     }

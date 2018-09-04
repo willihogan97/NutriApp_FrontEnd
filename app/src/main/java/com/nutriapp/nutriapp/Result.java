@@ -39,9 +39,6 @@ public class Result extends AppCompatActivity {
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
         makananExternal = intent.getParcelableExtra(MakananExternalActivity.MAKANANEXTERNAL);
-        Log.d("info", "onCreate: " + infoPribadi.toString());
-        Log.d("parenteral", "onCreate: " + parenteral.toString());
-        Log.d("makanan", "onCreate: " + makananExternal.toString());
 
         parenteralVolume = findViewById(R.id.parenteralVolume);
         parenteralCarbohydrate = findViewById(R.id.parenteralCarbohydrate);
@@ -95,7 +92,6 @@ public class Result extends AppCompatActivity {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
-            Log.d("CDA", "onKeyDown Called");
             onBackPressed();
             return true;
         }
@@ -105,7 +101,6 @@ public class Result extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("backpressed", "onBackPressed: asdasdasdasd");
         finish();
     }
 

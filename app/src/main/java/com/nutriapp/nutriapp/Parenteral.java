@@ -165,7 +165,6 @@ public class Parenteral extends AppCompatActivity {
                             parenteralItem[0] = listAll.get(i);
                         }
                     }
-                    Log.d("asdasd", "onItemSelected: " + listAll.toString());
                     if(!volumeView.getText().toString().equals("")) {
                         DecimalFormat dec = new DecimalFormat("#.0");
                         double ratio = Double.parseDouble(volumeView.getText().toString()) / parenteralItem[0].getVolume();
@@ -257,7 +256,6 @@ public class Parenteral extends AppCompatActivity {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
-            Log.d("CDA", "onKeyDown Called");
             onBackPressed();
             return true;
         }
@@ -267,7 +265,6 @@ public class Parenteral extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("backpressed", "onBackPressed: asdasdasdasd");
         finish();
     }
 
@@ -297,7 +294,6 @@ public class Parenteral extends AppCompatActivity {
                         listAll.add(parenteral);
                     }
 
-                    Log.d("asdasd2", "onActivityResult: " + jsonArrayResult.toString());
                     adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     s.setAdapter(adapter);

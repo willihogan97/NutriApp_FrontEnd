@@ -139,10 +139,10 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     TextView namaMakanan = (TextView) a.findViewById(R.id.namaMakanan);
                     TextView jumlah = (TextView) a.findViewById(R.id.jumlah);
                     Spinner itemSpinner = (Spinner) a.findViewById(R.id.spinner);
-                    TabelMakanan tabelMakananBaru = new TabelMakanan(namaMakanan.getText().toString(), itemSpinner.getSelectedItem().toString(), jumlah.getText().toString());
+                    TextView totalKalori = (TextView) a.findViewById(R.id.kaloriTotalSatuan);
+                    TabelMakanan tabelMakananBaru = new TabelMakanan(namaMakanan.getText().toString(), itemSpinner.getSelectedItem().toString(), jumlah.getText().toString(), totalKalori.getText().toString());
                     seluruhTabelmakan.add(tabelMakananBaru);
                 }
-                Log.d("asd", "onClicks: " + seluruhTabelmakan.get(0).toString());
                 intent.putExtra(TABELMAKANAN, seluruhTabelmakan);
                 startActivityForResult(intent, 200);
             }
@@ -311,7 +311,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
         if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
-            Log.d("CDA", "onKeyDown Called");
             onBackPressed();
             return true;
         }
@@ -321,7 +320,6 @@ public class TambahJadwalExternal extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("backpressed", "onBackPressed: asdasdasdasd");
         finish();
     }
 
@@ -333,15 +331,20 @@ public class TambahJadwalExternal extends AppCompatActivity {
 
         if(requestCode == 200) {
             if(resultCode == Activity.RESULT_OK) {
-                Log.d("masuksini", "onActivityResult: ");
                 getDataFromDatabase();
 //                for (int i = 0; i < mAdapter.getCount() ; i++) {
 //                    mAdapter.remove(i);
 //                }
                 tabelMakanan = data.getParcelableArrayListExtra(AddFood.TABELMAKANAN);
-                Log.d("testtabelmakanan", "onActivityResult: " + tabelMakanan.get(1).toString());
+                totalKalSeluruhDouble = 0;
                 mAdapter = new MyCustomAdapter();
                 addAllMandatoryFood();
+                if(tabelMakanan.size() > 7) {
+                    for (int i = 7; i <= tabelMakanan.size() ; i++) {
+                        String newMakanan = "Tambahan";
+                        mAdapter.addItem(newMakanan);
+                    }
+                }
                 mAdapter.notifyDataSetChanged();
             }
         }
@@ -469,13 +472,10 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 final EditText jumlahView = convertView.findViewById(R.id.jumlah);
 
                 if(tabelMakanan!=null) {
-                    jumlahView.setText(tabelMakanan.get(position).getBerat());
-                    if(!tabelMakanan.get(position).getBerat().equals("")) {
-                        totalKalSeluruh.setText((Double.parseDouble(totalKalSeluruh.getText().toString()) - Double.parseDouble(tabelMakanan.get(position).getBerat())) + "");
-                    }
-                    spinner.setSelection(getIndex(spinner, tabelMakanan.get(position).getSpinner()));
-                    if(!tabelMakanan.get(position).getBerat().equals("")) {
-                        totalKalSeluruh.setText((Double.parseDouble(totalKalSeluruh.getText().toString()) - Double.parseDouble(tabelMakanan.get(position).getBerat())) + "");
+                    if(position < tabelMakanan.size()) {
+                        jumlahView.setText(tabelMakanan.get(position).getBerat());
+                        spinner.setSelection(getIndex(spinner, tabelMakanan.get(position).getSpinner()));
+                        isType.set(position, true);
                     }
                 }
 
