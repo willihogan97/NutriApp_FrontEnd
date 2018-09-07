@@ -45,6 +45,7 @@ public class HttpGetRequest extends AsyncTask<String, Void, String> {
             //Close our InputStream and Buffered reader
             reader.close();
             streamReader.close();
+            connection.disconnect();
             //Set our result equal to our stringBuilder
             result = stringBuilder.toString();
         } catch (ProtocolException | MalformedURLException e) {

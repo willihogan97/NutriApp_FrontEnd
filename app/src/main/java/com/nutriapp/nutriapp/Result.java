@@ -62,10 +62,10 @@ public class Result extends AppCompatActivity {
         parenteralElectrolite.setText(dec.format(parenteral.getElectrolite()));
         parenteralCalories.setText(dec.format(parenteral.getCalories()));
 
-        oralCarbohydrate.setText(dec.format(makananExternal.getTotalKarbo()));
-        oralProtein.setText(dec.format(makananExternal.getTotalProtein()));
-        oralFat.setText(dec.format(makananExternal.getTotalLemak()));
-        oralCalories.setText(dec.format(makananExternal.getTotalKalori()));
+        oralCarbohydrate.setText(dec.format(Double.parseDouble(makananExternal.getTotalKarbo())));
+        oralProtein.setText(dec.format(Double.parseDouble(makananExternal.getTotalProtein())));
+        oralFat.setText(dec.format(Double.parseDouble(makananExternal.getTotalLemak())));
+        oralCalories.setText(dec.format(Double.parseDouble(makananExternal.getTotalKalori())));
 
 
         Button buttonCreateNew = findViewById(R.id.buttonCreateNew);

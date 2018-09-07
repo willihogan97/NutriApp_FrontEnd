@@ -52,12 +52,12 @@ public class AddParenteral extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loaderView.show();
                 if(carbohydrateView.getText().toString().equals("") | nameView.getText().toString().equals("") | proteinView.getText().toString().equals("")
                         | caloriesView.getText().toString().equals("") | fatView.getText().toString().equals("")
                         | volumeView.getText().toString().equals("") | electroliteView.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
                 } else {
+                    loaderView.show();
                     carbohydrate = carbohydrateView.getText().toString();
                     name = nameView.getText().toString();
                     protein = proteinView.getText().toString();
@@ -71,9 +71,9 @@ public class AddParenteral extends AppCompatActivity {
                             Double.parseDouble(electrolite), Double.parseDouble(calories));
                     String makanan = (new Gson().toJson(makananBaru));
                     addDatabase("/api/parenteral/add", makananBaru);
+                    loaderView.hide();
                     final Intent data = new Intent();
                     data.putExtra(EXTRA_DATA, makanan);
-                    loaderView.hide();
                     setResult(Activity.RESULT_OK, data);
                     finish();
                     setContentView(R.layout.parenteral);

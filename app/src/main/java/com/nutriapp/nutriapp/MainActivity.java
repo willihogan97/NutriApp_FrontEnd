@@ -135,44 +135,38 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) { }
         });
 
-        if(normalKal.getVisibility() == View.VISIBLE) {
-            kkalView.addTextChangedListener(new GenericTextWatcher(kkalView));
-        }
 
-        if(stressFactor.getVisibility() == View.VISIBLE){
-            ageView.addTextChangedListener(new GenericTextWatcher(ageView));
-            final Spinner u =  findViewById(R.id.multiplierDropdown);
-            adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_spinner_item, sktivitas);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            u.setAdapter(adapter);
+        final Spinner u =  findViewById(R.id.multiplierDropdown);
+        adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, sktivitas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        u.setAdapter(adapter);
 
-            u.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    switch (u.getSelectedItem().toString()) {
-                        case "Extra active (very hard exercise/sports and physical job or 2x training)":
-                            multiplierHB = 1.9;
-                            break;
-                        case "Lightly active (light exercise/sports 1–3 days/week)":
-                            multiplierHB = 1.375;
-                            break;
-                        case "Moderately active (moderate exercise/sports 3–5 days/week)":
-                            multiplierHB = 1.55;
-                            break;
-                        case "Very active (hard exercise/sports 6–7 days a week)":
-                            multiplierHB = 1.725;
-                            break;
-                        default:
-                            multiplierHB = 1.2;
-                            break;
-                    }
+        u.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                switch (u.getSelectedItem().toString()) {
+                    case "Extra active (very hard exercise/sports and physical job or 2x training)":
+                        multiplierHB = 1.9;
+                        break;
+                    case "Lightly active (light exercise/sports 1–3 days/week)":
+                        multiplierHB = 1.375;
+                        break;
+                    case "Moderately active (moderate exercise/sports 3–5 days/week)":
+                        multiplierHB = 1.55;
+                        break;
+                    case "Very active (hard exercise/sports 6–7 days a week)":
+                        multiplierHB = 1.725;
+                        break;
+                    default:
+                        multiplierHB = 1.2;
+                        break;
                 }
+            }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parentView) { }
-            });
-        }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) { }
+        });
 
         mlView.addTextChangedListener(new GenericTextWatcher(mlView));
         karbo.addTextChangedListener(new GenericTextWatcher(karbo));
@@ -239,6 +233,11 @@ public class MainActivity extends AppCompatActivity {
             if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
                     Double.parseDouble(lemak.getText().toString())) < 100) {
                 Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
+                    Double.parseDouble(lemak.getText().toString())) > 100) {
+                Toast.makeText(getApplicationContext(), "Kalori yang terpakai untuk karbohidrat, protein, dan lemak lebih dari 100", Toast.LENGTH_LONG).show();
                 return false;
             }
         }

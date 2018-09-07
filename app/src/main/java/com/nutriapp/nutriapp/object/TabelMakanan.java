@@ -18,6 +18,7 @@ public class TabelMakanan implements Parcelable {
     String spinner;
     String berat;
     String totalKalori;
+    String jam;
 
     public TabelMakanan(String jenis, String spinner, String berat, String totalKalori) {
         this.jenis = jenis;
@@ -26,11 +27,26 @@ public class TabelMakanan implements Parcelable {
         this.totalKalori = totalKalori;
     }
 
+    public TabelMakanan(String jam, String spinner, String berat) {
+        this.spinner = spinner;
+        this.berat = berat;
+        this.jam = jam;
+    }
+
+    public TabelMakanan(String jenis, String spinner, String berat, String totalKalori, String jam) {
+        this.jenis = jenis;
+        this.spinner = spinner;
+        this.berat = berat;
+        this.totalKalori = totalKalori;
+        this.jam = jam;
+    }
+
     public TabelMakanan(Parcel in) {
         this.jenis = in.readString();
         this.spinner = in.readString();
         this.berat = in.readString();
         this.totalKalori = in.readString();
+        this.jam = in.readString();
     }
 
     @Override
@@ -44,6 +60,7 @@ public class TabelMakanan implements Parcelable {
         dest.writeString(this.spinner);
         dest.writeString(this.berat);
         dest.writeString(this.totalKalori);
+        dest.writeString(this.jam);
     }
 
     @Override
@@ -53,6 +70,7 @@ public class TabelMakanan implements Parcelable {
                 ", spinner='" + spinner + '\'' +
                 ", berat='" + berat + '\'' +
                 ", totalKalori='" + totalKalori + '\'' +
+                ", jam='" + jam + '\'' +
                 '}';
     }
 
@@ -86,5 +104,13 @@ public class TabelMakanan implements Parcelable {
 
     public void setTotalKalori(String totalKalori) {
         this.totalKalori = totalKalori;
+    }
+
+    public String getJam() {
+        return jam;
+    }
+
+    public void setJam(String jam) {
+        this.jam = jam;
     }
 }

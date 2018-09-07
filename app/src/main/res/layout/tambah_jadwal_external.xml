@@ -16,13 +16,13 @@
             android:orientation="vertical"
             tools:context=".TambahJadwalExternal">
 
-            <steelkiwi.com.library.DotsLoaderView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:id="@+id/loader"
-                app:dlv_item_drawable="@drawable/circle_background"
-                app:dlv_line_color="@color/point_color"/>
+            <!--<steelkiwi.com.library.DotsLoaderView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/loader"-->
+                <!--app:dlv_item_drawable="@drawable/circle_background"-->
+                <!--app:dlv_line_color="@color/point_color"/>-->
 
             <LinearLayout
                 android:id="@+id/jam"

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.nutriapp.nutriapp.object.InfoPribadi;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
+import com.nutriapp.nutriapp.object.TabelMakanan;
 import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
 import java.text.DecimalFormat;
@@ -32,6 +33,9 @@ public class MakananExternalActivity extends AppCompatActivity{
     private ListView parentLinearLayout;
     public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori;
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
+    ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
+
+
     MyCustomAdapter mAdapter;
     InfoPribadi infoPribadi;
     Parenteral parenteral;
@@ -40,6 +44,7 @@ public class MakananExternalActivity extends AppCompatActivity{
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
     public static final String MAKANANEXTERNAL = "MAKANANEXTERNAL";
+    public static final String TABELMAKANANTOTAL = "TABELMAKANANTOTAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +89,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), Result.class);
+                        Intent intent = new Intent(getApplicationContext(), ResultParenteral.class);
                         double totalKarbo = 0;
                         double totalProtein = 0;
                         double totalLemak = 0;
@@ -100,6 +105,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                         intent.putExtra(MAKANANEXTERNAL, makananExternal);
                         intent.putExtra(INFO, infoPribadi);
                         intent.putExtra(PARENTERAL, parenteral);
+                        intent.putExtra(TABELMAKANANTOTAL, tabelMakananKirim);
                         startActivityForResult(intent, 200);
                     }
                 });
@@ -153,6 +159,10 @@ public class MakananExternalActivity extends AppCompatActivity{
 
             if(resultCode == Activity.RESULT_OK) {
                 JadwalMakananExternal jadwalMakanan = data.getParcelableExtra(TambahJadwalExternal.EXTRA_DATA);
+                ArrayList<TabelMakanan> tabelMakananBaru = data.getParcelableArrayListExtra(TambahJadwalExternal.TABELMAKANANTOTAL);
+                for (int i = 0; i < tabelMakananBaru.size(); i++) {
+                    tabelMakananKirim.add(tabelMakananBaru.get(i));
+                }
                 listJadwalMakananExternal.add(jadwalMakanan);
                 calculateAndShowTotal();
                 mAdapter.addItem(jadwalMakanan);

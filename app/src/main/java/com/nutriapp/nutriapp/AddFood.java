@@ -72,26 +72,26 @@ public class AddFood extends AppCompatActivity {
         fatView = findViewById(R.id.addFoodFat);
         caloriesView = findViewById(R.id.addFoodCalories);
 
-        @SuppressLint("StaticFieldLeak") final AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
-            @Override
-            protected void onPreExecute() {
-                dotsLoaderView.animateViews();
-                dotsLoaderView.show();
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                AddFood.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        addDatabase("/api/external/add", makananBaru);
-                        dotsLoaderView.hide();
-                    }
-                });
-                return "done";
-            }
-        };
+//        @SuppressLint("StaticFieldLeak") final AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
+//            @Override
+//            protected void onPreExecute() {
+//                dotsLoaderView.animateViews();
+//                dotsLoaderView.show();
+//            }
+//
+//            @Override
+//            protected String doInBackground(String... strings) {
+//                AddFood.this.runOnUiThread(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        addDatabase("/api/external/add", makananBaru);
+//                        dotsLoaderView.hide();
+//                    }
+//                });
+//                return "done";
+//            }
+//        };
 
         submit = findViewById(R.id.buttonAddFood);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +103,7 @@ public class AddFood extends AppCompatActivity {
                         | s.getSelectedItem().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
                 } else {
+                    dotsLoaderView.show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddFood.this);
                     builder.setTitle(R.string.app_name);
                     builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
@@ -136,7 +137,8 @@ public class AddFood extends AppCompatActivity {
                                     , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
                             String makanan = (new Gson().toJson(makananBaru));
                             //Tinggal kasi ke backend
-                            loaderAsync.execute();
+                            addDatabase("/api/external/add", makananBaru);
+                            dotsLoaderView.hide();
 
                             final Intent data = new Intent();
                             data.putExtra(EXTRA_DATA, makanan);

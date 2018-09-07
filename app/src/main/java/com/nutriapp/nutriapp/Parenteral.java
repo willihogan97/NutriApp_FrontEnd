@@ -86,6 +86,7 @@ public class Parenteral extends AppCompatActivity {
         try{
             HttpGetRequest getreq = new HttpGetRequest();
             String result = getreq.execute(myUrl).get();
+            Log.d("resultnyaapadah", "onCreate: " + result);
             JSONObject jsnobject = new JSONObject(result);
             JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
 
@@ -274,10 +275,10 @@ public class Parenteral extends AppCompatActivity {
         if(requestCode == 200) {
             if(resultCode == Activity.RESULT_OK) {
                 final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
-
+                Log.d("masuksiniga", "onActivityResult: ");
                 //String to place our result in
                 listAll = new ArrayList<>();
-                dotsLoaderView.show();
+//                dotsLoaderView.show();
                 try{
                     HttpGetRequest getreq = new HttpGetRequest();
                     String result = getreq.execute(myUrl).get();
@@ -293,11 +294,11 @@ public class Parenteral extends AppCompatActivity {
                         com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
                         listAll.add(parenteral);
                     }
-
+                    Log.d("kalosini", "onActivityResult: " + jsonArrayResult.toString());
                     adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     s.setAdapter(adapter);
-                    dotsLoaderView.hide();
+//                    dotsLoaderView.hide();
                 } catch (InterruptedException | ExecutionException | JSONException e){
                     e.printStackTrace();
                 }

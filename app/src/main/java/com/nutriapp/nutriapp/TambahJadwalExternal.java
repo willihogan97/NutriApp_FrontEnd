@@ -53,9 +53,11 @@ public class TambahJadwalExternal extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
     public static final String TABELMAKANAN = "TABELMAKANAN";
+    public static final String TABELMAKANANTOTAL = "TABELMAKANANTOTAL";
 
     ArrayList<MakananExternal> listMakanan;
     ArrayList<TabelMakanan> tabelMakanan;
+    ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
     List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
     JadwalMakananExternal jadwalMakanan;
     Spinner spinner;
@@ -157,6 +159,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 double lemak = 0;
                 double kalori = 0;
                 boolean isSaveable = true;
+                tabelMakananKirim = new ArrayList<>();
                 if(buttonPickTime.getText().toString().equals("")) {
                     CharSequence text = "Isi Jam";
                     int duration = Toast.LENGTH_SHORT;
@@ -178,6 +181,8 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             protein += (makanan.getProtein() * pengali);
                             lemak += (makanan.getLemak() * pengali);
                             kalori += (makanan.getKalori() * pengali);
+                            TabelMakanan tabelBaru = new TabelMakanan(spinner.getSelectedItem().toString(), makanan.getNama(), jumlah.getText().toString());
+                            tabelMakananKirim.add(tabelBaru);
                         } else {
                             if (i < 1) {
                                 CharSequence text = "Isi minimal satu makanan";
@@ -203,6 +208,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                                 dialog.dismiss();
                                 final Intent data = new Intent();
                                 data.putExtra(EXTRA_DATA, jadwalMakanan);
+                                data.putExtra(TABELMAKANANTOTAL, tabelMakananKirim);
                                 setResult(Activity.RESULT_OK, data);
                                 finish();
                             }
@@ -340,7 +346,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 mAdapter = new MyCustomAdapter();
                 addAllMandatoryFood();
                 if(tabelMakanan.size() > 7) {
-                    for (int i = 7; i <= tabelMakanan.size() ; i++) {
+                    for (int i = 7; i < tabelMakanan.size() ; i++) {
                         String newMakanan = "Tambahan";
                         mAdapter.addItem(newMakanan);
                     }
