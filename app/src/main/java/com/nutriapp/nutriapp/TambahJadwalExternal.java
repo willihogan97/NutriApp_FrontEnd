@@ -181,7 +181,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             protein += (makanan.getProtein() * pengali);
                             lemak += (makanan.getLemak() * pengali);
                             kalori += (makanan.getKalori() * pengali);
-                            TabelMakanan tabelBaru = new TabelMakanan(spinner.getSelectedItem().toString(), makanan.getNama(), jumlah.getText().toString());
+                            TabelMakanan tabelBaru = new TabelMakanan(buttonPickTime.getText().toString(), makanan.getNama(), jumlah.getText().toString());
                             tabelMakananKirim.add(tabelBaru);
                         } else {
                             if (i < 1) {

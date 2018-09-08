@@ -39,22 +39,10 @@
                 android:layout_gravity="center">
 
                 <Button
-                    android:id="@+id/btnPlus"
+                    android:id="@+id/buttonNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tambah_makanan"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <Button
-                    android:id="@+id/buttonCreateNew"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/simpan"/>
+                    android:text="@string/next"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

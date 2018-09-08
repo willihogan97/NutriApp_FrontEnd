@@ -45,9 +45,14 @@
             android:parentActivityName=".Parenteral"
             android:label="@string/tambah_parenteral_header" />
         <activity
-            android:name=".Result"
+            android:name=".ResultParenteral"
             android:screenOrientation="portrait"
             android:parentActivityName=".MakananExternalActivity"
+            android:label="@string/result_parenteral_header" />
+        <activity
+            android:name=".Result"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ResultParenteral"
             android:label="@string/result_header" />
     </application>
 

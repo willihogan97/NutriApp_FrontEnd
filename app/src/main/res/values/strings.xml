@@ -6,6 +6,7 @@
     <string name="makanan_parenteral_header">Makanan Parenteral</string>
     <string name="tambah_parenteral_header">Tambah Makanan Parenteral</string>
     <string name="result_header">Ringkasan</string>
+    <string name="result_parenteral_header">Ringkasan Makanan</string>
     <string name="app_name">NutriApp</string>
 
     <!--BUAT NAMA LABEL-->

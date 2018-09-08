@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -65,11 +66,14 @@ public class ResultParenteral extends AppCompatActivity {
         makananExternal = intent.getParcelableExtra(MakananExternalActivity.MAKANANEXTERNAL);
         tabelMakananKirim = intent.getParcelableArrayListExtra(MakananExternalActivity.TABELMAKANANTOTAL);
 
+        Log.d("testResultParenteral", "onCreate: " + tabelMakananKirim.toString());
+
         for (int i = 0; i < tabelMakananKirim.size(); i++) {
             mAdapter.addItem("tambahan");
         }
+        parentLinearLayout.setAdapter(mAdapter);
 
-        Button buttonCreateNew = findViewById(R.id.buttonCreateNew);
+        Button buttonCreateNew = findViewById(R.id.buttonNext);
         buttonCreateNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +123,7 @@ public class ResultParenteral extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
 //            NumericViewHolder holder = new NumericViewHolder();
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.makanan_external_row, null);
+                convertView = mInflater.inflate(R.layout.result_external_row, null);
                 TextView jam = convertView.findViewById(R.id.jam);
                 TextView namaMakanan = convertView.findViewById(R.id.namaMakanan);
                 EditText jumlah = convertView.findViewById(R.id.jumlah);
