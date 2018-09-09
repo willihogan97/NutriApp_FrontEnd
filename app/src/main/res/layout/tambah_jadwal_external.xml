@@ -80,7 +80,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.20"
+                    android:layout_weight="0.25"
                     android:text="@string/cara" />
 
                 <Spinner
@@ -96,7 +96,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.40" />
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
 

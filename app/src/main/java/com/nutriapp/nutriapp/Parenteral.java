@@ -33,7 +33,6 @@ import java.util.concurrent.ExecutionException;
 
 import steelkiwi.com.library.DotsLoaderView;
 
-@SuppressLint("Registered")
 public class Parenteral extends AppCompatActivity {
 
     Button next, tambahParenteral;
@@ -51,8 +50,6 @@ public class Parenteral extends AppCompatActivity {
     public static final String VOLUME = "VOLUME";
     public static final String SPINNERSELECTED = "SPINNERSELECTED";
 
-
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,14 +74,14 @@ public class Parenteral extends AppCompatActivity {
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
 
-        final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
+        String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
 
         //String to place our result in
         listAll = new ArrayList<>();
 
         dotsLoaderView.show();
+        HttpGetRequest getreq = new HttpGetRequest();
         try{
-            HttpGetRequest getreq = new HttpGetRequest();
             String result = getreq.execute(myUrl).get();
             Log.d("resultnyaapadah", "onCreate: " + result);
             JSONObject jsnobject = new JSONObject(result);
@@ -274,7 +271,7 @@ public class Parenteral extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 200) {
             if(resultCode == Activity.RESULT_OK) {
-                final String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
+                String myUrl = "http://nutriapp-backend.herokuapp.com/api/parenteral/all";
                 Log.d("masuksiniga", "onActivityResult: ");
                 //String to place our result in
                 listAll = new ArrayList<>();
@@ -282,8 +279,8 @@ public class Parenteral extends AppCompatActivity {
                 try{
                     HttpGetRequest getreq = new HttpGetRequest();
                     String result = getreq.execute(myUrl).get();
-                    JSONObject jsnobject = new JSONObject(result);
-                    JSONArray jsonArrayResult = jsnobject.getJSONArray("result");
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArrayResult = jsonObject.getJSONArray("result");
                     for (int i = 0; i < jsonArrayResult.length(); i++) {
                         String nama = jsonArrayResult.getJSONObject(i).getString("nama");
                         double karbohidrat = jsonArrayResult.getJSONObject(i).getDouble("karbohidrat");
