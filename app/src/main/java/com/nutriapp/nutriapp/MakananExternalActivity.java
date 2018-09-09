@@ -35,6 +35,7 @@ public class MakananExternalActivity extends AppCompatActivity{
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
     ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
 
+    double totalVolumeOral;
 
     MyCustomAdapter mAdapter;
     InfoPribadi infoPribadi;
@@ -45,6 +46,7 @@ public class MakananExternalActivity extends AppCompatActivity{
     public static final String PARENTERAL = "PARENTERAL";
     public static final String MAKANANEXTERNAL = "MAKANANEXTERNAL";
     public static final String TABELMAKANANTOTAL = "TABELMAKANANTOTAL";
+    public static final String VOLUMEORAL = "VOLUMEORAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +108,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                         intent.putExtra(INFO, infoPribadi);
                         intent.putExtra(PARENTERAL, parenteral);
                         intent.putExtra(TABELMAKANANTOTAL, tabelMakananKirim);
+                        intent.putExtra(VOLUMEORAL, totalVolumeOral);
                         startActivityForResult(intent, 200);
                     }
                 });
@@ -163,6 +166,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 for (int i = 0; i < tabelMakananBaru.size(); i++) {
                     tabelMakananKirim.add(tabelMakananBaru.get(i));
                 }
+                totalVolumeOral += data.getDoubleExtra(TambahJadwalExternal.VOLUMEORAL, 0);
                 listJadwalMakananExternal.add(jadwalMakanan);
                 calculateAndShowTotal();
                 mAdapter.addItem(jadwalMakanan);

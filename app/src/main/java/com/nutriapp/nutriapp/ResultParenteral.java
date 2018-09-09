@@ -43,6 +43,9 @@ public class ResultParenteral extends AppCompatActivity {
     public static final String PARENTERAL = "PARENTERAL";
     public static final String MAKANANEXTERNAL = "MAKANANEXTERNAL";
     public static final String LISTMAKANANEXTERNAL = "LISTMAKANANEXTERNAL";
+    public static final String VOLUMEORAL = "VOLUMEORAL";
+
+    double totalVolumeOral;
 
     ArrayList<TabelMakanan> tabelMakananTotal;
 
@@ -65,6 +68,7 @@ public class ResultParenteral extends AppCompatActivity {
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
         makananExternal = intent.getParcelableExtra(MakananExternalActivity.MAKANANEXTERNAL);
         tabelMakananKirim = intent.getParcelableArrayListExtra(MakananExternalActivity.TABELMAKANANTOTAL);
+        totalVolumeOral = intent.getDoubleExtra(MakananExternalActivity.VOLUMEORAL, 0);
 
         Log.d("testResultParenteral", "onCreate: " + tabelMakananKirim.toString());
 
@@ -81,6 +85,7 @@ public class ResultParenteral extends AppCompatActivity {
                 intent.putExtra(MAKANANEXTERNAL, makananExternal);
                 intent.putExtra(INFO, infoPribadi);
                 intent.putExtra(PARENTERAL, parenteral);
+                intent.putExtra(VOLUMEORAL, totalVolumeOral);
                 startActivityForResult(intent, 200);
                 startActivity(intent);
             }
@@ -127,7 +132,12 @@ public class ResultParenteral extends AppCompatActivity {
                 TextView jam = convertView.findViewById(R.id.jam);
                 TextView namaMakanan = convertView.findViewById(R.id.namaMakanan);
                 EditText jumlah = convertView.findViewById(R.id.jumlah);
-                jam.setText(tabelMakananKirim.get(position).getJam());
+
+                if((position > 0 && !tabelMakananKirim.get(position-1).getJam().equals(tabelMakananKirim.get(position).getJam())) || position == 0){
+                    jam.setText(tabelMakananKirim.get(position).getJam());
+                } else {
+                    jam.setText("");
+                }
                 namaMakanan.setText(tabelMakananKirim.get(position).getSpinner());
                 jumlah.setText(tabelMakananKirim.get(position).getBerat());
             }

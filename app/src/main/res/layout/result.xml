@@ -218,7 +218,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.9"
-                    android:text="@string/kalori" />
+                    android:text="@string/total_kalori" />
 
                 <TextView
                     style="@style/normalFont"
@@ -232,38 +232,6 @@
                 <TextView
                     style="@style/normalFont"
                     android:id="@+id/oralCalories"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ngt_oral"
-                    android:layout_weight="2.5"
-                    android:textAlignment="center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/vertical_margin">
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.9"
-                    android:text="@string/total" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/parenteralTotal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/parenteral"
-                    android:layout_weight="2.5"
-                    android:textAlignment="center" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/oralTotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/ngt_oral"

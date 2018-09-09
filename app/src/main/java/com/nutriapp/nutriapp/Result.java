@@ -23,9 +23,10 @@ public class Result extends AppCompatActivity {
     InfoPribadi infoPribadi;
     Parenteral parenteral;
     TotalMakananExternal makananExternal;
+    double totalVolumeOral;
 
-    TextView parenteralVolume, parenteralCarbohydrate, parenteralProtein, parenteralFat, parenteralElectrolite, parenteralCalories, parenteralTotal;
-    TextView oralVolume, oralCarbohydrate, oralProtein, oralFat, oralElectrolite, oralCalories, oralTotal;
+    TextView parenteralVolume, parenteralCarbohydrate, parenteralProtein, parenteralFat, parenteralElectrolite, parenteralCalories;
+    TextView oralVolume, oralCarbohydrate, oralProtein, oralFat, oralElectrolite, oralCalories;
     DecimalFormat dec;
 
     @Override
@@ -39,6 +40,7 @@ public class Result extends AppCompatActivity {
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
         makananExternal = intent.getParcelableExtra(MakananExternalActivity.MAKANANEXTERNAL);
+        totalVolumeOral = intent.getDoubleExtra(ResultParenteral.VOLUMEORAL, 0);
 
         parenteralVolume = findViewById(R.id.parenteralVolume);
         parenteralCarbohydrate = findViewById(R.id.parenteralCarbohydrate);
@@ -46,14 +48,12 @@ public class Result extends AppCompatActivity {
         parenteralFat = findViewById(R.id.parenteralFat);
         parenteralElectrolite = findViewById(R.id.parenteralElectrolite);
         parenteralCalories = findViewById(R.id.parenteralCalories);
-        parenteralTotal = findViewById(R.id.parenteralTotal);
         oralVolume = findViewById(R.id.oralVolume);
         oralCarbohydrate = findViewById(R.id.oralCarbohydrate);
         oralProtein = findViewById(R.id.oralProtein);
         oralFat = findViewById(R.id.oralFat);
         oralElectrolite = findViewById(R.id.oralElectrolite);
         oralCalories = findViewById(R.id.oralCalories);
-        oralTotal = findViewById(R.id.oralTotal);
 
         parenteralVolume.setText(dec.format(parenteral.getVolume()));
         parenteralCarbohydrate.setText(dec.format(parenteral.getCarbohydrate()));
@@ -66,6 +66,8 @@ public class Result extends AppCompatActivity {
         oralProtein.setText(dec.format(Double.parseDouble(makananExternal.getTotalProtein())));
         oralFat.setText(dec.format(Double.parseDouble(makananExternal.getTotalLemak())));
         oralCalories.setText(dec.format(Double.parseDouble(makananExternal.getTotalKalori())));
+        oralElectrolite.setText("0.0");
+        oralVolume.setText(dec.format(totalVolumeOral));
 
 
         Button buttonCreateNew = findViewById(R.id.buttonCreateNew);

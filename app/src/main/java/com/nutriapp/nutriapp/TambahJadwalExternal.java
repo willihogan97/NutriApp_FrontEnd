@@ -54,10 +54,12 @@ public class TambahJadwalExternal extends AppCompatActivity {
     public static final String EXTRA_DATA = "EXTRA_DATA";
     public static final String TABELMAKANAN = "TABELMAKANAN";
     public static final String TABELMAKANANTOTAL = "TABELMAKANANTOTAL";
+    public static final String VOLUMEORAL = "VOLUMEORAL";
 
     ArrayList<MakananExternal> listMakanan;
     ArrayList<TabelMakanan> tabelMakanan;
     ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
+    double totalVolume;
     List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
     JadwalMakananExternal jadwalMakanan;
     Spinner spinner;
@@ -166,6 +168,8 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), text, duration).show();
                 } else {
                     //Menghitung total semua makanan yang ada pada satu jadwal
+                    boolean isFilled = false;
+
                     for (int i = 0 ; i < mAdapter.getCount() ; i++) {
                         View a = getViewByPosition(i, list_item);
                         TextView namaMakanan = a.findViewById(R.id.namaMakanan);
@@ -174,6 +178,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                         MakananExternal makanan = (MakananExternal) itemSpinner.getSelectedItem();
                         //Itung buat dapetin itu semua
                         if (!jumlah.getText().toString().equals("")) {
+                            isFilled = true;
                             double jumlahInt = Double.parseDouble(jumlah.getText().toString());
                             double urt = makanan.getUrt();
                             double pengali = jumlahInt / urt;
@@ -182,24 +187,25 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             lemak += (makanan.getLemak() * pengali);
                             kalori += (makanan.getKalori() * pengali);
                             TabelMakanan tabelBaru = new TabelMakanan(buttonPickTime.getText().toString(), makanan.getNama(), jumlah.getText().toString());
-                            tabelMakananKirim.add(tabelBaru);
-                        } else {
-                            if (i < 1) {
-                                CharSequence text = "Isi minimal satu makanan";
-                                int duration = Toast.LENGTH_SHORT;
-                                isSaveable = false;
-                                Toast.makeText(getApplicationContext(), text, duration).show();
+                            if(makanan.getJenis() == 6) {
+                                totalVolume += jumlahInt;
                             }
+                            tabelMakananKirim.add(tabelBaru);
                         }
                     }
-                    jadwalMakanan.setJam(buttonPickTime.getText().toString());
-                    jadwalMakanan.setKarbo(karbo);
-                    jadwalMakanan.setProtein(protein);
-                    jadwalMakanan.setLemak(lemak);
-                    jadwalMakanan.setTotalKalori(kalori);
-                    jadwalMakanan.setCara(spinner.getSelectedItem().toString());
-
+                    if (!isFilled) {
+                        CharSequence text = "Isi minimal satu makanan";
+                        int duration = Toast.LENGTH_SHORT;
+                        isSaveable = false;
+                        Toast.makeText(getApplicationContext(), text, duration).show();
+                    }
                     if(isSaveable) {
+                        jadwalMakanan.setJam(buttonPickTime.getText().toString());
+                        jadwalMakanan.setKarbo(karbo);
+                        jadwalMakanan.setProtein(protein);
+                        jadwalMakanan.setLemak(lemak);
+                        jadwalMakanan.setTotalKalori(kalori);
+                        jadwalMakanan.setCara(spinner.getSelectedItem().toString());
                         AlertDialog.Builder builder = new AlertDialog.Builder(TambahJadwalExternal.this);
                         builder.setTitle(R.string.app_name);
                         builder.setMessage("Apa anda yakin untuk menyimpan makanan external ini ?");
@@ -209,6 +215,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                                 final Intent data = new Intent();
                                 data.putExtra(EXTRA_DATA, jadwalMakanan);
                                 data.putExtra(TABELMAKANANTOTAL, tabelMakananKirim);
+                                data.putExtra(VOLUMEORAL, totalVolume);
                                 setResult(Activity.RESULT_OK, data);
                                 finish();
                             }
@@ -481,7 +488,10 @@ public class TambahJadwalExternal extends AppCompatActivity {
                     if(position < tabelMakanan.size()) {
                         jumlahView.setText(tabelMakanan.get(position).getBerat());
                         spinner.setSelection(getIndex(spinner, tabelMakanan.get(position).getSpinner()));
-                        isType.set(position, true);
+                        if(!tabelMakanan.get(position).getBerat().equals("")) {
+                            isType.set(position, true);
+                        }
+
                     }
                 }
 

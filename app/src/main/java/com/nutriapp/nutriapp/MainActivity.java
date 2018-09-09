@@ -275,23 +275,21 @@ public class MainActivity extends AppCompatActivity {
                 hitunganKalori.setVisibility(View.VISIBLE);
             }
 
-            if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
-                Double kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
+            if((!ageView.getText().toString().equals("") || !kkalView.getText().toString().equals("")) && !beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")){
+                totKal.setVisibility(View.VISIBLE);
+                Double kalori = 0.0;
+                if(!kkalView.getText().toString().equals("")){
+                    kalori = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(kkalView.getText().toString());
+                } else {
+                    String[] multiplier = MainActivity.standarHB.split(";");
+                    Double bmr = Double.parseDouble(multiplier[0]) +
+                            (Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(multiplier[1])) +
+                            (Double.parseDouble(tinggiBadanView.getText().toString()) * Double.parseDouble(multiplier[2])) +
+                            (Double.parseDouble(ageView.getText().toString()) * Double.parseDouble(multiplier[3]));
+                    kalori = bmr * MainActivity.multiplierHB;
+                }
                 totKalori.setText(Double.toString(kalori));
                 cairan.setVisibility(View.VISIBLE);
-                totKal.setVisibility(View.VISIBLE);
-            }
-
-            if(!ageView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")){
-                String[] multiplier = MainActivity.standarHB.split(";");
-                Double bmr = Double.parseDouble(multiplier[0]) +
-                        (Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(multiplier[1])) +
-                        (Double.parseDouble(tinggiBadanView.getText().toString()) * Double.parseDouble(multiplier[2])) +
-                        (Double.parseDouble(ageView.getText().toString()) * Double.parseDouble(multiplier[3]));
-                Double kalori = bmr * MainActivity.multiplierHB;
-                totKalori.setText(Double.toString(kalori));
-                cairan.setVisibility(View.VISIBLE);
-                totKal.setVisibility(View.VISIBLE);
             }
 
             if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
