@@ -173,7 +173,7 @@ public class Parenteral extends AppCompatActivity {
                         kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
                         double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
                         double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
-                        String sisaText = dec.format((remain)) + "Kkal - " + dec.format((cairRemain)) + "ml";
+                        String sisaText = dec.format((remain)) + "Kkal / " + dec.format((cairRemain)) + "ml";
                         sisa.setText(sisaText);
                     }
                 }

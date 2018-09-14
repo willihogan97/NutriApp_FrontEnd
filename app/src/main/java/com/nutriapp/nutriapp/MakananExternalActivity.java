@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class MakananExternalActivity extends AppCompatActivity{
 
     private ListView parentLinearLayout;
-    public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori;
+    public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori, totalVolum;
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
     ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
 
@@ -65,6 +65,7 @@ public class MakananExternalActivity extends AppCompatActivity{
         totalLemakJadwal = findViewById(R.id.totalLemakJadwal);
         totalKaloriJadwal = findViewById(R.id.totalKaloriJadwal);
         sisaKalori = findViewById(R.id.sisaKalori);
+        totalVolum = findViewById(R.id.totalVolum);
 
         //Ambil data intent
         Intent intent = getIntent();
@@ -194,6 +195,7 @@ public class MakananExternalActivity extends AppCompatActivity{
         totalKarboJadwal.setText(dec.format(totalKarbo));
         totalProteinJadwal.setText(dec.format(totalProtein));
         totalLemakJadwal.setText(dec.format(totalLemak));
+        totalVolum.setText(dec.format(totalVolumeOral));
     }
 
     //Untuk ambil view dari ListView
@@ -258,7 +260,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 jam.setText(jadwal.getJam());
                 protein.setText(dec.format(jadwal.getProtein()));
                 lemak.setText(dec.format(jadwal.getLemak()));
-                volume.setText((int) jadwal.getVolume());
+                volume.setText(dec.format(jadwal.getVolume()));
 
                 //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {

@@ -181,11 +181,11 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 double kalori = 0;
                 boolean isSaveable = true;
                 tabelMakananKirim = new ArrayList<>();
-                if(volumeTube.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Volume harus diisi", Toast.LENGTH_LONG).show();
-                } else {
-                    totalVolume += Double.parseDouble(volumeTube.getText().toString());
-                }
+//                if(volumeTube.getText().toString().equals("")){
+//                    Toast.makeText(getApplicationContext(), "Volume harus diisi", Toast.LENGTH_LONG).show();
+//                } else {
+//                    totalVolume += Double.parseDouble(volumeTube.getText().toString());
+//                }
 
                 if(buttonPickTime.getText().toString().equals("")) {
                     CharSequence text = "Isi Jam";
@@ -211,7 +211,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                             protein += (makanan.getProtein() * pengali);
                             lemak += (makanan.getLemak() * pengali);
                             kalori += (makanan.getKalori() * pengali);
-                            TabelMakanan tabelBaru = new TabelMakanan(buttonPickTime.getText().toString(), makanan.getNama(), jumlah.getText().toString());
+                            TabelMakanan tabelBaru = new TabelMakanan(buttonPickTime.getText().toString() + "-" + spinner.getSelectedItem().toString(), makanan.getNama(), jumlah.getText().toString());
                             if(makanan.getJenis() == 6) {
                                 totalVolume += jumlahInt;
                             }
@@ -224,6 +224,19 @@ public class TambahJadwalExternal extends AppCompatActivity {
                         isSaveable = false;
                         Toast.makeText(getApplicationContext(), text, duration).show();
                     }
+
+                    if (spinner.getSelectedItem().toString().equalsIgnoreCase("tube")) {
+                        if (volumeTube.getText().toString().equals("")) {
+                            CharSequence text = "Isi volume dari tube";
+                            int duration = Toast.LENGTH_SHORT;
+                            isSaveable = false;
+                            Toast.makeText(getApplicationContext(), text, duration).show();
+                        } else {
+                            totalVolume = Double.parseDouble(volumeTube.getText().toString());
+                        }
+
+                    }
+
                     if(isSaveable) {
                         jadwalMakanan.setJam(buttonPickTime.getText().toString());
                         jadwalMakanan.setKarbo(karbo);

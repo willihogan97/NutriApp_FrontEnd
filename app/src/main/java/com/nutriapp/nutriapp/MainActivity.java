@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private static String standarHB;
     private static double multiplierHB;
     private static String JK;
+    private static double kebutuhanCairan;
 
     Button btnnext;
     EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, ageView, mlView, karbo, protein, lemak, totalCair;
@@ -213,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                     InfoPribadi infoPribadi = new InfoPribadi(checkNull(beratBadanView.getText().toString()), checkNull(tinggiBadanView.getText().toString()),
                             checkNull(skinFoldView.getText().toString()), checkNull(llaView.getText().toString()), Double.parseDouble(bmi.getText().toString()),
                             checkNull(ageView.getText().toString()), Double.parseDouble(totKalori.getText().toString()),
-                            Double.parseDouble(totCair.getText().toString()), checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
+                            kebutuhanCairan, checkNull(karbo.getText().toString()), checkNull(protein.getText().toString()),  checkNull(lemak.getText().toString()));
                     intent.putExtra(INFO, infoPribadi);
                     startActivityForResult(intent, 200);
                 }
@@ -259,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(!totalCair.getText().toString().equals("")){
-            if(Double.parseDouble(mlView.getText().toString()) < 1) {
+            if(Double.parseDouble(totalCair.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "total cairan harus diisi", Toast.LENGTH_LONG).show();
                 return false;
             }
@@ -329,12 +330,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(!totalCair.getText().toString().equals("")){
+                kebutuhanCairan = Double.parseDouble(totalCair.getText().toString());
                 percentage.setVisibility(View.VISIBLE);
             }
 
             if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
                 double cair = Double.parseDouble(beratBadanView.getText().toString()) * Double.parseDouble(mlView.getText().toString());
                 totCair.setText(Double.toString(cair));
+                kebutuhanCairan = cair;
                 percentage.setVisibility(View.VISIBLE);
             }
 
