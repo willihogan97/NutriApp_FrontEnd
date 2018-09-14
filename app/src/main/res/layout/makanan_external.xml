@@ -70,9 +70,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="0.15"
+                        android:layout_weight="0.25"
                         android:textAlignment="center"
-                        android:text="@string/cara" />
+                        android:text="@string/volume" />
 
                 </LinearLayout>
             </LinearLayout>

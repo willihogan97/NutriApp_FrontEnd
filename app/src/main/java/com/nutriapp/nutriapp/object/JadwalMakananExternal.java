@@ -20,25 +20,28 @@ public class JadwalMakananExternal implements Parcelable {
     double lemak;
     double totalKalori;
     String cara;
+    double volume;
 
     public JadwalMakananExternal() {
     }
 
-    public JadwalMakananExternal(String jam, double karbo, double protein, double lemak, double totalKalori, String cara) {
+    public JadwalMakananExternal(String jam, double karbo, double protein, double lemak, double totalKalori, String cara, double volume) {
         this.jam = jam;
         this.karbo = karbo;
         this.protein = protein;
         this.lemak = lemak;
         this.totalKalori = totalKalori;
         this.cara = cara;
+        this.volume = volume;
     }
 
-    public JadwalMakananExternal(double karbo, double protein, double lemak, double totalKalori, String cara) {
+    public JadwalMakananExternal(double karbo, double protein, double lemak, double totalKalori, String cara, double volume) {
         this.karbo = karbo;
         this.protein = protein;
         this.lemak = lemak;
         this.totalKalori = totalKalori;
         this.cara = cara;
+        this.volume = volume;
     }
 
     public JadwalMakananExternal(Parcel in) {
@@ -48,6 +51,8 @@ public class JadwalMakananExternal implements Parcelable {
         this.lemak = in.readDouble();
         this.totalKalori = in.readDouble();
         this.cara = in.readString();
+        this.volume = in.readDouble();
+
     }
 
     @Override
@@ -63,6 +68,7 @@ public class JadwalMakananExternal implements Parcelable {
         dest.writeDouble(this.lemak);
         dest.writeDouble(this.totalKalori);
         dest.writeString(this.cara);
+        dest.writeDouble(this.volume);
     }
 
     @Override
@@ -74,6 +80,7 @@ public class JadwalMakananExternal implements Parcelable {
                 ", lemak='" + lemak + '\'' +
                 ", totalKalori='" + totalKalori + '\'' +
                 ", cara='" + cara + '\'' +
+                ", volume='" + volume + '\'' +
                 '}';
     }
 
@@ -124,4 +131,8 @@ public class JadwalMakananExternal implements Parcelable {
     public void setCara(String cara) {
         this.cara = cara;
     }
+
+    public double getVolume() { return volume; }
+
+    public void setVolume(double volume) { this.volume = volume; }
 }

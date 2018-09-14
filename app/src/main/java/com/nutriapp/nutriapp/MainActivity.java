@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private static String JK;
 
     Button btnnext;
-    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, ageView, mlView, karbo, protein, lemak;
-    LinearLayout percentage, cairan, totKal, normalKal, bmiLayout, hitunganKalori, btn, llaResult, stressFactor;
+    EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, ageView, mlView, karbo, protein, lemak, totalCair;
+    LinearLayout percentage, cairan, totKal, normalKal, bmiLayout, hitunganKalori, btn, llaResult, stressFactor, inputTotalCair, cairOpt;
     TextView bmi, bmiStatus, llaStatus, totKalori, totCair, llaCount, skinfoldStatus;
     public static final String INFO = "INFO_PRIBADI";
     DotsLoaderView dotsLoaderView;
@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         karbo =  findViewById(R.id.karbohidrat);
         protein =  findViewById(R.id.protein);
         lemak =  findViewById(R.id.lemak);
+        totalCair = findViewById(R.id.inputTotCair);
+        cairOpt = findViewById(R.id.cairanOption);
         bmi =  findViewById(R.id.bmi);
         totKalori =  findViewById(R.id.totalKal);
         totCair =  findViewById(R.id.cairan);
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         skinfoldStatus = findViewById(R.id.skinFoldStatus);
         dotsLoaderView = findViewById(R.id.loader);
         skinFoldView = findViewById(R.id.SkinFold);
+        inputTotalCair = findViewById(R.id.inputTotalCair);
 
         percentage.setVisibility(View.GONE);
         cairan.setVisibility(View.GONE);
@@ -76,10 +79,13 @@ public class MainActivity extends AppCompatActivity {
         stressFactor.setVisibility(View.GONE);
         hitunganKalori.setVisibility(View.GONE);
         llaResult.setVisibility(View.GONE);
+        cairOpt.setVisibility(View.GONE);
+        inputTotalCair.setVisibility(View.GONE);
 
         String[] tipeHitunganKalori = getResources().getStringArray(R.array.spinnerHitunganKalori);
         final String[] jenisKelamin = getResources().getStringArray(R.array.spinnerJK);
         String[] sktivitas = getResources().getStringArray(R.array.spinnerAktivitas);
+        String[] opsiCairan = getResources().getStringArray(R.array.spinnerTipeHitungCairan);
 
         beratBadanView.addTextChangedListener(new GenericTextWatcher(beratBadanView));
         tinggiBadanView.addTextChangedListener(new GenericTextWatcher(tinggiBadanView));
@@ -168,6 +174,29 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) { }
         });
 
+        final Spinner v =  findViewById(R.id.cairanDropdown);
+        adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, opsiCairan);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        v.setAdapter(adapter);
+
+        v.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(v.getSelectedItem().toString().equals("Normal")) {
+                    cairan.setVisibility(View.VISIBLE);
+                    inputTotalCair.setVisibility(View.GONE);
+                } else {
+                    inputTotalCair.setVisibility(View.VISIBLE);
+                    cairan.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) { }
+        });
+
+        totalCair.addTextChangedListener(new GenericTextWatcher(totalCair));
         mlView.addTextChangedListener(new GenericTextWatcher(mlView));
         karbo.addTextChangedListener(new GenericTextWatcher(karbo));
         protein.addTextChangedListener(new GenericTextWatcher(protein));
@@ -199,14 +228,14 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         }
-        if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+        if(!llaView.getText().toString().equals("")){
             if(Double.parseDouble(llaView.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "LLA tidak sesuai", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
 
-        if(!kkalView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+        if(!kkalView.getText().toString().equals("")){
             if(Double.parseDouble(kkalView.getText().toString()) <= 20 && Double.parseDouble(kkalView.getText().toString()) >= 35) {
                 Toast.makeText(getApplicationContext(), "Kkal harus dalam range 20-35", Toast.LENGTH_LONG).show();
                 return false;
@@ -222,9 +251,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){
+        if(!mlView.getText().toString().equals("")){
             if(Double.parseDouble(mlView.getText().toString()) <= 35 && Double.parseDouble(mlView.getText().toString()) >= 45) {
                 Toast.makeText(getApplicationContext(), "ml/hari harus dalam range 35-45", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        if(!totalCair.getText().toString().equals("")){
+            if(Double.parseDouble(mlView.getText().toString()) < 1) {
+                Toast.makeText(getApplicationContext(), "total cairan harus diisi", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
@@ -289,7 +325,11 @@ public class MainActivity extends AppCompatActivity {
                     kalori = bmr * MainActivity.multiplierHB;
                 }
                 totKalori.setText(Double.toString(kalori));
-                cairan.setVisibility(View.VISIBLE);
+                cairOpt.setVisibility(View.VISIBLE);
+            }
+
+            if(!totalCair.getText().toString().equals("")){
+                percentage.setVisibility(View.VISIBLE);
             }
 
             if(!mlView.getText().toString().equals("") && !beratBadanView.getText().toString().equals("")){

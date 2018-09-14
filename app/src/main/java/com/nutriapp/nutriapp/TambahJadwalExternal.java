@@ -25,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -62,7 +63,8 @@ public class TambahJadwalExternal extends AppCompatActivity {
     double totalVolume;
     List<MakananExternal> listAll, listKarboSpinner, listProteinSpinner, listLemakSpinner, listSayuranSpinner, listBuahSpinner, listSusuSpinner, listMinyakSpinner;
     JadwalMakananExternal jadwalMakanan;
-    Spinner spinner;
+    EditText volumeTube;
+    LinearLayout tube;
     TextView totalKalSeluruh;
     double totalKalSeluruhDouble = 0;
     DecimalFormat dec;
@@ -80,6 +82,10 @@ public class TambahJadwalExternal extends AppCompatActivity {
         setContentView(R.layout.tambah_jadwal_external);
 
         dec = new DecimalFormat("#.0");
+
+        tube = findViewById(R.id.layoutVolume);
+        volumeTube = findViewById(R.id.volumeTube);
+        tube.setVisibility(View.GONE);
 
         dotsLoaderView = findViewById(R.id.loader);
         @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> loaderAsync = new AsyncTask<String, String, String>() {
@@ -108,10 +114,23 @@ public class TambahJadwalExternal extends AppCompatActivity {
         list_item = findViewById(R.id.list_item);
 
         //Buat spinner
-        spinner = findViewById(R.id.spinnerTipeMakananExternal);
+        final Spinner spinner = findViewById(R.id.spinnerTipeMakananExternal);
         String[] isiSpinner = getResources().getStringArray(R.array.spinnerTipeMakananExternal);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.spinner_layout, isiSpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(spinner.getSelectedItem().toString().equals("Tube")) {
+                    tube.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) { }
+        });
 
         //Ambil data dari database
         getDataFromDatabase();
@@ -162,6 +181,12 @@ public class TambahJadwalExternal extends AppCompatActivity {
                 double kalori = 0;
                 boolean isSaveable = true;
                 tabelMakananKirim = new ArrayList<>();
+                if(volumeTube.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Volume harus diisi", Toast.LENGTH_LONG).show();
+                } else {
+                    totalVolume += Double.parseDouble(volumeTube.getText().toString());
+                }
+
                 if(buttonPickTime.getText().toString().equals("")) {
                     CharSequence text = "Isi Jam";
                     int duration = Toast.LENGTH_SHORT;
@@ -206,6 +231,7 @@ public class TambahJadwalExternal extends AppCompatActivity {
                         jadwalMakanan.setLemak(lemak);
                         jadwalMakanan.setTotalKalori(kalori);
                         jadwalMakanan.setCara(spinner.getSelectedItem().toString());
+                        jadwalMakanan.setVolume(totalVolume);
                         AlertDialog.Builder builder = new AlertDialog.Builder(TambahJadwalExternal.this);
                         builder.setTitle(R.string.app_name);
                         builder.setMessage("Apa anda yakin untuk menyimpan makanan external ini ?");

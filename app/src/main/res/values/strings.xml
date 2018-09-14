@@ -63,6 +63,7 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="umur">Umur</string>
     <string name="aktivitas">Aktivitas</string>
+    <string name="cairan">Cairan</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerJK">
@@ -73,6 +74,11 @@
     <string-array name="spinnerTipeMakananExternal">
         <item>Biasa</item>
         <item>Tube</item>
+    </string-array>
+
+    <string-array name="spinnerTipeHitungCairan">
+        <item>Normal</item>
+        <item>Langsung</item>
     </string-array>
 
     <string-array name="spinnerHitunganKalori">

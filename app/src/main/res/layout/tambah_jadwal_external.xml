@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -17,19 +22,19 @@
             tools:context=".TambahJadwalExternal">
 
             <steelkiwi.com.library.DotsLoaderView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:id="@+id/loader"
-                app:dlv_item_drawable="@drawable/circle_background"
-                app:dlv_line_color="@color/point_color"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:id="@+id/loader"
+            app:dlv_item_drawable="@drawable/circle_background"
+            app:dlv_line_color="@color/point_color"/>
 
             <LinearLayout
                 android:id="@+id/jam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/normalFont"
@@ -39,28 +44,13 @@
                     android:layout_weight="0.25"
                     android:text="@string/jam" />
 
-                <!--<Spinner-->
-                    <!--android:id="@+id/spinner"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_marginLeft="@dimen/vertical_margin"-->
-                    <!--android:layout_weight="0.25"/>-->
-
                 <EditText
-                    style="@style/normalFont"
                     android:id="@+id/pickTime"
+                    style="@style/normalFont"
 
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25"/>
-
-                <!--<Button-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginLeft="@dimen/vertical_margin"-->
-                    <!--android:layout_weight="0.5"-->
-                    <!--android:text="Pilih Jam" />-->
+                    android:layout_weight="0.25" />
 
                 <TextView
                     style="@style/normalFont"
@@ -84,12 +74,12 @@
                     android:text="@string/cara" />
 
                 <Spinner
-                    style="@style/normalFont"
                     android:id="@+id/spinnerTipeMakananExternal"
+                    style="@style/normalFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="left"
+                    android:layout_weight="0.25" />
 
                 <TextView
                     style="@style/normalFont"
@@ -104,10 +94,9 @@
                 android:id="@+id/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginLeft="@dimen/vertical_margin"
                 android:layout_marginRight="@dimen/vertical_margin"
-                android:layout_marginLeft="@dimen/vertical_margin">
-
+                android:layout_marginTop="@dimen/vertical_margin">
             </ListView>
 
             <LinearLayout
@@ -119,47 +108,87 @@
                     android:id="@+id/btnPlus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tambah_makanan"/>
+                    android:text="@string/tambah_makanan" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#c0c0c0"
-                android:layout_margin="@dimen/vertical_margin" />
+                android:layout_margin="@dimen/vertical_margin"
+                android:background="#c0c0c0" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="4"
-                    android:text="@string/total_kalori" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:layout_weight="1">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"/>
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:text="@string/total_kalori" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/totalKal"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="@string/colon" />
+
+                    <TextView
+                        android:id="@+id/totalKal"
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="5"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:layout_weight="6" />
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/layoutVolume">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:text="@string/volume" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        android:id="@+id/volumeTube"
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="5"
+                        android:inputType="number" />
+                </LinearLayout>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -169,7 +198,7 @@
                     android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/simpan"/>
+                    android:text="@string/simpan" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

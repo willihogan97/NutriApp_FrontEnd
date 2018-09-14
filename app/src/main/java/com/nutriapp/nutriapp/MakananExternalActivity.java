@@ -252,13 +252,13 @@ public class MakananExternalActivity extends AppCompatActivity{
                 TextView jam = convertView.findViewById(R.id.jam);
                 TextView protein = convertView.findViewById(R.id.protein);
                 TextView lemak = convertView.findViewById(R.id.lemak);
-                TextView cara = convertView.findViewById(R.id.cara);
+                TextView volume = convertView.findViewById(R.id.cara);
                 kalori.setText(dec.format(jadwal.getTotalKalori()));
                 karbo.setText(dec.format(jadwal.getKarbo()));
                 jam.setText(jadwal.getJam());
                 protein.setText(dec.format(jadwal.getProtein()));
                 lemak.setText(dec.format(jadwal.getLemak()));
-                cara.setText(jadwal.getCara());
+                volume.setText((int) jadwal.getVolume());
 
                 //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {
