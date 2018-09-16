@@ -189,8 +189,10 @@ public class MakananExternalActivity extends AppCompatActivity{
             totalProtein += jadwal.getProtein();
         }
         double remain = infoPribadi.getTotalKalori() - parenteral.getCalories() - (totalKal);
-        String sisaText = dec.format((remain)) + "Kkal";
-        sisaKalori.setText(sisaText);
+        String sisaText = dec.format((remain)) + " Kkal";
+        double remainVolum = infoPribadi.getTotalKaloriCair() - parenteral.getVolume() - totalVolumeOral;
+        String sisaVolum = dec.format(remainVolum) + " ml";
+        sisaKalori.setText(sisaText + " / " + sisaVolum);
         totalKaloriJadwal.setText(dec.format(totalKal));
         totalKarboJadwal.setText(dec.format(totalKarbo));
         totalProteinJadwal.setText(dec.format(totalProtein));

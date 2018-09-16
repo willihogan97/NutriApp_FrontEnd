@@ -50,12 +50,12 @@ public class Parenteral implements Parcelable {
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeString(this.name);
-            dest.writeString(String.valueOf(this.calories));
-            dest.writeString(String.valueOf(this.protein));
-            dest.writeString(String.valueOf(this.carbohydrate));
-            dest.writeString(String.valueOf(this.electrolite));
-            dest.writeString(String.valueOf(this.fat));
             dest.writeString(String.valueOf(this.volume));
+            dest.writeString(String.valueOf(this.carbohydrate));
+            dest.writeString(String.valueOf(this.protein));
+            dest.writeString(String.valueOf(this.fat));
+            dest.writeString(String.valueOf(this.electrolite));
+            dest.writeString(String.valueOf(this.calories));
         }
 
 //        @Override
