@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,13 +38,17 @@ public class UpdateFood extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
     public static final String TABELMAKANAN = "TABELMAKANAN";
-    Button submit, delete;
+    Button submit, delete, updateFood;
     EditText urtView, nameView, carbohydrateView, proteinView, fatView, caloriesView;
+    EditText urtUpdateView, nameUpdateView, carbohydrateUpdateView, proteinUpdateView, fatUpdateView, caloriesUpdateView;
     String urt, name, carbohydrate, protein, fat, calories, jenis;
     DotsLoaderView dotsLoaderView;
     MakananExternal makananBaru;
     ArrayList<TabelMakanan> tabelMakanan;
     ArrayList<MakananExternal> listAll;
+    Spinner spinnerAksi;
+    LinearLayout updateView, tambahView;
+    ArrayAdapter adapterAksi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,9 @@ public class UpdateFood extends AppCompatActivity {
 
         Intent intent = getIntent();
         tabelMakanan = intent.getParcelableArrayListExtra(TambahJadwalExternal.TABELMAKANAN);
+
+
+
 
         final MakananExternal[] makananItem = new MakananExternal[1];
 
@@ -66,12 +74,53 @@ public class UpdateFood extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
+        final Spinner sFoodUpdate = findViewById(R.id.updateFoodDropdown);
+        ArrayAdapter<String> adapterFood = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
+        adapterFood.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sFoodUpdate.setAdapter(adapterFood);
+
         urtView = findViewById(R.id.addFoodURT);
         nameView = findViewById(R.id.addFoodName);
         carbohydrateView = findViewById(R.id.addFoodCarbohydrate);
         proteinView = findViewById(R.id.addFoodProtein);
         fatView = findViewById(R.id.addFoodFat);
         caloriesView = findViewById(R.id.addFoodCalories);
+
+        urtUpdateView = findViewById(R.id.updateFoodURT);
+        nameUpdateView = findViewById(R.id.updateFoodName);
+        carbohydrateUpdateView = findViewById(R.id.updateFoodCarbohydrate);
+        proteinUpdateView = findViewById(R.id.updateFoodProtein);
+        fatUpdateView = findViewById(R.id.updateFoodFat);
+        caloriesUpdateView = findViewById(R.id.updateFoodCalories);
+
+        spinnerAksi = findViewById(R.id.spinneraksi);
+        updateView = findViewById(R.id.updateView);
+        tambahView = findViewById(R.id.tambahView);
+        updateView.setVisibility(View.GONE);
+        tambahView.setVisibility(View.GONE);
+
+        String[] spinnerAksiArray = getResources().getStringArray(R.array.spinnerAksi);
+        adapterAksi = new ArrayAdapter<>(UpdateFood.this, android.R.layout.simple_spinner_item, spinnerAksiArray);
+        adapterAksi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAksi.setAdapter(adapterAksi);
+        spinnerAksi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(spinnerAksi.getSelectedItem().equals("Tambah")) {
+                    tambahView.setVisibility(View.VISIBLE);
+                    updateView.setVisibility(View.GONE);
+                } else {
+                    updateView.setVisibility(View.VISIBLE);
+                    tambahView.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         dotsLoaderView.show();
         getDataFromDatabase();
@@ -91,7 +140,6 @@ public class UpdateFood extends AppCompatActivity {
                             makananItem[0] = listAll.get(i);
                         }
                     }
-//                    updateView.setVisibility(View.VISIBLE);
                     carbohydrate = String.valueOf(makananItem[0].getKarbohidrat());
                     name = String.valueOf(makananItem[0].getNama());
                     protein = String.valueOf(makananItem[0].getProtein());
@@ -99,13 +147,13 @@ public class UpdateFood extends AppCompatActivity {
                     fat = String.valueOf(makananItem[0].getLemak());
                     jenis = String.valueOf(makananItem[0].getJenis());
                     urt = String.valueOf(makananItem[0].getUrt());
-                    carbohydrateView.setText(carbohydrate);
-                    nameView.setText(name);
-                    proteinView.setText(protein);
-                    caloriesView.setText(calories);
-                    fatView.setText(fat);
-                    urtView.setText(urt);
-                    s.setSelection(Integer.parseInt(jenis) - 1);
+                    carbohydrateUpdateView.setText(carbohydrate);
+                    nameUpdateView.setText(name);
+                    proteinUpdateView.setText(protein);
+                    caloriesUpdateView.setText(calories);
+                    fatUpdateView.setText(fat);
+                    urtUpdateView.setText(urt);
+                    sFoodUpdate.setSelection(Integer.parseInt(jenis) - 1);
                     Log.d("keberapaye", "onItemSelected: " + jenis);
                 }
             }
@@ -177,6 +225,71 @@ public class UpdateFood extends AppCompatActivity {
                             }
 
                             makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
+                                    , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name);
+                            String makanan = (new Gson().toJson(makananBaru));
+                            //Tinggal kasi ke backend
+                            addDatabase("/api/external/add", makananBaru);
+                            dotsLoaderView.hide();
+
+                            final Intent data = new Intent();
+                            data.putExtra(EXTRA_DATA, makanan);
+                            data.putExtra(TABELMAKANAN, tabelMakanan);
+                            setResult(Activity.RESULT_OK, data);
+                            finish();
+                        }
+                    });
+                    builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            }
+        });
+
+        updateFood = findViewById(R.id.buttonUpdateFood);
+        updateFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(carbohydrateUpdateView.getText().toString().equals("") | nameUpdateView.getText().toString().equals("")
+                        | proteinUpdateView.getText().toString().equals("") | caloriesUpdateView.getText().toString().equals("")
+                        | fatUpdateView.getText().toString().equals("") | urtUpdateView.getText().toString().equals("")
+                        | sFoodUpdate.getSelectedItem().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Ada kolom yang masih kosong", Toast.LENGTH_LONG).show();
+                } else {
+                    dotsLoaderView.show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(UpdateFood.this);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Apa anda yakin untuk menyimpan makanan baru ini ?");
+                    builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                            carbohydrate = carbohydrateUpdateView.getText().toString();
+                            name = nameUpdateView.getText().toString();
+                            protein = proteinUpdateView.getText().toString();
+                            calories = caloriesUpdateView.getText().toString();
+                            fat = fatUpdateView.getText().toString();
+                            urt = urtUpdateView.getText().toString();
+                            int tipe = 0;
+                            if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("Karbohidrat")) {
+                                tipe = 1;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("protein")) {
+                                tipe = 2;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("lemak")) {
+                                tipe = 3;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("sayuran")) {
+                                tipe = 4;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("buah/gula")) {
+                                tipe = 5;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("susu")) {
+                                tipe = 6;
+                            } else if (sFoodUpdate.getSelectedItem().toString().equalsIgnoreCase("minyak")) {
+                                tipe = 7;
+                            }
+
+                            makananBaru = new MakananExternal(tipe, Double.parseDouble(calories), Double.parseDouble(carbohydrate)
                                     , Double.parseDouble(protein), Double.parseDouble(urt), Double.parseDouble(fat), name, makananItem[0].getId());
                             String makanan = (new Gson().toJson(makananBaru));
                             //Tinggal kasi ke backend
@@ -200,7 +313,7 @@ public class UpdateFood extends AppCompatActivity {
                 }
             }
         });
-    }
+}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -228,7 +341,6 @@ public class UpdateFood extends AppCompatActivity {
         finish();
     }
 
-
     public String updateDatabase(final String url, MakananExternal makananExternal) {
         String result = "";
 
@@ -245,6 +357,34 @@ public class UpdateFood extends AppCompatActivity {
             json.put("urt", makananExternal.getUrt());
             json.put("tipe", makananExternal.getJenis());
             json.put("id", makananExternal.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        HttpSendRequest getRequest = new HttpSendRequest();
+        try {
+            result = getRequest.execute(apiUrl, json.toString()).get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public String addDatabase(final String url, MakananExternal makananExternal) {
+        String result = "";
+
+        //url backend
+        String apiUrl = "http://nutriapp-backend.herokuapp.com" + url;
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("nama", makananExternal.getNama());
+            json.put("karbohidrat", makananExternal.getKarbohidrat());
+            json.put("protein", makananExternal.getProtein());
+            json.put("lemak", makananExternal.getLemak());
+            json.put("kalori", makananExternal.getKalori());
+            json.put("urt", makananExternal.getUrt());
+            json.put("tipe", makananExternal.getJenis());
         } catch (JSONException e) {
             e.printStackTrace();
         }

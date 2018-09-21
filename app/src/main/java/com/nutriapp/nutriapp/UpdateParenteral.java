@@ -239,7 +239,7 @@ public class UpdateParenteral extends AppCompatActivity {
 
                     Parenteral makananBaru = new Parenteral(name, Double.parseDouble(volume),
                             Double.parseDouble(carbohydrate), Double.parseDouble(protein), Double.parseDouble(fat),
-                            Double.parseDouble(electrolite), Double.parseDouble(calories), parenteralItem[0].getId());
+                            Double.parseDouble(electrolite), Double.parseDouble(calories));
                     String makanan = (new Gson().toJson(makananBaru));
                     addDatabase("/api/parenteral/add", makananBaru);
                     dotsLoaderView.hide();

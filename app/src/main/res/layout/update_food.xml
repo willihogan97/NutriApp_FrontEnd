@@ -23,282 +23,600 @@
                 android:id="@+id/loader"
                 app:dlv_item_drawable="@drawable/circle_background"
                 app:dlv_line_color="@color/point_color"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                android:orientation="vertical">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/pilih_makanan_external" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon"/>
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/pilih_aksi" />
 
-                <Spinner
-                    style="@style/normalFont"
-                    android:id="@+id/spinnerMakanan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon"/>
+
+                    <Spinner
+                        style="@style/normalFont"
+                        android:id="@+id/spinneraksi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                android:orientation="vertical"
+                android:id="@+id/tambahView">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/nama_makanan" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambah Food"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon"/>
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodName"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/nama_makanan" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon"/>
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="text"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:inputType="text"
-                    android:text=""
-                    android:layout_weight="2" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/jenis_makanan" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/jenis_makanan" />
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
+                    <Spinner
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodDropdown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"/>
+                </LinearLayout>
 
-                <Spinner
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodDropdown"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="2"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <TextView
-                    style="@style/normalFont"
-                    android:id="@+id/additionalLabel"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/per_1_satuan_penukar"/>
-            </LinearLayout>
+                    android:layout_gravity="center">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/additionalLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/per_1_satuan_penukar"/>
+                </LinearLayout>
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/urt" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/urt" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodURT"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:text=""
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <EditText
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/karbohidrat" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodCarbohydrate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
                     style="@style/normalFont"
-                    android:id="@+id/addFoodURT"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:text=""
-                    android:layout_weight="2"
-                    android:inputType="numberDecimal"/>
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/protein" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodProtein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/karbohidrat" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/lemak" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodFat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
 
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodCarbohydrate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:inputType="numberDecimal"
-                    android:text=""
-                    android:layout_weight="2" />
-            </LinearLayout>
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/kalori" />
 
-            <LinearLayout
-                style="@style/normalFont"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/protein" />
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/addFoodCalories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
 
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodProtein"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:inputType="numberDecimal"
-                    android:text=""
-                    android:layout_weight="2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/lemak" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodFat"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:inputType="numberDecimal"
-                    android:text=""
-                    android:layout_weight="2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/vertical_margin">
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="@string/kalori" />
-
-                <TextView
-                    style="@style/normalFont"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="@string/colon" />
-
-                <EditText
-                    style="@style/normalFont"
-                    android:id="@+id/addFoodCalories"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ems="16"
-                    android:inputType="numberDecimal"
-                    android:text=""
-                    android:layout_weight="2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <Button
-                    style="@style/normalFont"
-                    android:id="@+id/buttonAddFood"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="@string/update" />
-                <Button
-                    style="@style/normalFont"
-                    android:id="@+id/buttonDeleteFood"
+                    android:layout_gravity="center">
+
+                    <Button
+                        style="@style/normalFont"
+                        android:id="@+id/buttonAddFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/tambah_makanan" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/updateView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update Food"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/pilih_makanan_external" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon"/>
+
+                    <Spinner
+                        style="@style/normalFont"
+                        android:id="@+id/spinnerMakanan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/nama_makanan" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon"/>
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="text"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/jenis_makanan" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <Spinner
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodDropdown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="@string/delete" />
+                    android:layout_gravity="center">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/updateitionalLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/per_1_satuan_penukar"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/urt" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodURT"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:text=""
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/karbohidrat" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodCarbohydrate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/normalFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/protein" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodProtein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/lemak" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodFat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/kalori" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <EditText
+                        style="@style/normalFont"
+                        android:id="@+id/updateFoodCalories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="16"
+                        android:inputType="numberDecimal"
+                        android:text=""
+                        android:layout_weight="2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <Button
+                        style="@style/normalFont"
+                        android:id="@+id/buttonUpdateFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/update" />
+                    <Button
+                        style="@style/normalFont"
+                        android:id="@+id/buttonDeleteFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/delete" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
