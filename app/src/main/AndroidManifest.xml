@@ -45,6 +45,16 @@
             android:parentActivityName=".Parenteral"
             android:label="@string/tambah_parenteral_header" />
         <activity
+            android:name=".UpdateParenteral"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Parenteral"
+            android:label="@string/update_parenteral" />
+        <activity
+            android:name=".UpdateFood"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/update_food" />
+        <activity
             android:name=".ResultParenteral"
             android:screenOrientation="portrait"
             android:parentActivityName=".MakananExternalActivity"

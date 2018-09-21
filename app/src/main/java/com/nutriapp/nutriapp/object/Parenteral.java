@@ -21,6 +21,7 @@ public class Parenteral implements Parcelable {
     double fat;
     double electrolite;
     double calories;
+    int id;
 
     public Parenteral (String name, double volume, double carbohydrate, double protein, double fat, double electrolite, double calories){
         this.name = name;
@@ -30,6 +31,18 @@ public class Parenteral implements Parcelable {
         this.fat = fat;
         this.electrolite = electrolite;
         this.calories = calories;
+        this.id = 1;
+    }
+
+    public Parenteral (String name, double volume, double carbohydrate, double protein, double fat, double electrolite, double calories, int id){
+        this.name = name;
+        this.volume = volume;
+        this.carbohydrate = carbohydrate;
+        this.protein = protein;
+        this.fat = fat;
+        this.electrolite = electrolite;
+        this.calories = calories;
+        this.id = id;
     }
 
     public Parenteral(Parcel in) {
@@ -40,6 +53,7 @@ public class Parenteral implements Parcelable {
         this.fat = Double.parseDouble(in.readString());
         this.electrolite = Double.parseDouble(in.readString());
         this.calories = Double.parseDouble(in.readString());
+        this.id = in.readInt();
     }
 
         @Override
@@ -56,6 +70,7 @@ public class Parenteral implements Parcelable {
             dest.writeString(String.valueOf(this.fat));
             dest.writeString(String.valueOf(this.electrolite));
             dest.writeString(String.valueOf(this.calories));
+            dest.writeInt(this.id);
         }
 
 //        @Override
@@ -130,5 +145,13 @@ public class Parenteral implements Parcelable {
 
     public void setCalories(double calories) {
         this.calories = calories;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

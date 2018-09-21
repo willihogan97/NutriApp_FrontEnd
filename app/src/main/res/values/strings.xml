@@ -8,6 +8,8 @@
     <string name="result_header">Ringkasan</string>
     <string name="result_parenteral_header">Ringkasan Makanan</string>
     <string name="app_name">NutriApp</string>
+    <string name="update_parenteral">Update Makanan Parenteral</string>
+    <string name="update_food">Update Makanan External</string>
 
     <!--BUAT NAMA LABEL-->
     <string name="karbohidrat">Karbohidrat</string>
@@ -48,6 +50,9 @@
     <string name="minyak">Minyak</string>
     <string name="tambahan">Tambahan</string>
     <string name="cara">Cara</string>
+    <string name="pilih_parenteral">Pilih Parenteral</string>
+    <string name="pilih_makanan_external">Pilih Makanan</string>
+    <string name="pilih_aksi">Pilih Aksi</string>
 
     <!--BUAT NAMA BUTTON-->
     <string name="next">Next</string>
@@ -64,6 +69,8 @@
     <string name="umur">Umur</string>
     <string name="aktivitas">Aktivitas</string>
     <string name="cairan">Cairan</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerJK">
@@ -92,6 +99,11 @@
         <item>Moderately active (1.55)</item>
         <item>Very active (1.725)</item>
         <item>Extra active (1.9)</item>
+    </string-array>
+
+    <string-array name="spinnerAksi">
+        <item>Tambah</item>
+        <item>Update</item>
     </string-array>
 
 </resources>

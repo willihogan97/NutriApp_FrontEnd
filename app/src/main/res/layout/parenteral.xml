@@ -100,6 +100,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tambah_parenteral"
                     android:textAlignment="center" />
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <LinearLayout

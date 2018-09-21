@@ -8,6 +8,7 @@ public class MakananExternal {
     double urt;
     double lemak;
     String nama;
+    int id;
 
     public MakananExternal(int jenis, double kalori, double karbohidrat, double protein, double urt, double lemak, String nama) {
         this.jenis = jenis;
@@ -17,6 +18,17 @@ public class MakananExternal {
         this.urt = urt;
         this.lemak = lemak;
         this.nama = nama;
+    }
+
+    public MakananExternal(int jenis, double kalori, double karbohidrat, double protein, double urt, double lemak, String nama, int id) {
+        this.jenis = jenis;
+        this.kalori = kalori;
+        this.karbohidrat = karbohidrat;
+        this.protein = protein;
+        this.urt = urt;
+        this.lemak = lemak;
+        this.nama = nama;
+        this.id = id;
     }
 
     @Override
@@ -75,4 +87,12 @@ public class MakananExternal {
     public double getLemak() { return lemak; }
 
     public void setLemak(double lemak) { this.lemak = lemak; }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

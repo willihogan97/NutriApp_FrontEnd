@@ -39,10 +39,14 @@ public class HttpSendRequest extends AsyncTask<String, Void, String> {
             connection.setDoInput(true);
             connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             connection.setRequestProperty("Accept", "application/json");
-            JSONObject json = new JSONObject(params[1]);
-            OutputStream os = connection.getOutputStream();
-            os.write(json.toString().getBytes("UTF-8"));
-            os.close();
+            JSONObject json;
+            OutputStream os;
+            if(!params[1].equals("")) {
+                json = new JSONObject(params[1]);
+                os = connection.getOutputStream();
+                os.write(json.toString().getBytes("UTF-8"));
+                os.close();
+            }
             connection.connect();
             int HttpResult = connection.getResponseCode();
             BufferedReader in = new BufferedReader(
