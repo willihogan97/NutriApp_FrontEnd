@@ -64,18 +64,18 @@
                 android:orientation="vertical"
                 android:id="@+id/tambahView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/vertical_margin">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_margin="@dimen/vertical_margin">-->
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah Parenteral"/>
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--style="@style/normalFont"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Tambah Parenteral"/>-->
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -96,6 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
                         android:text="@string/colon"/>
+
                     <EditText
                         style="@style/normalFont"
                         android:id="@+id/addParenteralName"
@@ -103,8 +104,14 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="text"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,8 +141,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ml"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -165,8 +179,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,8 +217,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -227,8 +255,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -258,8 +293,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -289,8 +331,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -315,18 +364,18 @@
                 android:orientation="vertical"
                 android:id="@+id/updateView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/vertical_margin">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_margin="@dimen/vertical_margin">-->
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Update Parenteral"/>
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--style="@style/normalFont"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Update Parenteral"/>-->
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -375,6 +424,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
                         android:text="@string/colon"/>
+
                     <EditText
                         style="@style/normalFont"
                         android:id="@+id/updateParenteralName"
@@ -382,8 +432,14 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="text"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -413,8 +469,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ml"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -444,8 +507,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -475,8 +545,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -506,8 +583,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -537,8 +621,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -568,8 +659,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="number"
-                        android:layout_weight="2"
-                        android:text=""/>
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout

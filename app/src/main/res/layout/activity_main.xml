@@ -47,6 +47,14 @@
                     android:layout_gravity="center_vertical"
                     android:inputType="numberDecimal"
                     android:maxLines="1" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kg"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.3" />
             </LinearLayout>
 
             <LinearLayout
@@ -79,6 +87,14 @@
                     android:layout_weight="2"
                     android:layout_gravity="center_vertical"
                     android:inputType="numberDecimal" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cm"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.3" />
             </LinearLayout>
 
             <LinearLayout
@@ -184,8 +200,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/bmi" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
 
@@ -251,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/vertical_margin"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.2"
                     android:text="@string/percent" />
 
                 <TextView
@@ -292,8 +307,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/bmi" />
+                    android:layout_weight="1" />
 
                 <TextView
                     style="@style/normalFont"
@@ -301,8 +315,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/bmi" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -365,10 +378,18 @@
                     android:id="@+id/kalori"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.2"
                     android:layout_gravity="center_vertical"
                     android:inputType="number"
                     android:ems="10" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kkal_bb"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.8" />
             </LinearLayout>
 
             <LinearLayout
@@ -509,9 +530,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="2"
+                        android:layout_weight="1.2"
                         android:ems="10"
                         android:inputType="number" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ml_kkal_hari"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.8" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -715,22 +744,40 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="right"
                 android:layout_margin="@dimen/vertical_margin"
                 android:id="@+id/btn">
 
-                    <Button
-                        style="@style/normalFont"
-                        android:id="@+id/btnNext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/next"
-                        android:textAlignment="center" />
-            </LinearLayout>
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/btnParenteral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parenteral"
+                    android:layout_alignParentLeft="true"
+                    android:textAlignment="center" />
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/btnExternal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/external"
+                    android:layout_toEndOf="@id/btnParenteral"
+                    android:textAlignment="center" />
+
+                <Button
+                    style="@style/normalFont"
+                    android:id="@+id/btnNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="center" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

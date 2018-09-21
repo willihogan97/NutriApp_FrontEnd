@@ -71,6 +71,10 @@
     <string name="cairan">Cairan</string>
     <string name="update">Update</string>
     <string name="delete">Delete</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
+    <string name="external">external</string>
+    <string name="sisa_volume">Sisa Volume</string>
 
     <!--BUAT ITEM SPINNER-->
     <string-array name="spinnerJK">

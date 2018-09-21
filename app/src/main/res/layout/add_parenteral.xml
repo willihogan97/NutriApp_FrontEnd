@@ -16,13 +16,13 @@
             android:orientation="vertical"
             tools:context=".AddParenteral">
 
-            <steelkiwi.com.library.DotsLoaderView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:id="@+id/loader"
-                app:dlv_item_drawable="@drawable/circle_background"
-                app:dlv_line_color="@color/point_color"/>
+            <!--<steelkiwi.com.library.DotsLoaderView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/loader"-->
+                <!--app:dlv_item_drawable="@drawable/circle_background"-->
+                <!--app:dlv_line_color="@color/point_color"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:text="@string/colon"/>
+
                 <EditText
                     style="@style/normalFont"
                     android:id="@+id/addParenteralName"
@@ -50,8 +51,14 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="text"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,8 +88,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ml"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -112,8 +126,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gram"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -143,8 +164,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gram"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -174,8 +202,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gram"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -205,8 +240,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gram"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -236,8 +278,15 @@
                     android:layout_height="wrap_content"
                     android:ems="16"
                     android:inputType="number"
-                    android:layout_weight="2"
-                    android:text=""/>
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kkal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout

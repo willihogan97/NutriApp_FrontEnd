@@ -64,18 +64,18 @@
                 android:orientation="vertical"
                 android:id="@+id/tambahView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/vertical_margin">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_margin="@dimen/vertical_margin">-->
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah Food"/>
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--style="@style/normalFont"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Tambah Food"/>-->
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,8 +104,14 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="text"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -177,8 +183,16 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:text=""
-                        android:layout_weight="2"
-                        android:inputType="numberDecimal"/>
+                        android:inputType="numberDecimal"
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -208,8 +222,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -240,8 +261,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -271,8 +299,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -302,8 +337,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -327,18 +369,18 @@
                 android:orientation="vertical"
                 android:id="@+id/updateView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/vertical_margin">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_margin="@dimen/vertical_margin">-->
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Update Food"/>
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--style="@style/normalFont"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Update Food"/>-->
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -395,8 +437,14 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="text"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -468,8 +516,16 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:text=""
-                        android:layout_weight="2"
-                        android:inputType="numberDecimal"/>
+                        android:inputType="numberDecimal"
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -499,8 +555,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -531,8 +594,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -562,8 +632,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -593,8 +670,15 @@
                         android:layout_height="wrap_content"
                         android:ems="16"
                         android:inputType="numberDecimal"
-                        android:text=""
-                        android:layout_weight="2" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout

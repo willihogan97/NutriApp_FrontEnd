@@ -35,7 +35,7 @@ import steelkiwi.com.library.DotsLoaderView;
 
 public class Parenteral extends AppCompatActivity {
 
-    Button next, tambahParenteral, buttonEdit;
+    Button next, buttonEdit;
     EditText volumeView;
     LinearLayout selection, volume, detail;
     TextView karbohidrat, protein, lemak, elektrolit, kalori, sisa;
@@ -65,7 +65,6 @@ public class Parenteral extends AppCompatActivity {
         kalori = findViewById(R.id.caloriesDetailVslue);
         sisa = findViewById(R.id.caloriesRemaindersValue);
         dotsLoaderView = findViewById(R.id.loader);
-        tambahParenteral = findViewById(R.id.buttonTambah);
         buttonEdit = findViewById(R.id.buttonEdit);
 
         selection.setVisibility(View.VISIBLE);
@@ -181,17 +180,7 @@ public class Parenteral extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-
-            }
-        });
-
-        tambahParenteral.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddParenteral.class);
-                startActivityForResult(intent, 200);
-            }
+            public void onNothingSelected(AdapterView<?> parentView) { }
         });
 
         buttonEdit.setOnClickListener(new View.OnClickListener() {

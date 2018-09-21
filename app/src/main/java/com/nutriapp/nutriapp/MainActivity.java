@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private static String JK;
     private static double kebutuhanCairan;
 
-    Button btnnext;
+    Button btnnext, btnparenteral, btnexternal;
     EditText beratBadanView, tinggiBadanView, llaView, skinFoldView, kkalView, ageView, mlView, karbo, protein, lemak, totalCair;
-    LinearLayout percentage, cairan, totKal, normalKal, bmiLayout, hitunganKalori, btn, llaResult, stressFactor, inputTotalCair, cairOpt;
+    LinearLayout percentage, cairan, totKal, normalKal, bmiLayout, hitunganKalori, llaResult, stressFactor, inputTotalCair, cairOpt;
     TextView bmi, bmiStatus, llaStatus, totKalori, totCair, llaCount, skinfoldStatus;
     public static final String INFO = "INFO_PRIBADI";
     DotsLoaderView dotsLoaderView;
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         normalKal = findViewById(R.id.normalKal);
         bmiLayout = findViewById(R.id.bmiLayout);
         hitunganKalori = findViewById(R.id.hitunganKalori);
-        btn = findViewById(R.id.btn);
         stressFactor = findViewById(R.id.stressFactor);
         llaResult = findViewById(R.id.llaResult);
         beratBadanView = findViewById(R.id.beratBadan);
@@ -70,13 +69,16 @@ public class MainActivity extends AppCompatActivity {
         dotsLoaderView = findViewById(R.id.loader);
         skinFoldView = findViewById(R.id.SkinFold);
         inputTotalCair = findViewById(R.id.inputTotalCair);
+        btnnext = findViewById(R.id.btnNext);
+        btnexternal = findViewById(R.id.btnExternal);
+        btnparenteral = findViewById(R.id.btnParenteral);
 
         percentage.setVisibility(View.GONE);
         cairan.setVisibility(View.GONE);
         totKal.setVisibility(View.GONE);
         normalKal.setVisibility(View.GONE);
         bmiLayout.setVisibility(View.GONE);
-        btn.setVisibility(View.GONE);
+        btnnext.setVisibility(View.GONE);
         stressFactor.setVisibility(View.GONE);
         hitunganKalori.setVisibility(View.GONE);
         llaResult.setVisibility(View.GONE);
@@ -342,7 +344,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(!karbo.getText().toString().equals("") && !protein.getText().toString().equals("") && !lemak.getText().toString().equals("")){
-                btn.setVisibility(View.VISIBLE);
+                btnnext.setVisibility(View.VISIBLE);
             }
         }
     }

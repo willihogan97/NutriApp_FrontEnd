@@ -21,13 +21,13 @@
             android:orientation="vertical"
             tools:context=".TambahJadwalExternal">
 
-            <steelkiwi.com.library.DotsLoaderView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-            android:id="@+id/loader"
-            app:dlv_item_drawable="@drawable/circle_background"
-            app:dlv_line_color="@color/point_color"/>
+            <!--<steelkiwi.com.library.DotsLoaderView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/loader"-->
+                <!--app:dlv_item_drawable="@drawable/circle_background"-->
+                <!--app:dlv_line_color="@color/point_color"/>-->
 
             <LinearLayout
                 android:id="@+id/jam"
@@ -89,15 +89,14 @@
                     android:layout_weight="0.5" />
             </LinearLayout>
 
-
-            <ListView
-                android:id="@+id/list_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/vertical_margin"
-                android:layout_marginRight="@dimen/vertical_margin"
-                android:layout_marginTop="@dimen/vertical_margin">
-            </ListView>
+            <!--<ListView-->
+                <!--android:id="@+id/list_item"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/vertical_margin"-->
+                <!--android:layout_marginRight="@dimen/vertical_margin"-->
+                <!--android:layout_marginTop="@dimen/vertical_margin">-->
+            <!--</ListView>-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -108,7 +107,7 @@
                     android:id="@+id/btnPlus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tambah_makanan" />
+                    android:text="@string/external" />
             </LinearLayout>
 
             <View
@@ -123,72 +122,77 @@
                 android:layout_margin="@dimen/vertical_margin"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/vertical_margin"
-                    android:layout_weight="1">
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/total_kalori" />
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="6"
-                        android:text="@string/total_kalori" />
-
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/colon" />
-
-                    <TextView
-                        android:id="@+id/totalKal"
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="5"
-                        android:text="0" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:id="@+id/layoutVolume">
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="6"
-                        android:text="@string/volume" />
+                <TextView
+                    android:id="@+id/totalKal"
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5" />
 
-                    <TextView
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/colon" />
-
-                    <EditText
-                        android:id="@+id/volumeTube"
-                        style="@style/normalFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="5"
-                        android:inputType="number" />
-                </LinearLayout>
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kkal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/volume" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/volumeTube"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ml"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

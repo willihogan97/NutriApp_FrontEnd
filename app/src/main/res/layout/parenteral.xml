@@ -16,13 +16,13 @@
             android:orientation="vertical"
             tools:context=".Parenteral">
 
-            <steelkiwi.com.library.DotsLoaderView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:id="@+id/loader"
-                app:dlv_item_drawable="@drawable/circle_background"
-                app:dlv_line_color="@color/point_color"/>
+            <!--<steelkiwi.com.library.DotsLoaderView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/loader"-->
+                <!--app:dlv_item_drawable="@drawable/circle_background"-->
+                <!--app:dlv_line_color="@color/point_color"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,8 +83,15 @@
                     android:ems="16"
                     android:inputType="number"
                     android:text=""
-                    android:layout_weight="2"
-                    tools:ignore="LabelFor" />
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ml"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,20 +100,20 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/vertical_margin">
 
-                <Button
-                    style="@style/normalFont"
-                    android:id="@+id/buttonTambah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tambah_parenteral"
-                    android:textAlignment="center" />
+                <!--<Button-->
+                    <!--style="@style/normalFont"-->
+                    <!--android:id="@+id/buttonTambah"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/tambah_parenteral"-->
+                    <!--android:textAlignment="center" />-->
 
                 <Button
                     style="@style/normalFont"
                     android:id="@+id/buttonEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/update"
+                    android:text="@string/parenteral"
                     android:textAlignment="center" />
             </LinearLayout>
 
@@ -141,8 +148,15 @@
                         android:id="@+id/carbohydrateDetailValue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/karbohidrat" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -170,8 +184,15 @@
                         android:id="@+id/proteinDetailValue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/protein" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -199,8 +220,15 @@
                         android:id="@+id/fatDetailVslue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/lemak" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,8 +256,15 @@
                         android:id="@+id/electroliteDetailVslue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/elektrolit" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gram"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -257,8 +292,15 @@
                         android:id="@+id/caloriesDetailVslue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/kalori" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -286,8 +328,51 @@
                         android:id="@+id/caloriesRemaindersValue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/sisa_kalori" />
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kkal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/vertical_margin">
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="@string/sisa_volume" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="@string/colon" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:id="@+id/volumeRemaindersValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5" />
+
+                    <TextView
+                        style="@style/normalFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ml"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5" />
                 </LinearLayout>
 
                 <LinearLayout
