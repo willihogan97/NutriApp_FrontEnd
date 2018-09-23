@@ -96,6 +96,7 @@
                         android:layout_width="@dimen/iconSize"
                         android:layout_height="@dimen/iconSize"
                         android:background="@android:color/transparent" />
+
                 </LinearLayout>
             </LinearLayout>
 
