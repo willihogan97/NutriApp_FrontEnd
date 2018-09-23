@@ -16,7 +16,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.2"
+            android:textSize="@dimen/smallText"
+            android:layout_weight="0.15"
             android:textAlignment="center"
             android:text="@string/jam" />
 
@@ -26,6 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textSize="@dimen/smallText"
             android:layout_weight="0.35"
             android:textAlignment="center"
             android:text="@string/karbohidrat" />
@@ -36,7 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.25"
+            android:textSize="@dimen/smallText"
+            android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/protein" />
 
@@ -46,7 +49,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.22"
+            android:textSize="@dimen/smallText"
+            android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/lemak" />
 
@@ -56,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textSize="@dimen/smallText"
             android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/kalori" />
@@ -66,9 +71,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.2"
+            android:textSize="@dimen/smallText"
+            android:layout_weight="0.22"
             android:textAlignment="center"
-            android:text="@string/cara" />
+            android:text="@string/volume" />
 
         <Button
             android:layout_width="@dimen/iconSize"

@@ -6,6 +6,7 @@
 
     <!--FONTS-->
     <dimen name="normalText">16sp</dimen>
+    <dimen name="smallText">14sp</dimen>
 
     <!--ICONS-->
     <dimen name="iconSize">25dp</dimen>
