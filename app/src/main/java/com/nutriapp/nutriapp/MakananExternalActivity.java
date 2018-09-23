@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.nutriapp.nutriapp.object.InfoPribadi;
 import com.nutriapp.nutriapp.object.JadwalMakananExternal;
+import com.nutriapp.nutriapp.object.MakananExternal;
 import com.nutriapp.nutriapp.object.Parenteral;
 import com.nutriapp.nutriapp.object.TabelMakanan;
 import com.nutriapp.nutriapp.object.TotalMakananExternal;
@@ -274,6 +275,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 final TextView protein = convertView.findViewById(R.id.protein);
                 final TextView lemak = convertView.findViewById(R.id.lemak);
                 final TextView volume = convertView.findViewById(R.id.cara);
+                final Button delete = convertView.findViewById(R.id.delete);
                 kalori.setText(dec.format(jadwal[0].getTotalKalori()));
                 karbo.setText(dec.format(jadwal[0].getKarbo()));
                 jam.setText(jadwal[0].getJam());
@@ -281,48 +283,58 @@ public class MakananExternalActivity extends AppCompatActivity{
                 lemak.setText(dec.format(jadwal[0].getLemak()));
                 volume.setText(dec.format(jadwal[0].getVolume()));
 
-                kalori.setOnClickListener(new View.OnClickListener() {
+                delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d("posisi", "onClick: " + position);
-                        if(getItem(position).getVolume()!=0) {
-                            totalVolumeOral-=getItem(position).getVolume();
-                        }
-                        mData.remove(position);
-                        listJadwalMakananExternal.remove(position);
-                        calculateAndShowTotal();
-                        notifyDataSetChanged();
-                        notifyDataSetChanged();
-                        for (int i = 0 ; i < mData.size(); i++) {
-                            String a = mData.get(i).getJam();
-                            Log.d("isistring", "onClick: " + a);
-                        }
-                        Iterator itr = tabelMakananKirim.iterator();
-                        while (itr.hasNext())
-                        {
-                            TabelMakanan x = (TabelMakanan) itr.next();
-                            if (x.getPosition() == position)
-                                itr.remove();
-                        }
-                        for (int i = 0 ; i < tabelMakananKirim.size() ; i++) {
-                            if(tabelMakananKirim.get(i).getPosition() > position) {
-                                int posisiBaru = tabelMakananKirim.get(i).getPosition() - 1;
-                                tabelMakananKirim.get(i).setPosition(posisiBaru);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MakananExternalActivity.this);
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage("Apa anda yakin untuk menghapus jadwal makanan external ini ?");
+                        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if(getItem(position).getVolume()!=0) {
+                                    totalVolumeOral-=getItem(position).getVolume();
+                                }
+                                mData.remove(position);
+                                listJadwalMakananExternal.remove(position);
+                                calculateAndShowTotal();
+                                notifyDataSetChanged();
+                                notifyDataSetChanged();
+                                Iterator itr = tabelMakananKirim.iterator();
+                                while (itr.hasNext())
+                                {
+                                    TabelMakanan x = (TabelMakanan) itr.next();
+                                    if (x.getPosition() == position)
+                                        itr.remove();
+                                }
+                                for (int i = 0 ; i < tabelMakananKirim.size() ; i++) {
+                                    if(tabelMakananKirim.get(i).getPosition() > position) {
+                                        int posisiBaru = tabelMakananKirim.get(i).getPosition() - 1;
+                                        tabelMakananKirim.get(i).setPosition(posisiBaru);
 
+                                    }
+                                }
+                                positionList -= 1;
+                                if(mData.size()!=0 && position!=positionList) {
+                                    jadwal[0] = getItem(position);
+                                    kalori.setText(dec.format(jadwal[0].getTotalKalori()));
+                                    karbo.setText(dec.format(jadwal[0].getKarbo()));
+                                    jam.setText(jadwal[0].getJam());
+                                    protein.setText(dec.format(jadwal[0].getProtein()));
+                                    lemak.setText(dec.format(jadwal[0].getLemak()));
+                                    volume.setText(dec.format(jadwal[0].getVolume()));
+                                }
+                                notifyDataSetChanged();
+                                ListUtils.setDynamicHeight(parentLinearLayout);
+                                dialog.dismiss();
                             }
-                        }
-                        positionList -= 1;
-                        if(mData.size()!=0 && position!=positionList) {
-                            jadwal[0] = getItem(position);
-                            kalori.setText(dec.format(jadwal[0].getTotalKalori()));
-                            karbo.setText(dec.format(jadwal[0].getKarbo()));
-                            jam.setText(jadwal[0].getJam());
-                            protein.setText(dec.format(jadwal[0].getProtein()));
-                            lemak.setText(dec.format(jadwal[0].getLemak()));
-                            volume.setText(dec.format(jadwal[0].getVolume()));
-                        }
-                        notifyDataSetChanged();
-                        ListUtils.setDynamicHeight(parentLinearLayout);
+                        });
+                        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 });
 

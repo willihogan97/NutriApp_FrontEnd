@@ -8,6 +8,6 @@
     <dimen name="normalText">16sp</dimen>
 
     <!--ICONS-->
-    <dimen name="iconSize">25dp</dimen>
+    <dimen name="iconSize">16dp</dimen>
 
 </resources>
