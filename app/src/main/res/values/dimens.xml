@@ -7,4 +7,7 @@
     <!--FONTS-->
     <dimen name="normalText">16sp</dimen>
 
+    <!--ICONS-->
+    <dimen name="iconSize">25dp</dimen>
+
 </resources>
