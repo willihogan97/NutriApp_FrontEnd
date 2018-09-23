@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,11 +28,12 @@ import com.nutriapp.nutriapp.object.TotalMakananExternal;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MakananExternalActivity extends AppCompatActivity{
 
     private ListView parentLinearLayout;
-    public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori, totalVolum;
+    public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori, totalVolum, sisaVolume;
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
     ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
 
@@ -41,6 +43,7 @@ public class MakananExternalActivity extends AppCompatActivity{
     InfoPribadi infoPribadi;
     Parenteral parenteral;
     DecimalFormat dec;
+    int position;
 
     public static final String INFO = "INFO_PRIBADI";
     public static final String PARENTERAL = "PARENTERAL";
@@ -55,6 +58,8 @@ public class MakananExternalActivity extends AppCompatActivity{
 
         dec = new DecimalFormat("#.0");
 
+        position = 0;
+
         //Untuk ListView
         mAdapter = new MyCustomAdapter();
         parentLinearLayout = findViewById(R.id.list_view);
@@ -66,11 +71,20 @@ public class MakananExternalActivity extends AppCompatActivity{
         totalKaloriJadwal = findViewById(R.id.totalKaloriJadwal);
         sisaKalori = findViewById(R.id.sisaKalori);
         totalVolum = findViewById(R.id.totalVolum);
+        sisaVolume = findViewById(R.id.sisaVolume);
 
         //Ambil data intent
         Intent intent = getIntent();
         infoPribadi = intent.getParcelableExtra(MainActivity.INFO);
         parenteral = intent.getParcelableExtra(com.nutriapp.nutriapp.Parenteral.PARENTERAL);
+
+        //Set sisa kalori dan volum
+        double remain = infoPribadi.getTotalKalori() - parenteral.getCalories();
+        String sisaText = dec.format((remain)) + " Kkal";
+        double remainVolum = infoPribadi.getTotalKaloriCair() - parenteral.getVolume();
+        String sisaVolum = dec.format(remainVolum) + " ml";
+        sisaKalori.setText(sisaText);
+        sisaVolume.setText(sisaVolum);
 
         //Button menuju tambah jadwal external
         Button button = findViewById(R.id.btnPlus);
@@ -165,6 +179,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 JadwalMakananExternal jadwalMakanan = data.getParcelableExtra(TambahJadwalExternal.EXTRA_DATA);
                 ArrayList<TabelMakanan> tabelMakananBaru = data.getParcelableArrayListExtra(TambahJadwalExternal.TABELMAKANANTOTAL);
                 for (int i = 0; i < tabelMakananBaru.size(); i++) {
+                    tabelMakananBaru.get(i).setPosition(position);
                     tabelMakananKirim.add(tabelMakananBaru.get(i));
                 }
                 totalVolumeOral += data.getDoubleExtra(TambahJadwalExternal.VOLUMEORAL, 0);
@@ -172,6 +187,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 calculateAndShowTotal();
                 mAdapter.addItem(jadwalMakanan);
                 parentLinearLayout.setAdapter(mAdapter);
+                position += 1;
             }
         }
     }
@@ -192,12 +208,13 @@ public class MakananExternalActivity extends AppCompatActivity{
         String sisaText = dec.format((remain)) + " Kkal";
         double remainVolum = infoPribadi.getTotalKaloriCair() - parenteral.getVolume() - totalVolumeOral;
         String sisaVolum = dec.format(remainVolum) + " ml";
-        sisaKalori.setText(sisaText + " / " + sisaVolum);
+        sisaKalori.setText(sisaText);
         totalKaloriJadwal.setText(dec.format(totalKal));
         totalKarboJadwal.setText(dec.format(totalKarbo));
         totalProteinJadwal.setText(dec.format(totalProtein));
         totalLemakJadwal.setText(dec.format(totalLemak));
         totalVolum.setText(dec.format(totalVolumeOral));
+        sisaVolume.setText(sisaVolum);
     }
 
     //Untuk ambil view dari ListView
@@ -263,6 +280,29 @@ public class MakananExternalActivity extends AppCompatActivity{
                 protein.setText(dec.format(jadwal.getProtein()));
                 lemak.setText(dec.format(jadwal.getLemak()));
                 volume.setText(dec.format(jadwal.getVolume()));
+
+                kalori.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mData.remove(position);
+                        listJadwalMakananExternal.remove(position);
+                        calculateAndShowTotal();
+                        notifyDataSetChanged();
+                        Iterator itr = tabelMakananKirim.iterator();
+                        while (itr.hasNext())
+                        {
+                            TabelMakanan x = (TabelMakanan) itr.next();
+                            if (x.getPosition() == position)
+                                itr.remove();
+                        }
+                        for (int i = 0 ; i < tabelMakananKirim.size() ; i++) {
+                            if(tabelMakananKirim.get(i).getPosition() > position) {
+                                int posisiBaru = tabelMakananKirim.get(i).getPosition() - 1;
+                                tabelMakananKirim.get(i).setPosition(posisiBaru);
+                            }
+                        }
+                    }
+                });
 
                 //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {

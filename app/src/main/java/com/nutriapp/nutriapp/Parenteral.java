@@ -38,7 +38,7 @@ public class Parenteral extends AppCompatActivity {
     Button next, buttonEdit;
     EditText volumeView;
     LinearLayout selection, volume, detail;
-    TextView karbohidrat, protein, lemak, elektrolit, kalori, sisa;
+    TextView karbohidrat, protein, lemak, elektrolit, kalori, sisa, sisaVolum;
     InfoPribadi infoPribadi;
     DotsLoaderView dotsLoaderView;
     ArrayAdapter<com.nutriapp.nutriapp.object.Parenteral> adapter;
@@ -66,6 +66,7 @@ public class Parenteral extends AppCompatActivity {
         sisa = findViewById(R.id.caloriesRemaindersValue);
         dotsLoaderView = findViewById(R.id.loader);
         buttonEdit = findViewById(R.id.buttonEdit);
+        sisaVolum = findViewById(R.id.volumeRemaindersValue);
 
         selection.setVisibility(View.VISIBLE);
         volume.setVisibility(View.GONE);
@@ -94,7 +95,8 @@ public class Parenteral extends AppCompatActivity {
                 double lemak = jsonArrayResult.getJSONObject(i).getDouble("lemak");
                 double elektrolit = jsonArrayResult.getJSONObject(i).getDouble("elektrolit");
                 double kalori = jsonArrayResult.getJSONObject(i).getDouble("kalori");
-                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, 1, karbohidrat, protein, lemak, elektrolit, kalori);
+                double volume = jsonArrayResult.getJSONObject(i).getDouble("volume");
+                com.nutriapp.nutriapp.object.Parenteral parenteral = new com.nutriapp.nutriapp.object.Parenteral(nama, volume, karbohidrat, protein, lemak, elektrolit, kalori);
                 listAll.add(parenteral);
             }
             adapter = new ArrayAdapter<>(Parenteral.this, android.R.layout.simple_spinner_item, listAll);
@@ -173,8 +175,10 @@ public class Parenteral extends AppCompatActivity {
                         kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
                         double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
                         double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
-                        String sisaText = dec.format((remain)) + "Kkal / " + dec.format((cairRemain)) + "ml";
+                        String sisaText = dec.format((remain)) + "Kkal";
+                        String cairText = dec.format((cairRemain)) + "ml";
                         sisa.setText(sisaText);
+                        sisaVolum.setText(cairText);
                     }
                 }
             }
@@ -213,8 +217,10 @@ public class Parenteral extends AppCompatActivity {
                     kalori.setText(dec.format((parenteralItem[0].getCalories() * ratio)));
                     double remain = infoPribadi.getTotalKalori() - (parenteralItem[0].getCalories() * ratio);
                     double cairRemain = infoPribadi.getTotalKaloriCair() - Double.parseDouble(volumeView.getText().toString());
-                    String sisaText = dec.format((remain)) + "Kkal / " + dec.format((cairRemain)) + "ml";
+                    String sisaText = dec.format((remain)) + "Kkal";
+                    String cairText = dec.format((cairRemain)) + "ml";
                     sisa.setText(sisaText);
+                    sisaVolum.setText(cairText);
                 } else {
                     detail.setVisibility(View.GONE);
                 }

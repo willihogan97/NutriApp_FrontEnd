@@ -19,6 +19,7 @@ public class TabelMakanan implements Parcelable {
     String berat;
     String totalKalori;
     String jam;
+    int position;
 
     public TabelMakanan(String jenis, String spinner, String berat, String totalKalori) {
         this.jenis = jenis;
@@ -47,6 +48,7 @@ public class TabelMakanan implements Parcelable {
         this.berat = in.readString();
         this.totalKalori = in.readString();
         this.jam = in.readString();
+        this.position = in.readInt();
     }
 
     @Override
@@ -61,6 +63,7 @@ public class TabelMakanan implements Parcelable {
         dest.writeString(this.berat);
         dest.writeString(this.totalKalori);
         dest.writeString(this.jam);
+        dest.writeInt(this.position);
     }
 
     @Override
@@ -112,5 +115,13 @@ public class TabelMakanan implements Parcelable {
 
     public void setJam(String jam) {
         this.jam = jam;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

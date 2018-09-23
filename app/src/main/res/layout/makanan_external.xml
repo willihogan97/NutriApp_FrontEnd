@@ -186,14 +186,14 @@
 
                 <TextView
                     style="@style/normalFont"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/sisa_kalori"
-                    android:layout_weight="1"/>
+                    android:layout_weight="2"/>
 
                 <TextView
                     style="@style/normalFont"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/colon"
                     android:layout_weight="0.1"/>
@@ -201,7 +201,7 @@
                 <TextView
                     style="@style/normalFont"
                     android:id="@+id/sisaKalori"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_weight="2" />
@@ -216,14 +216,14 @@
 
                 <TextView
                     style="@style/normalFont"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/sisa_volume"
-                    android:layout_weight="0.83"/>
+                    android:layout_weight="2"/>
 
                 <TextView
                     style="@style/normalFont"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/colon"
                     android:layout_weight="0.1"/>
@@ -231,7 +231,7 @@
                 <TextView
                     style="@style/normalFont"
                     android:id="@+id/sisaVolume"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_weight="2" />

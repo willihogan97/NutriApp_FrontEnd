@@ -85,6 +85,22 @@ public class MainActivity extends AppCompatActivity {
         cairOpt.setVisibility(View.GONE);
         inputTotalCair.setVisibility(View.GONE);
 
+        btnparenteral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UpdateParenteral.class);
+                startActivityForResult(intent, 200);
+            }
+        });
+
+        btnexternal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UpdateFood.class);
+                startActivityForResult(intent, 200);
+            }
+        });
+
         String[] tipeHitunganKalori = getResources().getStringArray(R.array.spinnerHitunganKalori);
         final String[] jenisKelamin = getResources().getStringArray(R.array.spinnerJK);
         String[] sktivitas = getResources().getStringArray(R.array.spinnerAktivitas);

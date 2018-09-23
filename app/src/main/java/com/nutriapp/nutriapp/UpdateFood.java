@@ -60,9 +60,6 @@ public class UpdateFood extends AppCompatActivity {
         Intent intent = getIntent();
         tabelMakanan = intent.getParcelableArrayListExtra(TambahJadwalExternal.TABELMAKANAN);
 
-
-
-
         final MakananExternal[] makananItem = new MakananExternal[1];
 
         String[] arraySpinner = new String[] {
