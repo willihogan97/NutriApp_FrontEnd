@@ -59,6 +59,7 @@
             android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/kalori" />
+
         <TextView
             style="@style/normalFont"
             android:id="@+id/cara"
@@ -68,6 +69,20 @@
             android:layout_weight="0.2"
             android:textAlignment="center"
             android:text="@string/cara" />
+
+        <Button
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:background=""
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:drawableStart="@drawable/ic_delete_black_24dp"/>
+
+        <Button
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:background=""
+            android:drawableStart="@drawable/ic_update_black_24dp"/>
 
     </LinearLayout>
 </LinearLayout>
