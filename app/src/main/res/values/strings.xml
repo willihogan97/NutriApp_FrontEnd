@@ -10,6 +10,7 @@
     <string name="app_name">NutriApp</string>
     <string name="update_parenteral">Update Makanan Parenteral</string>
     <string name="update_food">Update Makanan External</string>
+    <string name="update_jadwal_external">Update Jadwal External</string>
 
     <!--BUAT NAMA LABEL-->
     <string name="karbohidrat">Karbohidrat</string>

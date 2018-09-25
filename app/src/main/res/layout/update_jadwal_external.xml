@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".TambahJadwalExternal">
+
+            <steelkiwi.com.library.DotsLoaderView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                android:id="@+id/loader"
+                app:dlv_item_drawable="@drawable/circle_background"
+                app:dlv_line_color="@color/point_color"/>
+
+            <LinearLayout
+                android:id="@+id/jam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.25"
+                    android:text="@string/jam" />
+
+                <EditText
+                    android:id="@+id/pickTime"
+                    style="@style/normalFont"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.25"
+                    android:text="@string/cara" />
+
+                <Spinner
+                    android:id="@+id/spinnerTipeMakananExternal"
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.25" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/list_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/vertical_margin"
+                android:layout_marginRight="@dimen/vertical_margin"
+                android:layout_marginTop="@dimen/vertical_margin">
+            </ListView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="@dimen/vertical_margin"
+                android:background="#c0c0c0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:text="@string/total_kalori" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon" />
+
+                <TextView
+                    android:id="@+id/totalKal"
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kkal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layoutVolume"
+                android:layout_margin="@dimen/vertical_margin">
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/volume" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/colon"/>
+
+                <EditText
+                    style="@style/normalFont"
+                    android:id="@+id/volumeTube"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="16"
+                    android:inputType="number"
+                    android:layout_weight="1.5" />
+
+                <TextView
+                    style="@style/normalFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ml"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/btnOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpan" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

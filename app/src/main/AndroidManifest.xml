@@ -35,6 +35,11 @@
             android:parentActivityName=".MakananExternalActivity"
             android:label="@string/tambah_jadwal_header" />
         <activity
+            android:name=".UpdateJadwalExternal"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MakananExternalActivity"
+            android:label="@string/update_jadwal_external" />
+        <activity
             android:name=".AddFood"
             android:screenOrientation="portrait"
             android:parentActivityName=".TambahJadwalExternal"

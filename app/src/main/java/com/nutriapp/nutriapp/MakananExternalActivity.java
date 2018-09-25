@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nutriapp.nutriapp.object.InfoPribadi;
@@ -37,6 +38,7 @@ public class MakananExternalActivity extends AppCompatActivity{
     public TextView totalKarboJadwal, totalProteinJadwal, totalLemakJadwal, totalKaloriJadwal, sisaKalori, totalVolum, sisaVolume;
     ArrayList<JadwalMakananExternal> listJadwalMakananExternal = new ArrayList<>();
     ArrayList<TabelMakanan> tabelMakananKirim = new ArrayList<>();
+    ArrayList<TabelMakanan> tabelMakanan = new ArrayList<>();
 
     double totalVolumeOral;
 
@@ -51,6 +53,8 @@ public class MakananExternalActivity extends AppCompatActivity{
     public static final String MAKANANEXTERNAL = "MAKANANEXTERNAL";
     public static final String TABELMAKANANTOTAL = "TABELMAKANANTOTAL";
     public static final String VOLUMEORAL = "VOLUMEORAL";
+    public static final String TABELKIRIMUPDATE = "TABELKIRIMUPDATE";
+    public static final String INFOTAMBAHANUPDATE = "INFOTAMBAHANUPDATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,6 +195,64 @@ public class MakananExternalActivity extends AppCompatActivity{
                 positionList += 1;
             }
         }
+
+        if(requestCode == 300) {
+
+            if(resultCode == Activity.RESULT_OK) {
+                int position = Integer.parseInt(data.getStringExtra(UpdateJadwalExternal.POSISI));
+                View a = getViewByPosition(position, parentLinearLayout);
+                final TextView volume = a.findViewById(R.id.cara);
+                final TextView kalori = a.findViewById(R.id.kalori);
+                final TextView karbo = a.findViewById(R.id.karbo);
+                final TextView jam = a.findViewById(R.id.jam);
+                final TextView protein = a.findViewById(R.id.protein);
+                final TextView lemak = a.findViewById(R.id.lemak);
+
+                if(Double.parseDouble(volume.getText().toString())!=0) {
+                    totalVolumeOral-=Double.parseDouble(volume.getText().toString());
+                }
+                mAdapter.mData.remove(position);
+                listJadwalMakananExternal.remove(position);
+                calculateAndShowTotal();
+                Iterator itr = tabelMakananKirim.iterator();
+                while (itr.hasNext())
+                {
+                    TabelMakanan x = (TabelMakanan) itr.next();
+                    if (x.getPosition() == position)
+                        itr.remove();
+                }
+                for (int i = 0 ; i < tabelMakananKirim.size() ; i++) {
+                    if(tabelMakananKirim.get(i).getPosition() > position) {
+                        int posisiBaru = tabelMakananKirim.get(i).getPosition() - 1;
+                        tabelMakananKirim.get(i).setPosition(posisiBaru);
+
+                    }
+                }
+                positionList -= 1;
+                if(mAdapter.mData.size()!=0 && position!=positionList) {
+//                    jadwal[0] = listJadwalMakananExternal.get(position);
+                    kalori.setText(dec.format(listJadwalMakananExternal.get(position).getTotalKalori()));
+                    karbo.setText(dec.format(listJadwalMakananExternal.get(position).getKarbo()));
+                    jam.setText(listJadwalMakananExternal.get(position).getJam());
+                    protein.setText(dec.format(listJadwalMakananExternal.get(position).getProtein()));
+                    lemak.setText(dec.format(listJadwalMakananExternal.get(position).getLemak()));
+                    volume.setText(dec.format(listJadwalMakananExternal.get(position).getVolume()));
+                }
+                mAdapter.notifyDataSetChanged();
+                ListUtils.setDynamicHeight(parentLinearLayout);
+                JadwalMakananExternal jadwalMakanan = data.getParcelableExtra(UpdateJadwalExternal.EXTRA_DATA);
+                ArrayList<TabelMakanan> tabelMakananBaru = data.getParcelableArrayListExtra(UpdateJadwalExternal.TABELMAKANANTOTAL);
+                for (int i = 0; i < tabelMakananBaru.size(); i++) {
+                    tabelMakananBaru.get(i).setPosition(positionList);
+                    tabelMakananKirim.add(tabelMakananBaru.get(i));
+                }
+                totalVolumeOral += data.getDoubleExtra(TambahJadwalExternal.VOLUMEORAL, 0);
+                listJadwalMakananExternal.add(jadwalMakanan);
+                calculateAndShowTotal();
+                mAdapter.addItem(jadwalMakanan);
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     private void calculateAndShowTotal() {
@@ -276,6 +338,7 @@ public class MakananExternalActivity extends AppCompatActivity{
                 final TextView lemak = convertView.findViewById(R.id.lemak);
                 final TextView volume = convertView.findViewById(R.id.cara);
                 final Button delete = convertView.findViewById(R.id.delete);
+                final Button update = convertView.findViewById(R.id.update);
                 kalori.setText(dec.format(jadwal[0].getTotalKalori()));
                 karbo.setText(dec.format(jadwal[0].getKarbo()));
                 jam.setText(jadwal[0].getJam());
@@ -314,15 +377,33 @@ public class MakananExternalActivity extends AppCompatActivity{
                                     }
                                 }
                                 positionList -= 1;
-                                if(mData.size()!=0 && position!=positionList) {
-                                    jadwal[0] = getItem(position);
-                                    kalori.setText(dec.format(jadwal[0].getTotalKalori()));
-                                    karbo.setText(dec.format(jadwal[0].getKarbo()));
-                                    jam.setText(jadwal[0].getJam());
-                                    protein.setText(dec.format(jadwal[0].getProtein()));
-                                    lemak.setText(dec.format(jadwal[0].getLemak()));
-                                    volume.setText(dec.format(jadwal[0].getVolume()));
+                                if(mData.size()!=0) {
+                                    for (int i = position ; i < mData.size() ; i++) {
+                                        View a = getViewByPosition(i, parentLinearLayout);
+                                        final TextView volumeDalem = a.findViewById(R.id.cara);
+                                        final TextView kaloriDalem = a.findViewById(R.id.kalori);
+                                        final TextView karboDalem = a.findViewById(R.id.karbo);
+                                        final TextView jamDalem = a.findViewById(R.id.jam);
+                                        final TextView proteinDalem = a.findViewById(R.id.protein);
+                                        final TextView lemakDalem = a.findViewById(R.id.lemak);
+                                        jadwal[0] = getItem(i);
+                                        kaloriDalem.setText(dec.format(jadwal[0].getTotalKalori()));
+                                        karboDalem.setText(dec.format(jadwal[0].getKarbo()));
+                                        jamDalem.setText(jadwal[0].getJam());
+                                        proteinDalem.setText(dec.format(jadwal[0].getProtein()));
+                                        lemakDalem.setText(dec.format(jadwal[0].getLemak()));
+                                        volumeDalem.setText(dec.format(jadwal[0].getVolume()));
+                                    }
                                 }
+//                                if(mData.size()!=0 && position!=positionList) {
+//                                    jadwal[0] = getItem(position);
+//                                    kalori.setText(dec.format(jadwal[0].getTotalKalori()));
+//                                    karbo.setText(dec.format(jadwal[0].getKarbo()));
+//                                    jam.setText(jadwal[0].getJam());
+//                                    protein.setText(dec.format(jadwal[0].getProtein()));
+//                                    lemak.setText(dec.format(jadwal[0].getLemak()));
+//                                    volume.setText(dec.format(jadwal[0].getVolume()));
+//                                }
                                 notifyDataSetChanged();
                                 ListUtils.setDynamicHeight(parentLinearLayout);
                                 dialog.dismiss();
@@ -337,6 +418,29 @@ public class MakananExternalActivity extends AppCompatActivity{
                         alert.show();
                     }
                 });
+
+//                update.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        tabelMakanan = new ArrayList<>();
+//                        Intent intent = new Intent(getApplicationContext(), UpdateJadwalExternal.class);
+//                        for (int i = 0 ; i < tabelMakananKirim.size() ; i++) {
+//                            if(tabelMakananKirim.get(i).getPosition()==position) {
+//                                tabelMakanan.add(tabelMakananKirim.get(i));
+//                            }
+//                        }
+////                        intent.putExtra(INFO, infoPribadi);
+////                        intent.putExtra(PARENTERAL, parenteral);
+////                        intent.putExtra(VOLUMEORAL, totalVolumeOral);
+//                        ArrayList x = new ArrayList();
+//                        x.add(position);
+//                        x.add(jam.getText().toString());
+////                        x.add()
+//                        intent.putExtra(INFOTAMBAHANUPDATE, x);
+//                        intent.putExtra(TABELKIRIMUPDATE, tabelMakanan);
+//                        startActivityForResult(intent, 300);
+//                    }
+//                });
 
                 //Kalo tiba" perlu aja
 //                textView.setOnClickListener(new View.OnClickListener() {

@@ -88,14 +88,16 @@
                         android:text="@string/volume" />
 
                     <Button
-                        android:layout_width="@dimen/iconSize"
+                        android:layout_width="0dp"
                         android:layout_height="@dimen/iconSize"
-                        android:background="@android:color/transparent" />
+                        android:background="@android:color/transparent"
+                        android:layout_weight="0.1" />
 
                     <Button
-                        android:layout_width="@dimen/iconSize"
+                        android:layout_width="0dp"
                         android:layout_height="@dimen/iconSize"
-                        android:background="@android:color/transparent" />
+                        android:background="@android:color/transparent"
+                        android:layout_weight="0.1" />
 
                 </LinearLayout>
             </LinearLayout>
