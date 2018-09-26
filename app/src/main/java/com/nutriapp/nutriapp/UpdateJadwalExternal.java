@@ -138,6 +138,9 @@ public class UpdateJadwalExternal extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if(spinner.getSelectedItem().toString().equals("Tube")) {
                     tube.setVisibility(View.VISIBLE);
+                } else {
+                    volumeTube.setText("0");
+                    tube.setVisibility(View.GONE);
                 }
             }
 
@@ -154,6 +157,11 @@ public class UpdateJadwalExternal extends AppCompatActivity {
 
         totalKalSeluruh = findViewById(R.id.totalKal);
         buttonPickTime = findViewById(R.id.pickTime);
+
+        if (tambahanUpdate.get(2).equals("Tube")) {
+            spinner.setSelection(1);
+            volumeTube.setText(tambahanUpdate.get(3) + "");
+        }
 
         final View buttonOk = findViewById(R.id.btnOk);
 
