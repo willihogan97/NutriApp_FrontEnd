@@ -140,7 +140,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -178,7 +178,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -216,7 +216,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -254,7 +254,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -292,7 +292,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -330,7 +330,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -468,7 +468,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -506,7 +506,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -544,7 +544,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -582,7 +582,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -620,7 +620,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView
@@ -658,7 +658,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ems="16"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_weight="1.5" />
 
                     <TextView

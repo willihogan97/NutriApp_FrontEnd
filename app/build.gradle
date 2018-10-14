@@ -27,6 +27,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:gridlayout-v7:27.1.1'
-    compile 'com.android.volley:volley:1.1.1'
-    compile 'com.steelkiwi:dots-loader-view:1.0.0'
+    implementation 'com.steelkiwi:dots-loader-view:1.0.0'
 }
