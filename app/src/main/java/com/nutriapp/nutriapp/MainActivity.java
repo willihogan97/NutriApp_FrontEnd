@@ -241,46 +241,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean checkValidity() {
+        boolean flag = false;
         if(!beratBadanView.getText().toString().equals("") && !tinggiBadanView.getText().toString().equals("")) {
             if (Double.parseDouble(beratBadanView.getText().toString()) < 1 | Double.parseDouble(tinggiBadanView.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "Berat badan / tinggi badan tidak sesuai", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
         if(!llaView.getText().toString().equals("")){
             if(Double.parseDouble(llaView.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "LLA tidak sesuai", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
 
         if(!kkalView.getText().toString().equals("")){
-            if(Double.parseDouble(kkalView.getText().toString()) <= 20 && Double.parseDouble(kkalView.getText().toString()) >= 35) {
+            if(Double.parseDouble(kkalView.getText().toString()) < 20 && Double.parseDouble(kkalView.getText().toString()) > 35) {
                 Toast.makeText(getApplicationContext(), "Kkal harus dalam range 20-35", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
         if(!skinFoldView.getText().toString().equals("")){
             if(!ageView.getText().toString().equals("") && Double.parseDouble(ageView.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "Umur belum diisi", Toast.LENGTH_LONG).show();
-                return false;
-            } else if(Double.parseDouble(skinFoldView.getText().toString()) < 1) {
+            } else if (Double.parseDouble(skinFoldView.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "Skin Fold belum terisi dengan benar", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
 
         if(!mlView.getText().toString().equals("")){
-            if(Double.parseDouble(mlView.getText().toString()) <= 35 && Double.parseDouble(mlView.getText().toString()) >= 45) {
+            if(Double.parseDouble(mlView.getText().toString()) < 35 && Double.parseDouble(mlView.getText().toString()) > 45) {
                 Toast.makeText(getApplicationContext(), "ml/hari harus dalam range 35-45", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
 
         if(!totalCair.getText().toString().equals("")){
             if(Double.parseDouble(totalCair.getText().toString()) < 1) {
                 Toast.makeText(getApplicationContext(), "total cairan harus diisi", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
 
@@ -288,15 +294,14 @@ public class MainActivity extends AppCompatActivity {
             if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
                     Double.parseDouble(lemak.getText().toString())) < 100) {
                 Toast.makeText(getApplicationContext(), "Belum semua kalori terpakai untuk karbohidrat, protein, dan lemak", Toast.LENGTH_LONG).show();
-                return false;
-            }
-            if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
+            } else  if((Double.parseDouble(karbo.getText().toString()) + Double.parseDouble(protein.getText().toString()) +
                     Double.parseDouble(lemak.getText().toString())) > 100) {
                 Toast.makeText(getApplicationContext(), "Kalori yang terpakai untuk karbohidrat, protein, dan lemak lebih dari 100", Toast.LENGTH_LONG).show();
-                return false;
+            } else {
+                flag = true;
             }
         }
-        return true;
+        return flag;
     }
 
     private class GenericTextWatcher implements TextWatcher{
