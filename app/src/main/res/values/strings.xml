@@ -9,8 +9,8 @@
     <string name="result_parenteral_header">Ringkasan Makanan</string>
     <string name="app_name">NutriApp</string>
     <string name="update_parenteral">Update Makanan Parenteral</string>
-    <string name="update_food">Update Makanan External</string>
-    <string name="update_jadwal_external">Update Jadwal External</string>
+    <string name="update_food">Update Makanan Oral</string>
+    <string name="update_jadwal_external">Update Jadwal Makan</string>
 
     <!--BUAT NAMA LABEL-->
     <string name="karbohidrat">Karbohidrat</string>
@@ -52,13 +52,13 @@
     <string name="tambahan">Tambahan</string>
     <string name="cara">Cara</string>
     <string name="pilih_parenteral">Pilih Parenteral</string>
-    <string name="pilih_makanan_external">Pilih Makanan</string>
+    <string name="pilih_makanan_external">Pilih Makanan Oral</string>
     <string name="pilih_aksi">Pilih Aksi</string>
 
     <!--BUAT NAMA BUTTON-->
     <string name="next">Next</string>
     <string name="back">Back</string>
-    <string name="tambah_makanan">Tambah Makanan</string>
+    <string name="tambah_makanan">Tambah Makanan Oral</string>
     <string name="tambah_parenteral">Tambah Parenteral</string>
     <string name="simpan">Simpan</string>
     <string name="tipe_bmi">Tipe BMI</string>
@@ -74,7 +74,7 @@
     <string name="delete">Delete</string>
     <string name="kg">kg</string>
     <string name="cm">cm</string>
-    <string name="external">external</string>
+    <string name="external">Makanan Oral</string>
     <string name="sisa_volume">Sisa Volume</string>
 
     <!--BUAT ITEM SPINNER-->
